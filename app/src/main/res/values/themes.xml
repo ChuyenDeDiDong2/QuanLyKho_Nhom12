@@ -1,0 +1,100 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme.NoActionbar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="area_layout_content">
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+    </style>
+    <!-- style image icon right. -->
+    <style name="style_imageicon_right">
+
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+    <!-- style image icon left. -->
+    <style name="style_imageicon_left">
+
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+
+
+    <!-- style image main. -->
+    <style name="imade_main">
+
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <!-- 11 -->
+    <style name="text_style_11">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">11dp</item>
+    </style>
+    <!-- 11 -->
+    <style name="text_style_16">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <!-- style linear_text. -->
+    <style name="linear_text">
+        <!-- Customize your theme here. -->
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+    <!-- style linear_text. -->
+    <style name="edit_text_w">
+        <!-- Customize your theme here. -->
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">3dp</item>
+        <item name="android:layout_marginBottom">3dp</item>
+    </style>
+    <!-- wrap_wrap_center -->
+    <style name="wrap_wrap_center">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    <!-- style button. -->
+    <style name="styleButton_catelogy">
+        <!-- Customize your theme here. -->
+        <item name="android:layout_height">90dp</item>
+        <item name="android:layout_width">95dp</item>
+        <item name="android:layout_margin">8dp</item>
+    </style>
+    <style name="w_wr_text_catelogy">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">20px</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <!-- wrap_wrap_centerh_vertical -->
+    <style name="w_wr_centerh_vertical">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+</resources>
