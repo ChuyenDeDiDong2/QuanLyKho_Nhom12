@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.team12.quanlykhohang_nhom12">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,15 +12,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.HomeToRentActivity"></activity>
+        <activity android:name=".Activity.DangnhapActivity" />
+        <activity android:name=".Activity.HomeToRentActivity" />
         <activity android:name=".Activity.NewProductActivity" />
-        <activity android:name=".Fragment.RoleFragment"
+        <activity
+            android:name=".Fragment.RoleFragment"
             tools:ignore="Instantiatable" />
-        <activity android:name=".Fragment.AllocationFragment"
+        <activity
+            android:name=".Fragment.AllocationFragment"
             tools:ignore="Instantiatable" />
-        <activity android:name=".Fragment.StationeryFragment"
+        <activity
+            android:name=".Fragment.StationeryFragment"
             tools:ignore="Instantiatable" />
-        <activity android:name=".Fragment.StaftManagerFragment"
+        <activity
+            android:name=".Fragment.StaftManagerFragment"
             tools:ignore="Instantiatable" />
         <activity android:name=".Activity.AddStaftActivity" />
         <activity android:name=".Activity.InfoAppActivity" />
