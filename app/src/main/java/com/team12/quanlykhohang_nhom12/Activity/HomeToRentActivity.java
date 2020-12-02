@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.team12.quanlykhohang_nhom12.Fragment.AllocationFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.HomeUserFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.RoleFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.StaftManagerFragment;
@@ -41,7 +42,7 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
         toggle.syncState();
 
         if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new HomeUserFragment()).commit();
             navigationView.setCheckedItem(R.id.mn_home);
         }
     }
