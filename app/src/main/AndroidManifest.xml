@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Fragment.HomeUserFragment"></activity>
+        <activity android:name=".Activity.DieuKhoanActivity"></activity>
+        <activity android:name=".Fragment.HomeUserFragment" />
         <activity android:name=".Activity.HomeToRentActivity" />
         <activity android:name=".Activity.NewProductActivity" />
         <activity

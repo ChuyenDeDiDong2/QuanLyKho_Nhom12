@@ -64,6 +64,8 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
         {
 
 
+
+
             case R.id.mn_allocation:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new AllocationFragment()).commit();
                 break;
@@ -71,6 +73,12 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
             case R.id.mn_login:
                 Intent login = new Intent(this, LoginActivity.class);
                 startActivity(login);
+                drawertorent.closeDrawers();
+                return true;
+
+            case R.id.mncontract:
+                Intent dieukhoan = new Intent(this, DieuKhoanActivity.class);
+                startActivity(dieukhoan);
                 drawertorent.closeDrawers();
                 return true;
 

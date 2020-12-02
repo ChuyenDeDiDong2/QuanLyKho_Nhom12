@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DieuKhoanActivity">
+    <ScrollView
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/toolbar" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    android:text="Điều khoản và dịch vụ"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:text="1 Chủ thể của hợp đồng"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Thông thường trong hợp đồng, nội dung này thường được ghi nhận là thông tin các bên. Một hợp đồng chỉ được xác lập khi có từ hai bên tham gia thỏa thuận và xác lập. Do đó, nội dung về chủ thể của hợp đồng là cơ bản và bắt buộc phải có.
+
+Chủ thể của hợp đồng có thể là cá nhân, cơ quan hoặc tổ chức (pháp nhân).
+
+Chủ thể của hợp đồng không chỉ ảnh hưởng đến vấn đề phát sinh, xác lập hợp đồng mà còn liên quan đến tư cách của chủ thể ký hợp đồng, từ đó ảnh hưởng đến quyết định có thể tuyên hợp đồng vô hiệu. theo đó, nếu là cá nhân thì chính cá nhân đó ký; còn nếu chủ thể là pháp nhân thì phải là người đạiu diện theo pháp luật hoặc đại diện theo ủy quyền (phải kèm theo văn bản ủy quyền).
+
+Ngoài ra, việc xác định chủ thể hợp đồng còn giúp xác định đối tượng của hợp đồng, từ đó xác định quyền và trách nhiệm cơ bản của chủ thể.
+"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:text="2 Đối tượng của hợp đồng"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Mỗi một hợp đồng đều có đối tượng cụ thể. Ví dụ như hợp đồng mua bán tài hàng hóa thì đối tượng của hợp đồng là hàng hóa.
+
+Trong hợp đồng phải ghi nhận đúng đối tượng àm các bên giao dịch; ngoài ra để chắc chắn, các bên thường quy định về loại đối tượng, số lượng, chất lương… đối tượng của hợp đồng.
+"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:text="3 Nội dung hợp đồng"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="
+Nội dung hợp đồng là điều khoản khái quát về những gì các bên thỏa thuận trong Hợp đồng. Nôi dung hợp đồng có thể làm căn cứ để xác định những trách nhiệm “đương nhiên” của mỗi bên khi thực hiện hợp đồng đồng thời chỉ ra được đối tượng hợp đồng mà các bên đang hướng đến.
+
+Thông thường, nội dung hợp đồng được quy định chi tiết hơn ở trong hợp đồng dịch vụ, hợp đồng mua bán, hợp đồng thương mại (đại lý thương mại, nhượng quyền thương mại…).
+"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:text="4 Giá và phương thức thanh toán"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Giá được hiểu là giá trị đối với đối tượng của hợp đồng hay còn được hiểu là giá trị của hợp đồng. Ví dụ hai bên xác lập hợp đồng mua bán điện thoại, hai bên thỏa thuận giá của chiếc điện thoại là 5.000.000 đồng thì đây là giá trong hợp đồng.
+
+Tuy nhiên, trong một số trường hợp, Điều khoản giá không tồn tại do các bên lập “Hợp đồng cơ bản/Hợp đồng khung” và giá trị các giao dịch dựa trên các hóa đơn chứng từ. Trường hợp này hợp đồng vẫn được xem xét về giá trị dựa trên những giấy tờ các bên đưa ra chứ không chỉ dựa trên bản Hợp đồng. Một số trường hợp pháp luật quy định phương thức xác định giá.
+
+Trong điều khoản về giá thường đi kèm với thỏa thuận phương thức thanh toán. Các bên trong hợp đồng có thể tùy chọn phương thức thanh toán phù hợp. Công ty luật Việt An xin đề xuất một số phương pháp thanh toán thường được sử dụng: Trả tiền mặt; chuyển khoản qua ngân hàng; nhờ thu…
+"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:text="5 Quyền và nghĩa vụ của các bên"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Căn cứ vào các điều khoản về nội dung và giá trị hợp đồng, đồng thời dựa trên những quyền lợi chính đáng mà các bên đã thỏa thuận với nhau để quyết định về điều khoản về quyền và nghĩa vụ của các bên. Điều khoản này có thể lăp lại những nghĩa vụ và cam kết của các bên tại các điều khoản trước và nêu thêm các điều khoản ràng buộc nếu các bên xét thấy cần thiết.
+
+Thông thường, đối với từng loại hợp đồng cụ thể thì pháp luật có quy định cơ bản nhất đối với quyền và nghĩa vụ của các chủ thể tham gia hợp đồng đó.
+"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:text="6 Thời hạn hợp đồng"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Đây là điều khoản quan trọng đối với quá trình thực hiện hợp đồng trên thực tế. Các bên nên thảo thuận cụ thể thời hạn bắt đầu có hiệu lực của hợp đồng; Thời hạn thực hiện hợp đồng (thời gian giao hàng, thời gian thực hiện dịch vụ,…); Thời điểm kết thúc hợp đồng.
+"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:text="7 Phạt vi phạm và bồi thường thiệt hại"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Để đảm bảo hơn quyền và lợi ích của các bên và đảm bảo việc thực hiện đúng theo thỏa thuận trong hợp đồng thì các bên nên thỏa thuận về điều kiện phạt vi phạm và bồi thường thiêt hại.
+
+Lưu ý: Luât Thương mại 2005 thì mức phạt vi phạm không quá 8% giá trị phần nghĩa vụ hợp đồng bị vi phạm và chỉ được phạt vi phạm nếu điều này được quy định trong hợp đồng. Cũng theo Luật này, nếu có thỏa thuận phạt vi phạm thì các bên có thể áp dụng cả phạt vi phạm và bồi thường thiệt hại.
+
+Trường hợp các bên có thoả thuận về phạt vi phạm nhưng không thỏa thuận về việc vừa phải chịu phạt vi phạm và vừa phải bồi thường thiệt hại thì bên vi phạm nghĩa vụ chỉ phải chịu phạt vi phạm. Do đó, vẫn khuyến khích người soạn thảo hợp đồng nên làm rõ cả hai vấn đề trên bằng các điều khoản và câu chữ.
+
+Vấn đề phạt vi phạm có thể áp dung song song với việc tiếp tục hợp đồng nếu trường hợp vi phạm không rơi vào điều kiện được quyền đơn phương chấm dứt hợp đồng
+"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:text="8 Chấm dứt, đơn phương chấm dứt hợp đồng"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Đây là một điều khoản khá quan trọng khi liên quan đến các vấn đền phải thực hiện theo từng giai đoạn hoặc dựa trên kết quả thực hiện như Hợp đồng góp vốn, Hợp đồng hợp tác kinh doanh,…
+
+Việc chấm dứt hợp đồng được áp dụng khi một trong các bên có những vi phạm cơ bản theo hợp đồng khiến cho bên còn lại không thể đạt được mục đích ban đầu. Ngoài ra, có thể bên vi phạm vi phạm những cam kết tuy không cơ bản nhưng bất hợp lý và có ảnh hưởng đến tiến độ hoặc các quá trình làm việc của bên thứ ba.
+
+Bên cạnh việc hai bên chấm dứt hợp đồng, các bên có quyền thỏa thuận các trường hợp được đơn phương chấm dứt hợp đồng đối với từng bên.
+
+Nên thỏa thuận thuận việc đơn phương chấm dứt hợp đồng dù có phù hợp với những điều kiện mà hợp đồng đã quy định vẫn phải thông báo cho bên còn lại bằng văn bản, nếu không thông báo mà gây ra thiệt hại thì phải bồi thường.
+"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:text="9 Giải quyết tranh chấp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Các bên thỏa thuận chọn con đường Tòa án hoặc Trọng tài nếu tranh chấp xảy ra. Đồng thời các hợp đồng quốc tế lưu ý về việc chọn luật điều chỉnh ngay từ khi ký kết hợp đồng nhằm tránh các rắc rối về sau trong việc chọn hoặc phải tuân theo sự điều chỉnh của pháp luật nước nào.
+
+Công ty luật Việt An cung cấp các dịch vụ pháp lý về soạn thảo và tư vấn soạn thảo hợp đồng. Qúy khách hàng có nhu cầu sử dụng dịch vụ về hợp đồng xin vui lòng liên hệ đến Công ty luật Việt An để được hỗ trợ một cách tốt nhất."/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
