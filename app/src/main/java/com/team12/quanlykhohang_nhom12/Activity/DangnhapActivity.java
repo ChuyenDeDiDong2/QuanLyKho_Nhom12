@@ -30,7 +30,7 @@ import com.team12.quanlykhohang_nhom12.R;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dangnhap2);
+        setContentView(R.layout.activity_dangnhap);
 
         mAuth = FirebaseAuth.getInstance();
         progressBar = (ProgressBar) findViewById(R.id.progressBar1);
@@ -49,7 +49,7 @@ import com.team12.quanlykhohang_nhom12.R;
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.txtDK:
-                startActivity(new Intent(DangnhapActivity.this, DangkyActivity.class));
+                startActivity(new Intent(DangnhapActivity.this, DangKyActivity.class));
                 break;
             case R.id.btnDN:
                 userLogin();

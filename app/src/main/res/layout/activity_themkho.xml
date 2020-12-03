@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ThemkhoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imgKho"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <EditText
+            android:id="@+id/edtTenKho"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên kho"
+            android:inputType="textPersonName"
+            app:layout_constraintWidth_percent=".8"
+            app:layout_constraintVertical_bias=".3"
+            app:layout_constraintHorizontal_bias=".5"
+            android:background="@drawable/shape_background_text_box_selected"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"/>
+
+        <EditText
+            android:id="@+id/edtSDT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số điện thoại"
+            android:inputType="textPersonName"
+            app:layout_constraintWidth_percent=".8"
+            app:layout_constraintVertical_bias=".3"
+            app:layout_constraintHorizontal_bias=".5"
+            android:background="@drawable/shape_background_text_box_selected"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"/>
+
+        <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textPersonName"
+            app:layout_constraintWidth_percent=".8"
+            app:layout_constraintVertical_bias=".3"
+            app:layout_constraintHorizontal_bias=".5"
+            android:background="@drawable/shape_background_text_box_selected"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"/>
+
+        <EditText
+            android:id="@+id/edtSucchua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Sức chứa"
+
+            android:inputType="textPersonName"
+            app:layout_constraintWidth_percent=".8"
+            app:layout_constraintVertical_bias=".3"
+            app:layout_constraintHorizontal_bias=".5"
+            android:background="@drawable/shape_background_text_box_selected"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"/>
+
+        <EditText
+            android:id="@+id/edtDiachi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Địa chỉ"
+            android:inputType="textPersonName"
+            app:layout_constraintWidth_percent=".8"
+            app:layout_constraintVertical_bias=".3"
+            app:layout_constraintHorizontal_bias=".5"
+            android:background="@drawable/shape_background_text_box_selected"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar1"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"/>
+
+        <Button
+            android:id="@+id/btnThemK"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Thêm"
+            app:layout_constraintWidth_percent=".8"
+            app:layout_constraintVertical_bias=".7"
+            android:background="@drawable/shape_background_button_login"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/color_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forgerpass"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+</LinearLayout>

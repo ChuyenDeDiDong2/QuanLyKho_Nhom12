@@ -1,5 +1,8 @@
 package com.team12.quanlykhohang_nhom12.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -10,10 +13,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,25 +22,22 @@ import com.team12.quanlykhohang_nhom12.Adapter.UserAdapter;
 import com.team12.quanlykhohang_nhom12.MainActivity;
 import com.team12.quanlykhohang_nhom12.R;
 
-public class DangkyActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class DangKyActivity extends AppCompatActivity implements View.OnClickListener  {
     Button btnDK;
     EditText edtNTenDN, edtNEmail, edtNPass, edtNTen, edtNDiachi, edtNSoTK;
     TextView txtDK, banner;
 
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
-    //private FirebaseDatabase firebaseDatabase;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dangky);
-
+        setContentView(R.layout.activity_dang_ky);
         mAuth = FirebaseAuth.getInstance();
         progressBar =(ProgressBar) findViewById(R.id.progressBar1);
         banner = (TextView) findViewById(R.id.banner);
         banner.setOnClickListener(this);
-        btnDK = (Button) findViewById(R.id.btDK);
+        btnDK = (Button) findViewById(R.id.btnDK);
         btnDK.setOnClickListener(this);
 
         edtNTenDN = (EditText) findViewById(R.id.edtNTenDN);
@@ -54,12 +50,11 @@ public class DangkyActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-
         switch (view.getId()){
             case R.id.banner:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
-            case R.id.btDK:
+            case R.id.btnDK:
                 btnDK();
                 break;
         }
@@ -122,17 +117,17 @@ public class DangkyActivity extends AppCompatActivity implements View.OnClickLis
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
-                                        Toast.makeText(DangkyActivity.this, "Tài khoản dăng ký thành công!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(DangKyActivity.this, "Tài khoản dăng ký thành công!", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
-                                        startActivity(new Intent(DangkyActivity.this, DangnhapActivity.class));
+                                        startActivity(new Intent(DangKyActivity.this, DangnhapActivity.class));
                                     }else {
-                                        Toast.makeText(DangkyActivity.this, "Đăng kí thất bại! Mời nhập lại!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(DangKyActivity.this, "Đăng kí thất bại! Mời nhập lại!", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
                                     }
                                 }
                             });
                         }else {
-                            Toast.makeText(DangkyActivity.this, "Đăng kí thất bại! Mời nhập lại!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(DangKyActivity.this, "Đăng kí thất bại! Mời nhập lại!", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
