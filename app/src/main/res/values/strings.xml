@@ -130,4 +130,13 @@
     <string name="english">Tiếng anh</string>
 
     <string name="take_photo_success">Chụp ảnh thành công!</string>
+
+
+    //NguyenGiaHuy_mauhopdong
+    <string name="btnBack">Trở về</string>
+    <string name="txtMauSo">Mẫu số 1</string>
+    <string name="lblDieukhoan">Điều khoản</string>
+    <string name="txtDieukhoan">Điều khoản</string>
+    <string name="lblSudungnhakho">Sử dụng cho nhà kho</string>
+
 </resources>
