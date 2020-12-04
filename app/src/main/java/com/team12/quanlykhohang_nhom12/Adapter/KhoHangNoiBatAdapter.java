@@ -34,9 +34,7 @@ public class KhoHangNoiBatAdapter extends RecyclerView.Adapter<KhoHangNoiBatAdap
     @Override
     public void onBindViewHolder(@NonNull KhoHangHoder holder, int position) {
         holder.txtTenKho.setText(khoHang.get(position).getsTenKho());
-        holder.txtDiaChi.setText(khoHang.get(position).getsDiaChi());
-        holder.txtDienTich.setText(khoHang.get(position).getsDienTich());
-        holder.txtSDT.setText(khoHang.get(position).getsSDTKho());
+
         Picasso.get().load(khoHang.get(position).isbHinhAnhKho()).into(holder.imgKho);
     }
 
@@ -52,9 +50,7 @@ public class KhoHangNoiBatAdapter extends RecyclerView.Adapter<KhoHangNoiBatAdap
         public KhoHangHoder(@NonNull View itemView) {
             super(itemView);
             txtTenKho = itemView.findViewById(R.id.cTenKho);
-            txtDiaChi = itemView.findViewById(R.id.cDiaChi);
-            txtDienTich = itemView.findViewById(R.id.cDienTich);
-            txtSDT = itemView.findViewById(R.id.cSDTKho);
+
             imgKho = itemView.findViewById(R.id.imgKho);
         }
     }

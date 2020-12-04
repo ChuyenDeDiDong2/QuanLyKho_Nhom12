@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".Fragment.HomeUserFragment">
    <ScrollView
@@ -18,6 +19,7 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:textSize="22dp"
+               android:textColor="#fff"
                android:textStyle="bold"
                android:text="Nổi bật"/>
            <androidx.recyclerview.widget.RecyclerView
@@ -31,6 +33,7 @@
                android:layout_height="wrap_content"
                android:textSize="22dp"
                android:textStyle="bold"
+               android:textColor="#fff"
                android:text="Danh sách kho"/>
            <androidx.recyclerview.widget.RecyclerView
                android:id="@+id/recHomeUser"
