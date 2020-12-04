@@ -4,16 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.team12.quanlykhohang_nhom12.R;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class AddStaftActivity extends AppCompatActivity {
+import com.team12.quanlykhohang_nhom12.R;
+
+public class DieuKhoanActivity extends AppCompatActivity {
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_staft);
+        setContentView(R.layout.activity_dieu_khoan);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setControls();
@@ -22,7 +23,7 @@ public class AddStaftActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Thêm tài khoản");
+        getSupportActionBar().setTitle("Điều khoản và dịch vụ");
 
     }
 

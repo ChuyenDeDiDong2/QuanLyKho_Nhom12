@@ -58,6 +58,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordsignin"
         tools:ignore="MissingConstraints" />
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        android:layout_width="40dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgerpass"
+        tools:ignore="MissingConstraints" />
     <Button
         android:id="@+id/btnlogin"
         android:layout_width="0dp"
@@ -72,7 +82,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgerpass"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar2"
         tools:ignore="MissingConstraints" />
 
 

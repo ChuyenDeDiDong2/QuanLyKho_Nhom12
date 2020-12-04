@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.team12.quanlykhohang_nhom12.Fragment.AllocationFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.HomeUserFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.RoleFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.StaftManagerFragment;
@@ -41,7 +42,7 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
         toggle.syncState();
 
         if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new HomeUserFragment()).commit();
             navigationView.setCheckedItem(R.id.mn_home);
         }
     }
@@ -61,8 +62,6 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId())
         {
-
-
             case R.id.mn_allocation:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new AllocationFragment()).commit();
                 break;
@@ -70,6 +69,18 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
             case R.id.mn_login:
                 Intent login = new Intent(this, LoginActivity.class);
                 startActivity(login);
+                drawertorent.closeDrawers();
+                return true;
+
+                case R.id.mn_statistic:
+                Intent admin = new Intent(this, HomeActivity.class);
+                startActivity(admin);
+                drawertorent.closeDrawers();
+                return true;
+
+            case R.id.mncontract:
+                Intent dieukhoan = new Intent(this, DieuKhoanActivity.class);
+                startActivity(dieukhoan);
                 drawertorent.closeDrawers();
                 return true;
 
@@ -92,8 +103,9 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                Toast.makeText(this, "Search button selected", Toast.LENGTH_SHORT).show();
+            case R.id.action_seach:
+                startActivity(new Intent(this, TimKiemActivity.class));
+                //Toast.makeText(this, "Search button selected", Toast.LENGTH_SHORT).show();
                 return true;
 
         }
