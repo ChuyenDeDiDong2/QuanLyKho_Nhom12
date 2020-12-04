@@ -10,5 +10,12 @@
     <dimen name="txtView">50dp</dimen>
     <dimen name="txtViewAreaW">300dp</dimen>
     <dimen name="txtViewAreaH">250dp</dimen>
-    <dimen name="marginTop">15dp</dimen>
+
+
+    //NguyenGiaHuy_ThemMauHopDong
+    <dimen name="marginTopTitle">30dp</dimen>
+    <dimen name="marginTop">10dp</dimen>
+    <dimen name="txtmarginBot">7dp</dimen>
+    <dimen name="edtMulti">150dp</dimen>
+    <dimen name="txtSize">20sp</dimen>
 </resources>

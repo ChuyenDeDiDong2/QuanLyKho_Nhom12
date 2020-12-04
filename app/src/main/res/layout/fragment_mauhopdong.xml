@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_grey_background"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/area_layout_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_fragment_role_manager_notify_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="22sp"
+            android:visibility="gone"
+            android:textColor="@color/color_light_blue"
+            android:gravity="center"
+            android:text="@string/no_department_yet"/>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_fragment_role_manager_list_role"
+                android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_height="match_parent"
+                />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnMauHopDong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/ic_add_white_24" />
+</RelativeLayout>

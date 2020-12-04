@@ -177,6 +177,40 @@
                         android:text="@string/role" />
                 </LinearLayout>
 
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap_center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+
+                    android:id="@+id/btnMauHopDong"
+                    style="@style/w_wr_centerh_vertical">
+
+
+                    <RelativeLayout
+                        style="@style/styleButton_catelogy"
+                        android:background="@drawable/card1"
+                        android:elevation="8dp">
+
+
+                        <ImageView
+                            android:id="@+id/imgMHD"
+                            style="@style/imade_main"
+                            android:layout_width="wrap_content"
+                            android:layout_height="45dp"
+                            android:src="@drawable/ic_mauhopdong" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        style="@style/w_wr_text_catelogy"
+                        android:text="Mẫu hợp đồng" />
+                </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

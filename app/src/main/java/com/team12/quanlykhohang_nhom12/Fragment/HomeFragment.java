@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    LinearLayout btnCapPhat, btnThongKe, btnNhanVien, btnPhongBan, btnVanPhongPham, btnVaiTro;
+    LinearLayout btnCapPhat, btnThongKe, btnNhanVien, btnPhongBan, btnVanPhongPham, btnVaiTro, btnMauHopDong;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment {
         btnPhongBan = root.findViewById(R.id.btnDepartment);
         btnVanPhongPham = root.findViewById(R.id.btnStationery);
         btnVaiTro = root.findViewById(R.id.btnRole);
+        btnMauHopDong = root.findViewById(R.id.btnMauHopDong);
         //su kien khi nhan vao icon tren trang chu
         //----trang cap phat
         btnCapPhat.setOnClickListener(new View.OnClickListener() {
@@ -104,6 +105,17 @@ public class HomeFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+        //----trang mau hop dong
+        btnMauHopDong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, new MauHopDongFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+
 
         return root;
     }
