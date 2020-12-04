@@ -10,7 +10,7 @@
     // Màn hình chính
     <string name="allocation">Cấp phát</string>
     <string name="statistic">Thống kê</string>
-    <string name="staft">Nhân viên</string>
+    <string name="staft">Tài khoản</string>
     <string name="department">Phòng ban</string>
     <string name="stationery">Văn phòng phẩm</string>
     <string name="role">Vai trò</string>
@@ -47,7 +47,7 @@
     <string name="ok">Đồng ý</string>
     <string name="product_delivery_notes">Phiếu xuất sản phẩm</string>
     <string name="date_allocated">Ngày cấp</string>
-    <string name="name_of_staft">Tên nhân viên</string>
+    <string name="name_of_staft">Tên tài khoản</string>
     <string name="product_provided">Sản phẩm cấp</string>
     <string name="do_not_get_infor_of_product">Không lấy được thông tin sản phẩm</string>
     <string name="detail_bill">Chi tiết phiếu</string>
@@ -69,7 +69,7 @@
 
 
     // Nhân viên
-    <string name="staft_list">Danh sách nhân viên</string>
+    <string name="staft_list">Danh sách tài khoản</string>
     <string name="employee__does_not_exist">Chưa có nhân viên nào</string>
     <string name="edit_staft">Chỉnh sửa nhân viên</string>
     <string name="upload">Cập nhật</string>

@@ -62,10 +62,6 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId())
         {
-
-
-
-
             case R.id.mn_allocation:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new AllocationFragment()).commit();
                 break;
@@ -73,6 +69,12 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
             case R.id.mn_login:
                 Intent login = new Intent(this, LoginActivity.class);
                 startActivity(login);
+                drawertorent.closeDrawers();
+                return true;
+
+                case R.id.mn_statistic:
+                Intent admin = new Intent(this, HomeActivity.class);
+                startActivity(admin);
                 drawertorent.closeDrawers();
                 return true;
 
@@ -101,8 +103,9 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                Toast.makeText(this, "Search button selected", Toast.LENGTH_SHORT).show();
+            case R.id.action_seach:
+                startActivity(new Intent(this, TimKiemActivity.class));
+                //Toast.makeText(this, "Search button selected", Toast.LENGTH_SHORT).show();
                 return true;
 
         }

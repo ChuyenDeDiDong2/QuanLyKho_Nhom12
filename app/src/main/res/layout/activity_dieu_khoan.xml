@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".Activity.DieuKhoanActivity">
     <ScrollView
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -16,6 +16,7 @@
 
             <include layout="@layout/toolbar" />
             <LinearLayout
+                android:padding="10dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
