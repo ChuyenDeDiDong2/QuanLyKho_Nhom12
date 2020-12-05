@@ -6,17 +6,14 @@ public class MauHopDongAdapter {
     private String donvi;
     private String dongia;
 
-    public MauHopDongAdapter(String dieuKhoan, String kho, String donvi, String gia, String thoiHan) {
+    public MauHopDongAdapter() {
     }
 
-    public MauHopDongAdapter() {
+    public MauHopDongAdapter(String tenmauhd, String dieukhoan, String donvi, String dongia) {
         this.tenmauhd = tenmauhd;
         this.dieukhoan = dieukhoan;
         this.donvi = donvi;
         this.dongia = dongia;
-    }
-
-    public MauHopDongAdapter(String tenmauhd, String dieukhoan, String donvi, String dongia) {
     }
 
     public String getTenmauhd() {

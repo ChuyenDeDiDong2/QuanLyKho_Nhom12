@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.team12.quanlykhohang_nhom12.R;
 
-public class DanhsachmauHopdongActivity extends AppCompatActivity {
+class DanhsachmauHopdongActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

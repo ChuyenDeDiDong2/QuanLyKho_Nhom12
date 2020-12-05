@@ -32,7 +32,7 @@ public class ThemMauHopDongActivity extends AppCompatActivity {
         edtDonGia = (EditText) findViewById(R.id.edtDongia);
 
         mauhopDongAdapter = new MauHopDongAdapter();
-        mauHD = FirebaseDatabase.getInstance().getReference().child("MauHopDong");
+        mauHD = FirebaseDatabase.getInstance().getReference();
         btnThemMauHD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,12 +41,15 @@ public class ThemMauHopDongActivity extends AppCompatActivity {
                 String donvi = edtDonVi.getText().toString();
                 String dongia = edtDonGia.getText().toString();
 
-                MauHopDongAdapter mauHopDongAdapter = new MauHopDongAdapter(tenmauhd, dieukhoan, donvi, dongia);
-                mauHD.push().setValue(mauhopDongAdapter);
+                MauHopDongAdapter mauHopDongAdapter;
+                mauHopDongAdapter = new MauHopDongAdapter(tenmauhd,
+                        dieukhoan,
+                        donvi,
+                        dongia);
+                mauHD.child("MauHD").push().setValue(mauHopDongAdapter);
 
                 Toast.makeText(ThemMauHopDongActivity.this, "Thêm mẫu thành công", Toast.LENGTH_LONG).show();
             }
         });
     }
-
 }
