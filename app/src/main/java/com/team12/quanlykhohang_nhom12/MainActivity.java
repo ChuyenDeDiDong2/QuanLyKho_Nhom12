@@ -4,12 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
-import com.team12.quanlykhohang_nhom12.Activity.AddStaftActivity;
-import com.team12.quanlykhohang_nhom12.Activity.HomeActivity;
-import com.team12.quanlykhohang_nhom12.Activity.HomeToRentActivity;
+import com.team12.quanlykhohang_nhom12.Activity.AdminKhoActivity;
 import com.team12.quanlykhohang_nhom12.Activity.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,6 +15,5 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
-
     }
 }

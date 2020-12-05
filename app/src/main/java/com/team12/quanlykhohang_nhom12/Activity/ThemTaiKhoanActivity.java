@@ -8,12 +8,12 @@ import com.team12.quanlykhohang_nhom12.R;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class AddStaftActivity extends AppCompatActivity {
+public class ThemTaiKhoanActivity extends AppCompatActivity {
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_staft);
+        setContentView(R.layout.activity_add_taikhoan);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setControls();

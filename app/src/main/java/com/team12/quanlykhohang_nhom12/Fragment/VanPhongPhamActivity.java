@@ -5,7 +5,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.team12.quanlykhohang_nhom12.Activity.AddStaftActivity;
 import com.team12.quanlykhohang_nhom12.Activity.NewProductActivity;
 import com.team12.quanlykhohang_nhom12.R;
 
@@ -15,12 +14,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class StationeryFragment extends Fragment {
+public class VanPhongPhamActivity extends Fragment {
     FloatingActionButton btnAddStation;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.activity_stationery_fragment, container, false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.activity_vanphongpham_fragment, container, false);
 
         btnAddStation = root.findViewById(R.id.btnAddStation);
         btnAddStation.setOnClickListener(new View.OnClickListener() {

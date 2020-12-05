@@ -9,7 +9,7 @@ import com.team12.quanlykhohang_nhom12.R;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-public class InfoAppActivity extends AppCompatActivity {
+public class ThongTinAppActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     @Override

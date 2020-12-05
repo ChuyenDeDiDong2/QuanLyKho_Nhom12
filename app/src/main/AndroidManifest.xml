@@ -12,26 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ThemKhoActivity"></activity>
+        <activity android:name=".Fragment.HomeAdminKhoFragment"></activity>
+        <activity android:name=".Activity.AdminKhoActivity" />
+        <activity android:name=".Activity.ThemKhoActivity" />
         <activity android:name=".Activity.TimKiemActivity" />
         <activity android:name=".Activity.DieuKhoanActivity" />
         <activity android:name=".Fragment.HomeUserFragment" />
         <activity android:name=".Activity.HomeToRentActivity" />
         <activity android:name=".Activity.NewProductActivity" />
         <activity
-            android:name=".Fragment.RoleFragment"
+            android:name=".Fragment.VaiTroFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".Fragment.AllocationFragment"
+            android:name=".Fragment.CapPhatFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".Fragment.StationeryFragment"
+            android:name=".Fragment.VanPhongPhamActivity"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".Fragment.StaftManagerFragment"
+            android:name=".Fragment.TaiKhoanFragment"
             tools:ignore="Instantiatable" />
-        <activity android:name=".Activity.AddStaftActivity" />
-        <activity android:name=".Activity.InfoAppActivity" />
+        <activity android:name=".Activity.ThemTaiKhoanActivity" />
+        <activity android:name=".Activity.ThongTinAppActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.HomeActivity" />
         <activity

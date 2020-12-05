@@ -15,20 +15,21 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.HomeAdminKhoFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.VaiTroFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.VaiTroFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.VanPhongPhamActivity;
 import com.team12.quanlykhohang_nhom12.R;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AdminKhoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_admin_kho);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -41,7 +42,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeAdminKhoFragment()).commit();
             navigationView.setCheckedItem(R.id.mn_home);
         }
 
@@ -63,7 +64,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId())
         {
             case R.id.mn_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeAdminKhoFragment()).commit();
                 break;
             case R.id.mn_department_manager:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PhongBanFragment()).commit();
@@ -80,7 +81,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VaiTroFragment()).commit();
                 break;
 
-             case R.id.mn_allocation:
+            case R.id.mn_allocation:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CapPhatFragment()).commit();
                 break;
 

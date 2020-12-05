@@ -54,6 +54,13 @@
                         android:text="@string/allocation" />
                 </LinearLayout>
 
+
+            </LinearLayout>
+            <LinearLayout
+                style="@style/wrap_wrap_center"
+                android:orientation="horizontal">
+
+
                 <LinearLayout
                     android:id="@+id/btnStatistics"
                     style="@style/w_wr_centerh_vertical">
@@ -76,60 +83,13 @@
                         style="@style/w_wr_text_catelogy"
                         android:text="@string/statistic" />
                 </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/btnStaff"
-                    style="@style/w_wr_centerh_vertical">
-
-
-                    <RelativeLayout
-                        style="@style/styleButton_catelogy"
-                        android:background="@drawable/card1"
-                        android:elevation="8dp">
-
-
-                        <ImageView
-                            android:id="@+id/imgTTCB"
-                            style="@style/imade_main"
-                            android:src="@drawable/ic_people_24" />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        style="@style/w_wr_text_catelogy"
-                        android:text="@string/staft" />
-                </LinearLayout>
 
             </LinearLayout>
-
-
 
             <LinearLayout
                 style="@style/wrap_wrap_center"
                 android:orientation="horizontal">
 
-                <LinearLayout
-
-                    android:id="@+id/btnDepartment"
-                    style="@style/w_wr_centerh_vertical">
-
-
-                    <RelativeLayout
-                        style="@style/styleButton_catelogy"
-                        android:background="@drawable/card1"
-                        android:elevation="8dp">
-
-
-                        <ImageView
-                            android:id="@+id/imgMH"
-                            style="@style/imade_main"
-                            android:src="@drawable/ic_desktop_color_32" />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        style="@style/w_wr_text_catelogy"
-                        android:text="@string/department" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/btnStationery"
@@ -153,6 +113,13 @@
                         style="@style/w_wr_text_catelogy"
                         android:text="@string/stationery" />
                 </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                style="@style/wrap_wrap_center"
+                android:orientation="horizontal">
+
+
 
                 <LinearLayout
                     android:id="@+id/btnRole"

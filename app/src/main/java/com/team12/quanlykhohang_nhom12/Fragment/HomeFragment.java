@@ -1,6 +1,5 @@
 package com.team12.quanlykhohang_nhom12.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,15 +13,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.team12.quanlykhohang_nhom12.Activity.AddStaftActivity;
-import com.team12.quanlykhohang_nhom12.Activity.InfoAppActivity;
 import com.team12.quanlykhohang_nhom12.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    LinearLayout btnCapPhat, btnThongKe, btnNhanVien, btnPhongBan, btnVanPhongPham, btnVaiTro;
+    LinearLayout btnCapPhat, btnThongKe, btnVanPhongPham, btnVaiTro;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -39,8 +36,7 @@ public class HomeFragment extends Fragment {
         //getCantroll
         btnCapPhat = root.findViewById(R.id.btnaLlocation);
         btnThongKe = root.findViewById(R.id.btnStatistics);
-        btnNhanVien = root.findViewById(R.id.btnStaff);
-        btnPhongBan = root.findViewById(R.id.btnDepartment);
+
         btnVanPhongPham = root.findViewById(R.id.btnStationery);
         btnVaiTro = root.findViewById(R.id.btnRole);
         //su kien khi nhan vao icon tren trang chu
@@ -49,7 +45,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new AllocationFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new CapPhatFragment());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
@@ -59,37 +55,18 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new AllocationFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new CapPhatFragment());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
         });
-        //----trang nhan vien
-        btnNhanVien.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new StaftManagerFragment());
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
-        //----trang nhan vien
-        btnPhongBan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new PhongBanFragment());
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
+
         //----trang nhan vien
         btnVanPhongPham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new StationeryFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new VanPhongPhamActivity());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
@@ -99,7 +76,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new RoleFragment());
+                fragmentTransaction.replace(R.id.fragment_container, new VaiTroFragment());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
