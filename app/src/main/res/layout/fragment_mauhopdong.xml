@@ -19,7 +19,7 @@
             android:visibility="gone"
             android:textColor="@color/color_light_blue"
             android:gravity="center"
-            android:text="@string/no_department_yet"/>
+            android:text="Chưa hoàn thành"/>
 
 
 
@@ -29,11 +29,10 @@
             android:layout_height="wrap_content">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_fragment_role_manager_list_role"
+                android:id="@+id/dsmauhopdong"
                 android:layout_width="match_parent"
-                android:layout_marginTop="30dp"
                 android:layout_height="match_parent"
-                />
+                android:layout_marginTop="30dp" />
         </RelativeLayout>
 
 

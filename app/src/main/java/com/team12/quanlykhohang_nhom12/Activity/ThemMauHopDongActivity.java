@@ -10,14 +10,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-import com.team12.quanlykhohang_nhom12.Adapter.MauHopDongAdapter;
+import com.team12.quanlykhohang_nhom12.Library.MauHopDong;
 import com.team12.quanlykhohang_nhom12.R;
 
 public class ThemMauHopDongActivity extends AppCompatActivity {
 
     Button btnThemMauHD;
     EditText edtTenMauHD, edtDieukhoan, edtDonGia, edtDonVi;
-    MauHopDongAdapter mauhopDongAdapter;
+    MauHopDong mauhopDongAdapter;
     DatabaseReference mauHD;
 
 
@@ -31,7 +31,7 @@ public class ThemMauHopDongActivity extends AppCompatActivity {
         edtDonVi = (EditText) findViewById(R.id.edtDonVi);
         edtDonGia = (EditText) findViewById(R.id.edtDongia);
 
-        mauhopDongAdapter = new MauHopDongAdapter();
+        mauhopDongAdapter = new MauHopDong();
         mauHD = FirebaseDatabase.getInstance().getReference();
         btnThemMauHD.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,8 +41,8 @@ public class ThemMauHopDongActivity extends AppCompatActivity {
                 String donvi = edtDonVi.getText().toString();
                 String dongia = edtDonGia.getText().toString();
 
-                MauHopDongAdapter mauHopDongAdapter;
-                mauHopDongAdapter = new MauHopDongAdapter(tenmauhd,
+                MauHopDong mauHopDongAdapter;
+                mauHopDongAdapter = new MauHopDong(tenmauhd,
                         dieukhoan,
                         donvi,
                         dongia);
