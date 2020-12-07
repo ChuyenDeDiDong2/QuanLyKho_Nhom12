@@ -14,6 +14,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_button_action_blue_namel">
+
+                <TextView
+                    android:id="@+id/tvname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Name"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"/>
+                <ImageView
+                    android:id="@+id/ivdangxuat"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_logout"/>
+
+
+            </RelativeLayout>
 
             <LinearLayout
                 style="@style/wrap_wrap_center"
@@ -46,8 +71,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-
 
             <LinearLayout
                 style="@style/wrap_wrap_center"

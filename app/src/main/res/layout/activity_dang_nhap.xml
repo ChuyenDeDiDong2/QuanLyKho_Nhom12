@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Activity.DangNhapActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:padding="10dp"
+        android:background="@drawable/shape_button_action_blue_normal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/shape_button_action_blue_normal"
+        android:layout_marginTop="60dp"
+        android:padding="5dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_baseline_vpn_key_24"
+        />
+    <EditText
+        android:id="@+id/txtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivIcon"
+        android:hint="@string/email"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/shape_background_text_box_normal"
+        />
+    <EditText
+        android:id="@+id/txtmatkhau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtEmail"
+        android:hint="Mật khẩu"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:inputType="textPassword"
+        android:background="@drawable/shape_background_text_box_normal"
+        />
+    <TextView
+        android:id="@+id/tvquen_mat_khau"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="Quên mật khẩu"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/txtmatkhau"/>
+    <TextView
+        android:id="@+id/tvtao_tai_khoan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="Tạo tài khoản"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:layout_below="@+id/txtmatkhau"/>
+    <TextView
+        android:id="@+id/tvtao_tai_khoan_dang_kho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Tạo tài khoản cho thuê kho"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:layout_below="@+id/tvtao_tai_khoan"/>
+    <Button
+        android:id="@+id/btndangnhap"
+        android:text="Đăng nhập"
+        android:background="@drawable/shape_background_button_login"
+        android:minWidth="120dp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tvtao_tai_khoan_dang_kho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>
