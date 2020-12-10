@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_background_button_login"
-            android:text="Tạo tài khoản"/>
+            android:text="Tạo tài khoản người dùng"/>
         <Button
             android:id="@+id/tvtao_tai_khoan_dang_kho"
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/shape_background_button_login"
             android:layout_below="@+id/btntao_tai_khoan"
-            android:text="Tạo tài khoản cho thuê"/>
+            android:text="Tạo tài khoản hãng kho"/>
     </RelativeLayout>
 
 </RelativeLayout>
