@@ -78,12 +78,12 @@ public class DangNhapActivity extends AppCompatActivity {
         email = txtEmail.getText().toString().trim();
         pass = txtMatKhau.getText().toString().trim();
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            Toast.makeText(this, "Invalid email pattern...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Email không hợp lệ...", Toast.LENGTH_SHORT).show();
             return;
         }
         if (TextUtils.isEmpty(pass))
         {
-            Toast.makeText(this, "Enter password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Nhập mật khẩu", Toast.LENGTH_SHORT).show();
             return;
         }
         progressDialog.setMessage("Đăng nhập...");
@@ -106,7 +106,7 @@ public class DangNhapActivity extends AppCompatActivity {
     }
 
     private void makeMeOnline() {
-        progressDialog.setMessage("Checking User...");
+        progressDialog.setMessage("Kiểm tra tài khoản...");
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("online","true");
         //upload value to db
@@ -165,7 +165,7 @@ public class DangNhapActivity extends AppCompatActivity {
         tvtao_tai_khoan_dang_kho = findViewById(R.id.tvtao_tai_khoan_dang_kho);
         firebaseAuth = firebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Please wait");
+        progressDialog.setTitle("Vui lòng đợi...");
         progressDialog.setCanceledOnTouchOutside(false);
     }
 }

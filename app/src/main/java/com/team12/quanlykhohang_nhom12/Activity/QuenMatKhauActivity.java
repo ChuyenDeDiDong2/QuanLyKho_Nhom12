@@ -53,10 +53,10 @@ public class QuenMatKhauActivity extends AppCompatActivity {
     private void recoverPassword() {
         email = txtEmail.getText().toString().trim();
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            Toast.makeText(this, "Invalid Email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
             return;
         }
-        progressDialog.setMessage("Sending instructions to reset password...");
+        progressDialog.setMessage("Gửi hướng dẫn để đặt lại mật khẩu...");
         progressDialog.show();
 
         firebaseAuth.sendPasswordResetEmail(email)
@@ -65,7 +65,8 @@ public class QuenMatKhauActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         //
                         progressDialog.dismiss();
-                        Toast.makeText(QuenMatKhauActivity.this, "Password reset instruction sent to your email...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(QuenMatKhauActivity.this, "\n" +
+                                "Đã gửi hướng dẫn đặt lại mật khẩu đến email của bạn...", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -87,7 +88,7 @@ public class QuenMatKhauActivity extends AppCompatActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Please wait");
+        progressDialog.setTitle("Vui lòng chờ trong giây lát");
         progressDialog.setCanceledOnTouchOutside(false);
     }
 }

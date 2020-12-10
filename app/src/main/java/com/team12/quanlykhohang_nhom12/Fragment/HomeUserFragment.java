@@ -1,5 +1,6 @@
 package com.team12.quanlykhohang_nhom12.Fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,37 +23,35 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team12.quanlykhohang_nhom12.Activity.DangNhapActivity;
-import com.team12.quanlykhohang_nhom12.Activity.HomeToRentActivity;
+import com.team12.quanlykhohang_nhom12.Adapter.ChuKhoAdapter;
 import com.team12.quanlykhohang_nhom12.Adapter.KhoHangAdapter;
-import com.team12.quanlykhohang_nhom12.Adapter.KhoHangNoiBatAdapter;
 import com.team12.quanlykhohang_nhom12.Library.KhoHang;
+import com.team12.quanlykhohang_nhom12.Library.ModelChuKho;
 import com.team12.quanlykhohang_nhom12.R;
 
 import java.util.ArrayList;
 
 public class HomeUserFragment extends Fragment {
     RecyclerView recHomeUser1, recHomeNoiBat1;
-    DatabaseReference reference;
-    ArrayList<KhoHang> list;
-    KhoHangAdapter adapter;
-    KhoHangNoiBatAdapter adapterNB;
     private TextView nametv;
     private ImageView btndangxuat;
     private FirebaseAuth firebaseAuth;
+
+    private ArrayList<ModelChuKho> chukhoList;
+    private ChuKhoAdapter chuKhoAdapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.activity_home_user, container, false);
 
-        recHomeUser1 = root.findViewById(R.id.recHomeUser);
-        recHomeNoiBat1 = root.findViewById(R.id.recHomeNoiBat);
-        recHomeUser1.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        recHomeNoiBat1.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         nametv = root.findViewById(R.id.tvname);
         btndangxuat = root.findViewById(R.id.ivdangxuat);
+        recHomeNoiBat1 = root.findViewById(R.id.recHomeNoiBat);
+        recHomeNoiBat1.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));
         firebaseAuth = FirebaseAuth.getInstance();
+
         checkUser();
         btndangxuat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,30 +61,15 @@ public class HomeUserFragment extends Fragment {
             }
         });
 
-        list= new ArrayList<KhoHang>();
-        reference = FirebaseDatabase.getInstance().getReference().child("KhoHang");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshotl: snapshot.getChildren())
-                {
-                    KhoHang khoHang = dataSnapshotl.getValue(KhoHang.class);
-                    list.add(khoHang);
-                }
-                adapter = new KhoHangAdapter(HomeUserFragment.this.getActivity(), list);
-                recHomeUser1.setAdapter(adapter);
-                adapterNB = new KhoHangNoiBatAdapter(HomeUserFragment.this.getActivity(), list);
-                recHomeNoiBat1.setAdapter(adapterNB);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(HomeUserFragment.this.getActivity(), "Opp", Toast.LENGTH_SHORT).show();
-            }
-        });
+
         return root;
 
     }
+
+
+
+
     private void checkUser() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if(user == null){
@@ -107,9 +90,15 @@ public class HomeUserFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot ds: snapshot.getChildren()){
                             String name =""+ds.child("name").getValue();
+                            String email =""+ds.child("email").getValue();
+                            String noibat =""+ds.child("noibat").getValue();
+                            //String phone =""+ds.child("phone").getValue();
+                            //String profileImage =""+ds.child("profileImage").getValue();
                             String accountType =""+ds.child("accountType").getValue();
 
                             nametv.setText(name +"("+accountType+")");
+                            loadchukho(noibat);
+
                         }
                     }
 
@@ -118,5 +107,34 @@ public class HomeUserFragment extends Fragment {
 
                     }
                 });
+    }
+
+    private void loadchukho(final String myemail) {
+        chukhoList = new ArrayList<>();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.orderByChild("accountType").equalTo("admin")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        chukhoList.clear();
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            ModelChuKho modelChuKho = ds.getValue(ModelChuKho.class);
+                            String chukhoemail =""+ds.child("noibat").getValue();
+                            //show only user email
+                            if (chukhoemail.equals(myemail)){
+                                chukhoList.add(modelChuKho);
+                            }
+                        }
+
+                        chuKhoAdapter = new ChuKhoAdapter(HomeUserFragment.this.getActivity(), chukhoList);
+                        recHomeNoiBat1.setAdapter(chuKhoAdapter);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
     }
 }

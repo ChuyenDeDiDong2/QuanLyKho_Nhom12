@@ -103,13 +103,24 @@
         android:inputType="text"
         android:background="@drawable/shape_background_text_box_normal"
         />
+    <EditText
+        android:id="@+id/txtdiachiad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtsotaikhoanad"
+        android:hint="Nhập địa chỉ của bạn"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:inputType="text"
+        android:background="@drawable/shape_background_text_box_normal"
+        />
 
 
     <EditText
         android:id="@+id/txtmatkhauad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtsotaikhoanad"
+        android:layout_below="@+id/txtdiachiad"
         android:hint="Mật khẩu"
         android:padding="10dp"
         android:layout_margin="5dp"

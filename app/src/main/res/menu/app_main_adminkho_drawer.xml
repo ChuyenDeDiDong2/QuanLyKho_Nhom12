@@ -14,29 +14,14 @@
                     android:title="@string/home_screen" />
 
                 <item
-                    android:id="@+id/mn_allocation"
-                    android:icon="@drawable/ic_sheet_color_32"
-                    android:title="@string/allocation" />
-
-                <item
-                    android:id="@+id/mn_staft_manager"
+                    android:id="@+id/mn_thong_tin_tai_khoan"
                     android:icon="@drawable/ic_people_color_32"
                     android:title="@string/staft" />
 
                 <item
-                    android:id="@+id/mn_department_manager"
+                    android:id="@+id/mn_danh_sach_kho"
                     android:icon="@drawable/ic_desktop_color_32"
                     android:title="@string/department" />
-
-                <item
-                    android:id="@+id/mn_stationary_management"
-                    android:icon="@drawable/ic_printer_color_32"
-                    android:title="@string/stationery" />
-
-                <item
-                    android:id="@+id/mn_role_manager"
-                    android:icon="@drawable/ic_task_color_32"
-                    android:title="@string/role" />
 
             </group>
         </menu>

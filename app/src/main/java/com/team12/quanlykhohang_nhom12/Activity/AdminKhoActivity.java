@@ -85,11 +85,6 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CapPhatFragment()).commit();
                 break;
 
-            case R.id.mn_login:
-                Intent login = new Intent(this, LoginActivity.class);
-                startActivity(login);
-                drawer.closeDrawers();
-                return true;
 
             case R.id.mn_infor:
                 Intent info = new Intent(this, ThongTinAppActivity.class);
@@ -104,7 +99,7 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_allocation, menu);
+        getMenuInflater().inflate(R.menu.menu_adminkho, menu);
 
         return super.onCreateOptionsMenu(menu);
     }

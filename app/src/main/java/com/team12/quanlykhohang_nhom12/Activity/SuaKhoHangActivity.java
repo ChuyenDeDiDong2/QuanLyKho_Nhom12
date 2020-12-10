@@ -28,24 +28,29 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Library.Constants_kho;
 import com.team12.quanlykhohang_nhom12.R;
 
 import java.io.IOException;
 import java.util.HashMap;
 
-public class ThemKhoActivity extends AppCompatActivity {
+public class SuaKhoHangActivity extends AppCompatActivity {
+    private String khohangId;
     Toolbar toolbar;
     private ImageView ivhinhanhkho;
     private EditText txtten_kho_hang,txtdiachi_kho_hang, txtdien_tich_kho, txtsodt_kho, txtgiacho_thue, txtghi_chu_kho, txtgia_moi_kho, txtgiamphantram_10;
     private TextView tvtinh_trang_kho;
     private SwitchCompat swgiamgia;
-    private Button btnThem_kho_hang;
+    private Button btnsua_kho_hang;
 
     private Uri filePath;
     private FirebaseAuth firebaseAuth;
@@ -55,11 +60,69 @@ public class ThemKhoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_them_kho);
+        setContentView(R.layout.activity_sua_kho_hang);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setControls();
+        setControl();
         setEvent();
+        loadKhoHangDetail();
+    }
+
+    private void loadKhoHangDetail() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.child(firebaseAuth.getUid()).child("KhoHang").child(khohangId)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //get data
+                        String khohangId = ""+snapshot.child("khohangId").getValue();
+                        String tenkho = ""+snapshot.child("tenkho").getValue();
+                        String diachikhohang = ""+snapshot.child("diachikhohang").getValue();
+                        String dientichkho = ""+snapshot.child("dientichkho").getValue();
+                        String dienthoaikho = ""+snapshot.child("dienthoaikho").getValue();
+                        String giachothue = ""+snapshot.child("giachothue").getValue();
+                        String tinhtrangkho = ""+snapshot.child("tinhtrangkho").getValue();
+                        String ghichukhho = ""+snapshot.child("ghichukhho").getValue();
+                        String giamgiaAvailable = ""+snapshot.child("giamgiaAvailable").getValue();
+                        String giamoi = ""+snapshot.child("giamoi").getValue();
+                        String phantramkm = ""+snapshot.child("phantramkm").getValue();
+                        String hinhanhkho = ""+snapshot.child("hinhanhkho").getValue();
+                        String timstamp = ""+snapshot.child("timstamp").getValue();
+                        String uid = ""+snapshot.child("uid").getValue();
+                        //set data to view
+                        if(giamgiaAvailable.equals("true")){
+                            swgiamgia.setChecked(true);
+
+                            txtgia_moi_kho.setVisibility(View.VISIBLE);
+                            txtgiamphantram_10.setVisibility(View.VISIBLE);
+                        }else {
+
+                            swgiamgia.setChecked(false);
+
+                            txtgia_moi_kho.setVisibility(View.GONE);
+                            txtgiamphantram_10.setVisibility(View.GONE);
+                        }
+                        txtten_kho_hang.setText(tenkho);
+                        txtdiachi_kho_hang.setText(diachikhohang);
+                        txtdien_tich_kho.setText(dientichkho);
+                        txtsodt_kho.setText(dienthoaikho);
+                        txtgiacho_thue.setText(giachothue);
+                        tvtinh_trang_kho.setText(tinhtrangkho);
+                        txtghi_chu_kho.setText(ghichukhho);
+                        txtgia_moi_kho.setText(giamoi);
+                        txtgiamphantram_10.setText(phantramkm);
+                        try {
+                            Picasso.get().load(hinhanhkho).placeholder(R.drawable.google).into(ivhinhanhkho);
+                        }catch (Exception e){
+                            ivhinhanhkho.setImageResource(R.drawable.google);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
     private void setEvent() {
@@ -78,7 +141,7 @@ public class ThemKhoActivity extends AppCompatActivity {
                 tinhtrangDialog();
             }
         });
-        btnThem_kho_hang.setOnClickListener(new View.OnClickListener() {
+        btnsua_kho_hang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 inputData();
@@ -97,13 +160,12 @@ public class ThemKhoActivity extends AppCompatActivity {
             }
         });
     }
-
     private String tenkho,diachikhohang, dientichkho, dienthoaikho, giachothue, tinhtrangkho, ghichu, giamoi, khuyenmaiphantram;
     private boolean giamgiaAvailable  =false;
     private void inputData() {
         tenkho = txtten_kho_hang.getText().toString().trim();
-        diachikhohang = txtdiachi_kho_hang.getText().toString().trim();
         dientichkho = txtdien_tich_kho.getText().toString().trim();
+        diachikhohang = txtdiachi_kho_hang.getText().toString().trim();
         dienthoaikho = txtsodt_kho.getText().toString().trim();
         giachothue = txtgiacho_thue.getText().toString().trim();
         tinhtrangkho = tvtinh_trang_kho.getText().toString().trim();
@@ -147,19 +209,16 @@ public class ThemKhoActivity extends AppCompatActivity {
             giamoi = "0";
             khuyenmaiphantram="";
         }
-        addKhoHang();
-
+        capNhatKhoHang();
     }
 
-    private void addKhoHang() {
-        progressDialog.setMessage("Thêm kho hàng...");
+    private void capNhatKhoHang() {
+        //Show
+        progressDialog.setMessage("Cập nhật kho hàng");
         progressDialog.show();
-        String timestamp = ""+System.currentTimeMillis();
-
-        if (filePath == null){
-            //upload hinh anh
+        if(filePath == null)
+        {
             HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("khohangId", ""+timestamp);
             hashMap.put("tenkho", ""+tenkho);
             hashMap.put("diachikhohang", ""+diachikhohang);
             hashMap.put("dientichkho", ""+dientichkho);
@@ -170,48 +229,41 @@ public class ThemKhoActivity extends AppCompatActivity {
             hashMap.put("giamgiaAvailable", ""+giamgiaAvailable);
             hashMap.put("giamoi", ""+giamoi);
             hashMap.put("phantramkm", ""+khuyenmaiphantram);
-            hashMap.put("hinhanhkho", "");//hinhanh
-            hashMap.put("timstamp", ""+timestamp);//
-            hashMap.put("uid", ""+firebaseAuth.getUid());//
-            //add to db
+
+            //cap nhat db
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-            reference.child(firebaseAuth.getUid()).child("KhoHang").child(timestamp).setValue(hashMap)
+            reference.child(firebaseAuth.getUid()).child("KhoHang").child(khohangId)
+                    .updateChildren(hashMap)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            //
+                            //update
                             progressDialog.dismiss();
-                            Toast.makeText(ThemKhoActivity.this, "Thêm kho hàng  thành công...", Toast.LENGTH_SHORT).show();
-                            clearData();
+                            Toast.makeText(SuaKhoHangActivity.this, "Cập nhật thành công!",Toast.LENGTH_SHORT).show();
                         }
                     })
-
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            //
+                            //update failed
                             progressDialog.dismiss();
-                            Toast.makeText(ThemKhoActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SuaKhoHangActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-
         }else {
-            String filePathName = "profile_images/" + ""+timestamp;
-            //upload image
+            //update widh image
+            String filePathName = "profile_images/" + ""+khohangId;// lay từ id của kho
+            //cập nhật hình ảnh
             StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathName);
             storageReference.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            //
                             Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uriTask.isSuccessful());
-                            Uri downloadImageUri =uriTask.getResult();
-
+                            Uri downloadUri = uriTask.getResult();
                             if (uriTask.isSuccessful()){
-                                //upload hinh anh
                                 HashMap<String, Object> hashMap = new HashMap<>();
-                                hashMap.put("khohangId", ""+timestamp);
                                 hashMap.put("tenkho", ""+tenkho);
                                 hashMap.put("diachikhohang", ""+diachikhohang);
                                 hashMap.put("dientichkho", ""+dientichkho);
@@ -222,28 +274,25 @@ public class ThemKhoActivity extends AppCompatActivity {
                                 hashMap.put("giamgiaAvailable", ""+giamgiaAvailable);
                                 hashMap.put("giamoi", ""+giamoi);
                                 hashMap.put("phantramkm", ""+khuyenmaiphantram);
-                                hashMap.put("hinhanhkho", ""+downloadImageUri);//hinhanh
-                                hashMap.put("timstamp", ""+timestamp);//
-                                hashMap.put("uid", ""+firebaseAuth.getUid());//
-                                //add to db
+                                hashMap.put("hinhanhkho", ""+downloadUri);//hinhanh
+                                //cap nhat db
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-                                reference.child(firebaseAuth.getUid()).child("KhoHang").child(timestamp).setValue(hashMap)
+                                reference.child(firebaseAuth.getUid()).child("KhoHang").child(khohangId)
+                                        .updateChildren(hashMap)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                //
+                                                //update
                                                 progressDialog.dismiss();
-                                                Toast.makeText(ThemKhoActivity.this, "Thêm kho hàng thành công...", Toast.LENGTH_SHORT).show();
-                                                clearData();
+                                                Toast.makeText(SuaKhoHangActivity.this, "Cập nhật thành công!",Toast.LENGTH_SHORT).show();
                                             }
                                         })
-
                                         .addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
-                                                //
+                                                //update failed
                                                 progressDialog.dismiss();
-                                                Toast.makeText(ThemKhoActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(SuaKhoHangActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                                             }
                                         });
                             }
@@ -252,29 +301,12 @@ public class ThemKhoActivity extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            //
+                            //upload failed
                             progressDialog.dismiss();
-                            Toast.makeText(ThemKhoActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(SuaKhoHangActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-
         }
-    }
-
-    private void clearData() {
-        txtten_kho_hang.setText("");
-        txtdiachi_kho_hang.setText("");
-        txtdien_tich_kho.setText("");
-        txtsodt_kho.setText("");
-        txtghi_chu_kho.setText("");
-        txtgia_moi_kho.setText("");
-        txtgiacho_thue.setText("");
-        txtgiamphantram_10.setText("");
-        tvtinh_trang_kho.setText("");
-        swgiamgia.setText("");
-        ivhinhanhkho.setImageResource(R.drawable.ic_avartar_48);
-        filePath = null;
     }
 
     private void tinhtrangDialog() {
@@ -289,7 +321,6 @@ public class ThemKhoActivity extends AppCompatActivity {
                 })
                 .show();
     }
-
     private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -315,13 +346,12 @@ public class ThemKhoActivity extends AppCompatActivity {
         }
     }
 
-
-    private void setControls() {
+    private void setControl() {
+        khohangId = getIntent().getStringExtra("khohangId");
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Thêm kho hàng");
-
+        getSupportActionBar().setTitle("Sửa kho hàng");
         ivhinhanhkho = findViewById(R.id.ivavata_kho);
         txtten_kho_hang = findViewById(R.id.txtten_kho_khang);
         txtdiachi_kho_hang = findViewById(R.id.txtdiachi_kho_hang);
@@ -333,14 +363,12 @@ public class ThemKhoActivity extends AppCompatActivity {
         txtgiamphantram_10 = findViewById(R.id.txtgiamtheophamtram);
         tvtinh_trang_kho = findViewById(R.id.spntinh_trang_kho);
         swgiamgia = findViewById(R.id.discountSwitch);
-        btnThem_kho_hang = findViewById(R.id.btnthem_kho);
+        btnsua_kho_hang = findViewById(R.id.btnsua_kho);
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Vui lòng đợi");
+        progressDialog.setTitle("Vui lòng đợi...");
         progressDialog.setCanceledOnTouchOutside(false);
-
-
     }
 
     @Override

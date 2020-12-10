@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/shape_button_action_blue_press"
+            android:padding="10dp"
+            >
+            <ImageButton
+                android:id="@+id/backbtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:src="@drawable/ic_close_gray_32"/>
+            <ImageButton
+                android:id="@+id/btnxoakho"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:src="@drawable/ic_remove_color_24"
+                android:layout_alignParentEnd="true"/>
+            <ImageButton
+                android:id="@+id/btnsuakho"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:src="@drawable/ic_baseline_edit_24"
+                android:layout_toStartOf="@+id/btnxoakho"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvtenkho_chitiet"
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/white"
+                android:text="Thông tin kho"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/khohang_icon_ct"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/shape_button_action_gray_img"
+            android:adjustViewBounds="true"
+            android:padding="5dp"
+            android:src="@drawable/google"/>
+        <LinearLayout
+            android:layout_below="@+id/khohang_icon_ct"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvgiamgiapt_ct"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_iv_item"
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:text="10% Off"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/color_blue"
+                android:text="Tên kho"/>
+            <TextView
+                android:id="@+id/tvten_kho_hang_Ct"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:text="10% Off"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/color_blue"
+                android:text="Địa chỉ kho"/>
+            <TextView
+                android:id="@+id/tvdia_chi_kho_ct"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:text="10% Off"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/color_blue"
+                android:text="Diện tích kho"/>
+            <TextView
+                android:id="@+id/tvdien_tich_kho_ct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:text="10% Off"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/color_blue"
+                android:text="Số điện thoại kho"/>
+            <TextView
+                android:id="@+id/tvsodienthoai_kho_ct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:text="092934509"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/color_blue"
+                android:text="Loại kho"/>
+            <TextView
+                android:id="@+id/tvdanhmuckho_ct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:text="Kho lạnh"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/color_blue"
+                android:text="Mô tả"/>
+            <TextView
+                android:id="@+id/tvghichu_khoct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:text="lorem"
+                />
+
+            <RelativeLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvgiabanct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    android:text="10$"/>
+                <TextView
+                    android:layout_toEndOf="@+id/tvgiabanct"
+                    android:id="@+id/tvgiagiamct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:textColor="@color/black"
+                    android:text="8$"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
+
+</RelativeLayout>

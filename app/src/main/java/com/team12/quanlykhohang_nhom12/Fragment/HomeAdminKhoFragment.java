@@ -50,10 +50,10 @@ public class HomeAdminKhoFragment extends Fragment {
         btnNhanVien.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, new TaiKhoanFragment());
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+//                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+//                fragmentTransaction.replace(R.id.fragment_container, new TaiKhoanFragment());
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
             }
         });
         btndangxuat.setOnClickListener(new View.OnClickListener() {

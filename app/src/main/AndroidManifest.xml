@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.DangKyChoThueKhoActivity"></activity>
+        <activity android:name=".Activity.ChiTietChuKhoActivity"></activity>
+        <activity android:name=".Activity.SuaKhoHangActivity" />
+        <activity android:name=".Activity.DangKyChoThueKhoActivity" />
         <activity android:name=".Activity.DangKyActivity" />
         <activity android:name=".Activity.QuenMatKhauActivity" />
         <activity android:name=".Activity.DangNhapActivity" />
@@ -38,15 +40,14 @@
             tools:ignore="Instantiatable" />
         <activity android:name=".Activity.ThemTaiKhoanActivity" />
         <activity android:name=".Activity.ThongTinAppActivity" />
-        <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.HomeActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <action android:name="android.intent.action.PICK" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -141,6 +141,7 @@ public class DangKyActivity extends AppCompatActivity {
             hashMap.put("email", ""+email);
             hashMap.put("accountType", "user");
             hashMap.put("online", "true");
+            hashMap.put("noibat", "true");
             hashMap.put("profileImage", "");
 
             //luu db
@@ -182,6 +183,7 @@ public class DangKyActivity extends AppCompatActivity {
                                 hashMap.put("email", ""+email);
                                 hashMap.put("accountType", "user");
                                 hashMap.put("online", "true");
+                                hashMap.put("noibat", "true");
                                 hashMap.put("profileImage", ""+downloadIamgeUri);//url upload image
 
                                 //luu db
@@ -253,7 +255,7 @@ public class DangKyActivity extends AppCompatActivity {
         btnDangKy = findViewById(R.id.btndangkydk);
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Please wait");
+        progressDialog.setTitle("Vui lòng đợi...");
         progressDialog.setCanceledOnTouchOutside(false);
     }
 }

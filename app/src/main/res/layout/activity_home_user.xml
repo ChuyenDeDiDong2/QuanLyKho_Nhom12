@@ -45,12 +45,15 @@
 
 
                </RelativeLayout>
-
+            <!--Hiện thị danh sách chủ kho-->
            <androidx.recyclerview.widget.RecyclerView
-               android:layout_weight="2"
                android:id="@+id/recHomeNoiBat"
+               android:layout_weight="2"
                android:layout_width="match_parent"
-               android:layout_height="wrap_content"/>
+               android:layout_height="wrap_content"
+               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+               tools:listitem="@layout/chukho_item_show"/>
+
 
            <TextView
                android:layout_width="wrap_content"

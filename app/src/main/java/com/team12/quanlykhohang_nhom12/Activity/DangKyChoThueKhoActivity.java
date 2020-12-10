@@ -35,7 +35,7 @@ import java.util.HashMap;
 
 public class DangKyChoThueKhoActivity extends AppCompatActivity {
     private ImageView btnBack, ivprofile;
-    private EditText txtEmail, txtPhone, txtName, txtPassword, txtRePassword, txtTenTaiKhoan, txtSoTaiKhoan;
+    private EditText txtEmail,txtdiachiad, txtPhone, txtName, txtPassword, txtRePassword, txtTenTaiKhoan, txtSoTaiKhoan;
     private Button btnDangKy;
     private Uri filePath;
     private FirebaseAuth firebaseAuth;
@@ -72,10 +72,11 @@ public class DangKyChoThueKhoActivity extends AppCompatActivity {
             }
         });
     }
-    private String ten, pass, repass, email, soDT, tenTaiKhoan, sotaikhoan;
+    private String ten,diachi,  pass, repass, email, soDT, tenTaiKhoan, sotaikhoan;
     private void inputData() {
         ten = txtName.getText().toString().trim();
         tenTaiKhoan = txtTenTaiKhoan.getText().toString().trim();
+        diachi = txtdiachiad.getText().toString().trim();
         pass = txtPassword.getText().toString().trim();
         repass= txtRePassword.getText().toString().trim();
         email= txtEmail .getText().toString().trim();
@@ -96,6 +97,10 @@ public class DangKyChoThueKhoActivity extends AppCompatActivity {
             return;
         }
         if(TextUtils.isEmpty(soDT)){
+            Toast.makeText(this, "Vui lòng nhập số điện thoại của bạn...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(diachi)){
             Toast.makeText(this, "Vui lòng nhập số điện thoại của bạn...", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -147,8 +152,11 @@ public class DangKyChoThueKhoActivity extends AppCompatActivity {
             hashMap.put("email", ""+email);
             hashMap.put("sotaikhoan", ""+sotaikhoan);
             hashMap.put("tentaikhoan", ""+tenTaiKhoan);
+            hashMap.put("dichi", ""+diachi);
             hashMap.put("accountType", "admin");
             hashMap.put("online", "true");
+            hashMap.put("open", "true");
+            hashMap.put("noibat", "true");
             hashMap.put("profileImage", "");
 
             //luu db
@@ -190,8 +198,11 @@ public class DangKyChoThueKhoActivity extends AppCompatActivity {
                                 hashMap.put("email", ""+email);
                                 hashMap.put("sotaikhoan", ""+sotaikhoan);
                                 hashMap.put("tentaikhoan", ""+tenTaiKhoan);
+                                hashMap.put("diachi", ""+diachi);
                                 hashMap.put("accountType", "admin");
                                 hashMap.put("online", "true");
+                                hashMap.put("open", "true");
+                                hashMap.put("noibat", "true");
                                 hashMap.put("profileImage", ""+downloadIamgeUri);//url upload image
 
                                 //luu db
@@ -259,12 +270,13 @@ public class DangKyChoThueKhoActivity extends AppCompatActivity {
         txtPhone = findViewById(R.id.txtdienthoaiad);
         txtName = findViewById(R.id.txtten_cua_banad);
         txtSoTaiKhoan = findViewById(R.id.txtsotaikhoanad);
+        txtdiachiad = findViewById(R.id.txtdiachiad);
         txtPassword = findViewById(R.id.txtmatkhauad);
         txtRePassword = findViewById(R.id.txtnhap_lai_mat_khauad);
         btnDangKy = findViewById(R.id.btndangkyad);
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Please wait");
+        progressDialog.setTitle("Vui lòng chờ trong giây lát");
         progressDialog.setCanceledOnTouchOutside(false);
     }
 }

@@ -5,9 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.team12.quanlykhohang_nhom12.Activity.AdminKhoActivity;
 import com.team12.quanlykhohang_nhom12.Activity.DangNhapActivity;
-import com.team12.quanlykhohang_nhom12.Activity.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
     @Override

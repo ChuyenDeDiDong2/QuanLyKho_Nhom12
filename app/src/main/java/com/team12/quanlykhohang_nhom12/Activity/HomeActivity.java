@@ -84,11 +84,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CapPhatFragment()).commit();
                 break;
 
-            case R.id.mn_login:
-                Intent login = new Intent(this, LoginActivity.class);
-                startActivity(login);
-                drawer.closeDrawers();
-                return true;
 
             case R.id.mn_infor:
                 Intent info = new Intent(this, ThongTinAppActivity.class);

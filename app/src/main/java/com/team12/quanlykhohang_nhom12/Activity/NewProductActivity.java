@@ -24,7 +24,7 @@ public class NewProductActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Thêm nhân viên");
+        getSupportActionBar().setTitle("Thêm ");
 
     }
 

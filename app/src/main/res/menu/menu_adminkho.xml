@@ -6,7 +6,7 @@
         android:id="@+id/action_seach"
         android:orderInCategory="100"
         android:title="Tìm kiếm"
-        android:icon="@drawable/ic_white_search_24"
+        android:icon="@drawable/ic_baseline_notifications_active_24"
         app:showAsAction="always" />
 
     <!-- <item

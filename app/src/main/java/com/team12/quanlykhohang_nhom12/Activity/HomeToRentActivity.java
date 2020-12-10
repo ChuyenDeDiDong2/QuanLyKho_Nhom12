@@ -60,12 +60,6 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new CapPhatFragment()).commit();
                 break;
 
-            case R.id.mn_login:
-                Intent login = new Intent(this, LoginActivity.class);
-                startActivity(login);
-                drawertorent.closeDrawers();
-                return true;
-
                 case R.id.mn_statistic:
                 Intent admin = new Intent(this, HomeActivity.class);
                 startActivity(admin);
