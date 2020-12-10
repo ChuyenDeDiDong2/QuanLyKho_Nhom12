@@ -1,18 +1,25 @@
 package com.team12.quanlykhohang_nhom12.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -22,7 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Adapter.KhoUserAdapter;
-import com.team12.quanlykhohang_nhom12.Library.ModelChuKho;
+import com.team12.quanlykhohang_nhom12.Library.Constants_kho;
 import com.team12.quanlykhohang_nhom12.Library.ModelKhoHang;
 import com.team12.quanlykhohang_nhom12.R;
 
@@ -57,7 +64,8 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
         chukhoId = getIntent().getStringExtra("chukhoId");
        loadMyinfo();
        loadChuKhoDetails();
-       loadKhoHang();
+       loadKhoHang();//init ui view
+
 
        
     }
@@ -85,7 +93,7 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
     }
     private void loadChuKhoDetails() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-        reference.child("chukhoUid").addValueEventListener(new ValueEventListener() {
+        reference.child(chukhoId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = ""+snapshot.child("name").getValue();
@@ -126,7 +134,7 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
     private void loadKhoHang() {
         khohangList = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-        reference.child("chukhoUid").child("KhoHang")
+        reference.child(chukhoId).child("KhoHang")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -151,6 +159,78 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
 
 
     private void setEvent() {
+        txttim_kiem_chukho.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+                try {
+
+                    khoUserAdapter.getFilter().filter(s);
+                }catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        btnFilterKhoHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ChiTietChuKhoActivity.this);
+                builder.setTitle("Chọn danh mục kho")
+                        .setItems(Constants_kho.options2, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String selected = Constants_kho.options2[i];
+                                tvkhohang_filter.setText(selected);
+                                if(selected.equals("Tất cả kho")){
+                                    loadKhoHang();
+                                }
+                                else {
+                                    khoUserAdapter.getFilter().filter(selected);
+                                }
+                            }
+                        })
+                        .show();
+            }
+        });
+
+        btncall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goidien();
+            }
+        });
+        btnmap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openMap();
+            }
+        });
+
+
+    }
+
+    private void openMap() {
+        String diachi  ="htpps://maps.google.com/maps?saddr="+diachichukhotv+"&daddr";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(diachi));
+        startActivity(intent);
+    }
+
+    private void goidien() {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+Uri.encode(phone))));
+        Toast.makeText(this, ""+phone, Toast.LENGTH_SHORT).show();
+    }
+
+    private void setControl() {
         //init ui view
         chuhkhoiv = findViewById(R.id.chukhoiv_ct);
         tenchukhotv = findViewById(R.id.tenchukho_ct);
@@ -165,15 +245,12 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
         txttim_kiem_chukho = findViewById(R.id.txttim_kiem_chukho);
         btnFilterKhoHang = findViewById(R.id.btnFilterKhoHang);
         recdanhsach_kho = findViewById(R.id.redanhsach_khohang);
-        tvkhohang_filter = findViewById(R.id.tvkhohang_filter);
+        tvkhohang_filter = findViewById(R.id.tvkhohanguser_filter);
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Vui lòng đợi");
         progressDialog.setCanceledOnTouchOutside(false);
-    }
-
-    private void setControl() {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

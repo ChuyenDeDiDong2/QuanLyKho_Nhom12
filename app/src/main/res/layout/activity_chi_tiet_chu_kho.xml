@@ -146,7 +146,7 @@
                 android:src="@drawable/ic_baseline_apps_24"
                 />
             <TextView
-                android:id="@+id/tvkhohang_filter"
+                android:id="@+id/tvkhohanguser_filter"
                 android:layout_below="@+id/txttim_kiem_chukho"
                 android:text="Tất cả"
                 android:layout_marginStart="5dp"

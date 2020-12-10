@@ -1,6 +1,5 @@
 package com.team12.quanlykhohang_nhom12.Fragment;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -24,8 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team12.quanlykhohang_nhom12.Activity.DangNhapActivity;
 import com.team12.quanlykhohang_nhom12.Adapter.ChuKhoAdapter;
-import com.team12.quanlykhohang_nhom12.Adapter.KhoHangAdapter;
-import com.team12.quanlykhohang_nhom12.Library.KhoHang;
 import com.team12.quanlykhohang_nhom12.Library.ModelChuKho;
 import com.team12.quanlykhohang_nhom12.R;
 
