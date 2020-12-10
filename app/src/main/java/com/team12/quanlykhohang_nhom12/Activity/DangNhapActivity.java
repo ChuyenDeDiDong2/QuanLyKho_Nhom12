@@ -46,17 +46,11 @@ public class DangNhapActivity extends AppCompatActivity {
         tvtao_tai_khoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DangNhapActivity.this, DangKyActivity.class);
+                Intent intent = new Intent(DangNhapActivity.this, OptionSignUpActivity.class);
                 startActivity(intent);
             }
         });
-        tvtao_tai_khoan_dang_kho.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DangNhapActivity.this, DangKyChoThueKhoActivity.class);
-                startActivity(intent);
-            }
-        });
+
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

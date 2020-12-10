@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.OptionSignUpActivity">
+
+    <include layout="@layout/toolbar"/>
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+        <Button
+            android:id="@+id/btntao_tai_khoan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_background_button_login"
+            android:text="Tạo tài khoản"/>
+        <Button
+            android:id="@+id/tvtao_tai_khoan_dang_kho"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/shape_background_button_login"
+            android:layout_below="@+id/btntao_tai_khoan"
+            android:text="Tạo tài khoản cho thuê"/>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -74,16 +74,7 @@
         android:padding="10dp"
         android:layout_margin="5dp"
         android:layout_below="@+id/txtmatkhau"/>
-    <TextView
-        android:id="@+id/tvtao_tai_khoan_dang_kho"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Tạo tài khoản cho thuê kho"
-        android:textColor="@color/white"
-        android:padding="10dp"
-        android:layout_margin="5dp"
-        android:layout_below="@+id/tvtao_tai_khoan"/>
+
     <Button
         android:id="@+id/btndangnhap"
         android:text="Đăng nhập"
@@ -91,7 +82,7 @@
         android:minWidth="120dp"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/tvtao_tai_khoan_dang_kho"
+        android:layout_below="@+id/tvtao_tai_khoan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
