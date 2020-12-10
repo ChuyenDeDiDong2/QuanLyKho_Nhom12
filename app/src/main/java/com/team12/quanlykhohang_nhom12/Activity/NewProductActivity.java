@@ -38,7 +38,6 @@ public class NewProductActivity extends AppCompatActivity {
         btnCH = (Button) findViewById(R.id.btnCH);
         imgHH = (ImageView) findViewById(R.id.imgHH);
 
-
         adapter = new HangHoaAdapter();
         reference = FirebaseDatabase.getInstance().getReference();
         btnThem.setOnClickListener(new View.OnClickListener() {
