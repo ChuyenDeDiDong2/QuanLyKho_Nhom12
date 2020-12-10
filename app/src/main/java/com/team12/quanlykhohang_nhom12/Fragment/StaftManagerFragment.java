@@ -32,7 +32,5 @@ public class StaftManagerFragment extends Fragment {
         });
 
         return root;
-
-
     }
 }

@@ -109,6 +109,7 @@
     <string name="enter_unit">Nhập đơn vị</string>
     <string name="enter_price">Nhập giá</string>
     <string name="save">Lưu</string>
+    <string name="CH">Chọn hình</string>
     <string name="can_not_get_info_proudct">Không lấy được dữ liệu sản phẩm</string>
     <string name="please_enter_name_of_product">Vui lòng nhập tên sản phẩm</string>
     <string name="please_enter_number">Vui lòng nhập số lượng</string>
