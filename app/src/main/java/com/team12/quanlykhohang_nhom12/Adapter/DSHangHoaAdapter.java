@@ -24,7 +24,7 @@ public class DSHangHoaAdapter extends RecyclerView.Adapter<DSHangHoaAdapter.DSHa
     @NonNull
     @Override
     public DSHangHoaHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new DSHangHoaHoder(LayoutInflater.from(context).inflate(R.layout.cardviewkho, parent, false));
+        return new DSHangHoaHoder(LayoutInflater.from(context).inflate(R.layout.activity_stationery_fragment, parent, false));
     }
 
     @Override

@@ -23,7 +23,7 @@ public class NewProductActivity extends AppCompatActivity {
     ImageView imgHH;
     EditText edtTenHang, edtSoLuong, edtDonVi;
     HangHoaAdapter adapter;
-    DatabaseReference reference;
+    DatabaseReference HANGHOA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,7 @@ public class NewProductActivity extends AppCompatActivity {
         imgHH = (ImageView) findViewById(R.id.imgHH);
 
         adapter = new HangHoaAdapter();
-        reference = FirebaseDatabase.getInstance().getReference();
+        HANGHOA = FirebaseDatabase.getInstance().getReference();
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +48,7 @@ public class NewProductActivity extends AppCompatActivity {
                 String DonVi = edtDonVi.getText().toString();
                 HangHoaAdapter adapter;
                 adapter = new HangHoaAdapter(TenHangHoa, SoLuong, DonVi);
-                reference.child("HangHoa").push().setValue(adapter);
+                HANGHOA.child("HangHoa").push().setValue(adapter);
 
                 Toast.makeText(NewProductActivity.this, "Thêm hàng hóa thành công", Toast.LENGTH_LONG).show();
             }

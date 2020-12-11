@@ -134,12 +134,12 @@
                     android:layout_height="wrap_content">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_fragment_stationary_manager_list_product"
+                        android:id="@+id/dshanghoa"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:visibility="visible"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/cardviewkho"
-                        android:layout_height="wrap_content"/>
+                        tools:listitem="@layout/cardviewkho" />
 
                     <LinearLayout
                         android:id="@+id/lnl_fragment_stationary_manager_notify_emplty"
