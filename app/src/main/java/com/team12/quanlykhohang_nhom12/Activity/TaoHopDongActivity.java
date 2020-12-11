@@ -18,7 +18,13 @@ public class TaoHopDongActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setControl();
+        setEvent();
     }
+
+    private void setEvent() {
+
+    }
+
     private void setControl() {
 
         setSupportActionBar(toolbar);
