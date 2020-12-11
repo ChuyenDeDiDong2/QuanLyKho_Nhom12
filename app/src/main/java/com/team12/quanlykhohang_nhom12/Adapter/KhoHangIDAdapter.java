@@ -25,8 +25,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+import com.team12.quanlykhohang_nhom12.Activity.AdminKhoActivity;
+import com.team12.quanlykhohang_nhom12.Activity.HomeActivity;
+import com.team12.quanlykhohang_nhom12.Activity.HomeToRentActivity;
 import com.team12.quanlykhohang_nhom12.Activity.SuaKhoHangActivity;
 import com.team12.quanlykhohang_nhom12.Filter.FilterKhoHang;
+import com.team12.quanlykhohang_nhom12.Fragment.VanPhongPhamActivity;
 import com.team12.quanlykhohang_nhom12.Library.ModelKhoHang;
 import com.team12.quanlykhohang_nhom12.R;
 
@@ -110,6 +114,7 @@ public class KhoHangIDAdapter extends RecyclerView.Adapter<KhoHangIDAdapter.Hord
         ImageButton btnthoat = view.findViewById(R.id.backbtn);
         ImageButton btnxoakho = view.findViewById(R.id.btnxoakho);
         ImageButton btnsuakho = view.findViewById(R.id.btnsuakho);
+        ImageButton btnquan_ly_hang = view.findViewById(R.id.btnquan_ly_hang);
         ImageView  khohang_icon_ct = view.findViewById(R.id.khohang_icon_ct);
         TextView  tvgiamgiapt_ct = view.findViewById(R.id.tvgiamgiapt_ct);
         TextView  tvten_kho_hang_Ct = view.findViewById(R.id.tvten_kho_hang_Ct);
@@ -164,6 +169,14 @@ public class KhoHangIDAdapter extends RecyclerView.Adapter<KhoHangIDAdapter.Hord
         //show diglog
         bottomSheetDialog.show();
         //chuc nang sua kho
+        btnquan_ly_hang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, HomeActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
         btnsuakho.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

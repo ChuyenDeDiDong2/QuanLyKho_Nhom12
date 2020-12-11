@@ -93,7 +93,7 @@ public class HomeUserFragment extends Fragment {
                             //String profileImage =""+ds.child("profileImage").getValue();
                             String accountType =""+ds.child("accountType").getValue();
 
-                            nametv.setText(name +"("+accountType+")");
+                            nametv.setText(name);
                             loadchukho(noibat);
 
                         }
