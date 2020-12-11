@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,15 +33,17 @@ public class StationeryFragment extends Fragment {
     FloatingActionButton btnAddStation;
     ImageView imgHH;
     RecyclerView DSHH;
+    private FirebaseAuth mAuth;
     DatabaseReference reference;
     ArrayList<HangHoaAdapter> list;
     DSHangHoaAdapter DShanghoa;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.activity_stationery_fragment, container, false);
-
+        mAuth = FirebaseAuth.getInstance();
         btnAddStation = root.findViewById(R.id.btnAddStation);
         btnAddStation.setOnClickListener(new View.OnClickListener() {
             @Override
