@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/color_grey_background"
     android:layout_height="match_parent">
 
@@ -25,21 +26,64 @@
 
 
         <RelativeLayout
+            android:id="@+id/khohang_rl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/retimkiem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/txttim_kiem"
+                    android:background="@drawable/shape_background_text_box_normal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:drawableStart="@drawable/ic_baseline_search_24"
+                    android:drawablePadding="10dp"
+                    android:padding="10dp"
+                    android:hint="@string/search"
+                    />
+                <ImageButton
+                    android:id="@+id/btnFilterKhoHang"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_baseline_apps_24"
+                    />
+                <TextView
+                    android:id="@+id/tvkhohang_filter"
+                    android:layout_below="@+id/txttim_kiem"
+                    android:text="Tất cả"
+                    android:layout_marginStart="5dp"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_fragment_role_manager_list_role"
+                android:id="@+id/redanhsach_khohang"
                 android:layout_width="match_parent"
-                android:layout_marginTop="30dp"
+                android:layout_below="@+id/retimkiem"
+
+                android:layout_marginTop="10dp"
                 android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/kho_item_view"
                 />
         </RelativeLayout>
 
 
     </LinearLayout>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/btnthemkho"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

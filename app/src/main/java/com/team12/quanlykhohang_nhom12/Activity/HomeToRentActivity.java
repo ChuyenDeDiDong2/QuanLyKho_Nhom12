@@ -11,15 +11,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-import com.team12.quanlykhohang_nhom12.Fragment.AllocationFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.HomeFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.RoleFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.StaftManagerFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.StationeryFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.HomeUserFragment;
 import com.team12.quanlykhohang_nhom12.R;
 
 public class HomeToRentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -41,7 +36,7 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
         toggle.syncState();
 
         if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new HomeUserFragment()).commit();
             navigationView.setCheckedItem(R.id.mn_home);
         }
     }
@@ -61,20 +56,24 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId())
         {
-
-
             case R.id.mn_allocation:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new AllocationFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new CapPhatFragment()).commit();
                 break;
 
-            case R.id.mn_login:
-                Intent login = new Intent(this, LoginActivity.class);
-                startActivity(login);
+                case R.id.mn_statistic:
+                Intent admin = new Intent(this, HomeActivity.class);
+                startActivity(admin);
+                drawertorent.closeDrawers();
+                return true;
+
+            case R.id.mncontract:
+                Intent dieukhoan = new Intent(this, DieuKhoanActivity.class);
+                startActivity(dieukhoan);
                 drawertorent.closeDrawers();
                 return true;
 
             case R.id.mn_infor:
-                Intent info = new Intent(this, InfoAppActivity.class);
+                Intent info = new Intent(this, ThongTinAppActivity.class);
                 startActivity(info);
 
                 drawertorent.closeDrawers();
@@ -88,12 +87,13 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
         getMenuInflater().inflate(R.menu.menu_allocation, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    //nut tiem kiem
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_settings:
-                Toast.makeText(this, "Search button selected", Toast.LENGTH_SHORT).show();
+            case R.id.action_seach:
+                startActivity(new Intent(this, TimKiemActivity.class));
+                //Toast.makeText(this, "Search button selected", Toast.LENGTH_SHORT).show();
                 return true;
 
         }

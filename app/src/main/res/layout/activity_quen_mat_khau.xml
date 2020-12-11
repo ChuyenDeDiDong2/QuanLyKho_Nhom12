@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Activity.QuenMatKhauActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:padding="10dp"
+        android:background="@drawable/shape_button_action_blue_normal">
+        <ImageView
+            android:id="@+id/iv_quaylai"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_close_blue_24"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Quên mật khẩu"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@color/white"/>
+
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/shape_button_action_blue_normal"
+        android:layout_marginTop="60dp"
+        android:padding="5dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_baseline_vpn_key_24"
+        />
+    <EditText
+        android:id="@+id/txtEmailq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivIcon"
+        android:hint="@string/email"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/shape_background_text_box_normal"
+        />
+
+
+    <Button
+        android:id="@+id/btnquenmatkhau"
+        android:text="Gửi"
+        android:minWidth="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtEmailq"
+        android:textColor="@color/white"
+        android:background="@drawable/shape_background_button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

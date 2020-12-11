@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="00px">
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="5dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/shape_button_action_blue_namel">
+
+                <TextView
+                    android:id="@+id/tvname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Name"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"/>
+                <ImageView
+                    android:id="@+id/ivdangxuat"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_baseline_logout"/>
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap_center"
+                android:orientation="horizontal">
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/btnStaff"
+                    style="@style/w_wr_centerh_vertical">
+
+
+                    <RelativeLayout
+                        style="@style/styleButton_catelogy"
+                        android:background="@drawable/card1"
+                        android:elevation="8dp">
+
+
+                        <ImageView
+                            android:id="@+id/imgTTCB"
+                            style="@style/imade_main"
+                            android:src="@drawable/ic_people_24" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        style="@style/w_wr_text_catelogy"
+                        android:text="@string/staft" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap_center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+
+                    android:id="@+id/btnDepartment"
+                    style="@style/w_wr_centerh_vertical">
+
+
+                    <RelativeLayout
+                        style="@style/styleButton_catelogy"
+                        android:background="@drawable/card1"
+                        android:elevation="8dp">
+
+
+                        <ImageView
+                            android:id="@+id/imgMH"
+                            style="@style/imade_main"
+                            android:src="@drawable/ic_desktop_color_32" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        style="@style/w_wr_text_catelogy"
+                        android:text="@string/department" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

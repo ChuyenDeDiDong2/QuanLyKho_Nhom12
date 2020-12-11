@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
-            android:id="@+id/imghh"
+            android:id="@+id/imgKho"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/google"/>
@@ -22,19 +22,25 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp">
             <TextView
-                android:text="Tên Sản Phẩm :  "
+                android:text="Tên Kho:  "
                 android:textStyle="bold"
                 android:textSize="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Đơn vị : "
+                android:text="Địa chỉ: "
                 android:textStyle="bold"
                 android:textSize="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <TextView
-                android:text="Số Lượng : "
+                android:text="Diện tích: "
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:text="SDT: "
                 android:textStyle="bold"
                 android:textSize="16dp"
                 android:layout_width="match_parent"
@@ -61,6 +67,12 @@
         <TextView
             android:id="@+id/cDienTich"
             android:text="9999999"
+            android:textSize="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/cSDTKho"
+            android:text="0909090909090"
             android:textSize="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

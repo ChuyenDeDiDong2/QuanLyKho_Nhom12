@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_grey_background"
+    tools:context=".Activity.ThemKhoActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+        <ScrollView
+            android:layout_below="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                style="@style/area_layout_content"
+                android:orientation="vertical">
+                <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+
+                    android:id="@+id/ivavata_kho"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_centerHorizontal="true"
+                    app:c_border="true"
+                    android:src="@drawable/ic_avartar_48"
+                    app:c_border_color="@color/color_grey"
+                    app:c_border_width="1dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivavata_kho"
+                    android:orientation="vertical">
+
+
+                    <!-- Tên kho -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tên kho hàng"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtten_kho_khang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_people_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="Nhập tên kho"/>
+
+                    </LinearLayout>
+                    <!-- Dia chi kho -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Địa chỉ kho"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtdiachi_kho_hang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_people_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="Nhập địa chỉ kho hàng"/>
+
+                    </LinearLayout>
+                    <!-- dien tich -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Diện tích"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtdien_tich"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_people_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="Nhập diện tích kho"/>
+
+                    </LinearLayout>
+
+
+
+                    <!-- Số điện thoại -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/phone"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtso_dien_thoai_kho"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="phone"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_phone_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="@string/enter_phone"/>
+
+                    </LinearLayout>
+
+                    <!-- Email -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Giá cho thuê"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtgia_cho_thue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_mail_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="Giá cho thuê"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:text="Chọn loại kho"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp" />
+
+
+                        <TextView
+                            android:id="@+id/spntinh_trang_kho"
+                            android:layout_width="match_parent"
+                            android:layout_margin="5dp"
+                            android:drawableStart="@drawable/ic_baseline_apps_24"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:drawableEnd="@drawable/ic_baseline_soxuong_blue"
+                            android:drawablePadding="10dp"
+                            android:text="Chọn loại kho"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/note"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtghi_chu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_note_line_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="@string/enter_note"/>
+
+                    </LinearLayout>
+
+                    <!-- giam gia cho kho -->
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/discountSwitch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        />
+                    <!-- gia giam -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Giá mới"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtgia_moi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_mail_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="Giá cho thuê"/>
+
+                    </LinearLayout>
+                    <!-- gia giam -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Giá mới"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtgiamtheophamtram"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_mail_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="Giám 10% off"/>
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="45dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnthem_kho"
+                            android:layout_width="wrap_content"
+                            android:layout_height="42dp"
+                            android:paddingHorizontal="15dp"
+                            android:text="@string/add"
+                            tools:ignore="MissingClass" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="60dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>
