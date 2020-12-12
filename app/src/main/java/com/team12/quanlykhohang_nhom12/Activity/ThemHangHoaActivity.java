@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.team12.quanlykhohang_nhom12.Adapter.HangHoaAdapter;
 import com.team12.quanlykhohang_nhom12.R;
 
+<<<<<<< Updated upstream:app/src/main/java/com/team12/quanlykhohang_nhom12/Activity/NewProductActivity.java
 public class NewProductActivity extends AppCompatActivity {
     Button btnThem;
     Button btnCH;
@@ -37,6 +38,18 @@ public class NewProductActivity extends AppCompatActivity {
         //test
         btnCH = (Button) findViewById(R.id.btnCH);
         imgHH = (ImageView) findViewById(R.id.imgHH);
+=======
+public class ThemHangHoaActivity extends AppCompatActivity {
+    Toolbar toolbar;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_them_hanghoa);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setControls();
+    }
+>>>>>>> Stashed changes:app/src/main/java/com/team12/quanlykhohang_nhom12/Activity/ThemHangHoaActivity.java
 
         adapter = new HangHoaAdapter();
         HANGHOA = FirebaseDatabase.getInstance().getReference();

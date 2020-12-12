@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.NhapHangActivity"></activity>
         <activity android:name=".Activity.HomeToRentActivity" />
-        <activity android:name=".Activity.NewProductActivity" />
+        <activity android:name=".Activity.ThemHangHoaActivity" />
         <activity
             android:name=".Fragment.RoleFragment"
             tools:ignore="Instantiatable" />
@@ -22,7 +22,11 @@
             android:name=".Fragment.AllocationFragment"
             tools:ignore="Instantiatable" />
         <activity
+<<<<<<< Updated upstream
             android:name=".Fragment.StationeryFragment"
+=======
+            android:name=".Fragment.HangHoaActivity"
+>>>>>>> Stashed changes
             tools:ignore="Instantiatable" />
         <activity
             android:name=".Fragment.StaftManagerFragment"

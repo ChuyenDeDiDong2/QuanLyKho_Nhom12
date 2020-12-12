@@ -89,7 +89,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+<<<<<<< Updated upstream
                 fragmentTransaction.replace(R.id.fragment_container, new StationeryFragment());
+=======
+                fragmentTransaction.replace(R.id.fragment_container, new HangHoaActivity());
+>>>>>>> Stashed changes
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

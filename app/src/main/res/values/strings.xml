@@ -101,9 +101,9 @@
     <string name="enter_name_department">Nhập tên phòng bàn</string>
     <string name="list">Danh sách</string>
 
-    // Van phong Phẩm
+    // Hàng hóa
     <string name="no_product">Chưa có sản phẩm</string>
-    <string name="name_of_product">Tên sản phẩm</string>
+    <string name="name_of_product">Tên hàng</string>
     <string name="enter_name_of_product">Nhập tên sản phẩm</string>
     <string name="unit">Đơn vị</string>
     <string name="enter_unit">Nhập đơn vị</string>
