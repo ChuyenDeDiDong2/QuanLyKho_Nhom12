@@ -1,5 +1,11 @@
 package com.team12.quanlykhohang_nhom12.Activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,25 +13,28 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeUserFragment;
+import com.team12.quanlykhohang_nhom12.Notifications.Token;
 import com.team12.quanlykhohang_nhom12.R;
 
 public class HomeToRentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawertorent;
-
+    private FirebaseAuth firebaseAuth;
+    String mUID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_to_rent);
 
         Toolbar toolbar = findViewById(R.id.toolbartorent);
+        firebaseAuth = FirebaseAuth.getInstance();
         setSupportActionBar(toolbar);
 
         drawertorent = findViewById(R.id.drawer_layout_hometorent);
@@ -39,8 +48,42 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new HomeUserFragment()).commit();
             navigationView.setCheckedItem(R.id.mn_home);
         }
+
+        checkUser();
+        //
+        updateToken(FirebaseInstanceId.getInstance().getToken());
     }
 
+    @Override
+    protected void onResume() {
+        checkUser();
+        super.onResume();
+    }
+
+    // Kiểm tra tài khoản đã tồn tại hay chưa?
+    private void checkUser() {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user == null){
+            startActivity(new Intent(HomeToRentActivity.this, DangNhapActivity.class));
+            finish();
+
+        }
+        else
+        {
+
+            mUID = user.getUid();
+
+            SharedPreferences sp = getSharedPreferences("SP_USER", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("Current_USERID", mUID);
+            editor.apply();
+        }
+    }
+    public void updateToken(String token){
+        DatabaseReference ref  = FirebaseDatabase.getInstance().getReference("Tokens");
+        Token mToken = new Token(token);
+        ref.child(mUID).setValue(mToken);
+    }
     @Override
     public void onBackPressed() {
         if (drawertorent.isDrawerOpen(GravityCompat.START))

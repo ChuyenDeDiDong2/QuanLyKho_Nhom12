@@ -49,7 +49,7 @@ public class HomeUserFragment extends Fragment {
         recHomeNoiBat1.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));
         firebaseAuth = FirebaseAuth.getInstance();
 
-        checkUser();//Icon Comeback;
+        checkUser();//Nút quay lại;
         btndangxuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,15 +58,13 @@ public class HomeUserFragment extends Fragment {
             }
         });
 
-
-
         return root;
 
     }
 
 
 
-    // Kiem tra loai tai khoan da ton tai hay chua?
+    // Kiểm tra tài khoản đã tồn tại hay chưa?
     private void checkUser() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if(user == null){
@@ -78,7 +76,7 @@ public class HomeUserFragment extends Fragment {
             loadMyinfo();
         }
     }
-    // Thuc hien load thong tin cua nguoi dung:
+    // Thực hiện load thông tin của người dùng:
     private void loadMyinfo() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
         reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
@@ -105,8 +103,8 @@ public class HomeUserFragment extends Fragment {
                     }
                 });
     }
-    // Thuc hien load chu kho noi bat:
-    private void loadchukho(final String myemail) {
+    // Thực hiện load thông tin kho nổi bật:
+    private void loadchukho(final String noibat) {
         chukhoList = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
         reference.orderByChild("accountType").equalTo("admin")
@@ -117,8 +115,8 @@ public class HomeUserFragment extends Fragment {
                         for (DataSnapshot ds: snapshot.getChildren()){
                             ModelChuKho modelChuKho = ds.getValue(ModelChuKho.class);
                             String chukhoemail =""+ds.child("noibat").getValue();
-                            //show only user email
-                            if (chukhoemail.equals(myemail)){
+                            //chỉ hiển thị hãng nổi bật cho người dùng nhìn thấy:
+                            if (chukhoemail.equals(noibat)){
                                 chukhoList.add(modelChuKho);
                             }
                         }

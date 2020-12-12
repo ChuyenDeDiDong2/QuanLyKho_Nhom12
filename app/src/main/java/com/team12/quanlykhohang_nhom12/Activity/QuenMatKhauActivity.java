@@ -1,8 +1,5 @@
 package com.team12.quanlykhohang_nhom12.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -10,8 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,8 +27,8 @@ public class QuenMatKhauActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quen_mat_khau);
-        getControl();
-        getEvent();
+        getControl();// ánh xạ
+        getEvent();// chức năng
     }
     private void getEvent() {
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +41,7 @@ public class QuenMatKhauActivity extends AppCompatActivity {
         btnquenmatkhau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //su kien khi nhan vao nut dang ky
+                //su kien khi nhan vào nút quên mật khẩu
                 recoverPassword();
 
             }
@@ -59,6 +58,7 @@ public class QuenMatKhauActivity extends AppCompatActivity {
         progressDialog.setMessage("Gửi hướng dẫn để đặt lại mật khẩu...");
         progressDialog.show();
 
+        //Thuc hiện bước reset passwork vào email:
         firebaseAuth.sendPasswordResetEmail(email)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -75,7 +75,6 @@ public class QuenMatKhauActivity extends AppCompatActivity {
                         //
                         progressDialog.dismiss();
                         Toast.makeText(QuenMatKhauActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-
                     }
                 });
     }
