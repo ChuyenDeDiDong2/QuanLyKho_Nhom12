@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -21,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeUserFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.MessagerFragment;
 import com.team12.quanlykhohang_nhom12.Notifications.Token;
 import com.team12.quanlykhohang_nhom12.R;
 
@@ -48,12 +51,40 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new HomeUserFragment()).commit();
             navigationView.setCheckedItem(R.id.mn_home);
         }
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(selectedListener);
+
+        HomeUserFragment homeUserFragment = new HomeUserFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_torentcontainer, homeUserFragment);
+        fragmentTransaction.commit();
 
         checkUser();
         //
         updateToken(FirebaseInstanceId.getInstance().getToken());
     }
 
+    private BottomNavigationView.OnNavigationItemSelectedListener selectedListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()){
+                        case R.id.mn_home:
+                            HomeUserFragment homeUserFragment = new HomeUserFragment();
+                            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.fragment_torentcontainer, homeUserFragment);
+                            fragmentTransaction.commit();
+                            return true;
+                        case R.id.mn_messager:
+                            MessagerFragment messagerFragment = new MessagerFragment();
+                            FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction2.replace(R.id.fragment_torentcontainer, messagerFragment, "");
+                            fragmentTransaction2.commit();
+                            return true;
+                    }
+                    return false;
+                }
+            };
     @Override
     protected void onResume() {
         checkUser();

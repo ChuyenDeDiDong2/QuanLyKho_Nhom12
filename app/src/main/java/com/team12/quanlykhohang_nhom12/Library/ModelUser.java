@@ -1,12 +1,12 @@
 package com.team12.quanlykhohang_nhom12.Library;
 
 public class ModelUser {
-    private String uid, name,phone ,email, sotaikhoan, tentaikhoan, dichi, accountType, online, open, noibat, profileImage;
+    private String uid, name,phone ,email, sotaikhoan, tentaikhoan, dichi, accountType, online, open, noibat, profileImage, typingTo;
 
     public ModelUser() {
     }
 
-    public ModelUser(String uid, String name, String phone, String email, String sotaikhoan, String tentaikhoan, String dichi, String accountType, String online, String open, String noibat, String profileImage) {
+    public ModelUser(String uid, String name, String phone, String email, String sotaikhoan, String tentaikhoan, String dichi, String accountType, String online, String open, String noibat, String profileImage, String typingTo) {
         this.uid = uid;
         this.name = name;
         this.phone = phone;
@@ -19,6 +19,7 @@ public class ModelUser {
         this.open = open;
         this.noibat = noibat;
         this.profileImage = profileImage;
+        this.typingTo = typingTo;
     }
 
     public String getUid() {
@@ -115,5 +116,13 @@ public class ModelUser {
 
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
+    }
+
+    public String getTypingTo() {
+        return typingTo;
+    }
+
+    public void setTypingTo(String typingTo) {
+        this.typingTo = typingTo;
     }
 }

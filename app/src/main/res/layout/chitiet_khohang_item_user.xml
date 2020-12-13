@@ -201,13 +201,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal">
+
             <Button
                 android:id="@+id/btntao_hop_dong"
-                android:text="Tạo hợp đồng"
-                android:minWidth="150dp"
-                android:layout_marginRight="5sp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5sp"
+                android:minWidth="150dp"
+                android:text="Đăng ký thuê" />
             <Button
                 android:id="@+id/btn_nhan_tin"
                 android:text="Nhắn tin"
