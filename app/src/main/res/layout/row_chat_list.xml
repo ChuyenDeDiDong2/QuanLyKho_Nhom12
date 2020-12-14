@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/rl_chat_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+            android:id="@+id/ivpeople_chat"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/ic_all_people"/>
+        <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+            android:id="@+id/ivonline_status"
+            android:layout_width="25dp"
+            android:layout_height="25dp"/>
+        <LinearLayout
+            android:id="@+id/lnthong_tin"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_toEndOf="@+id/ivpeople_chat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tvten_chat"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:text="Nguyễn An"
+                />
+            <TextView
+                android:id="@+id/tvthe_last_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:text="The last message"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

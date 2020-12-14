@@ -43,11 +43,6 @@
     <item android:title="App">
         <menu>
             <item
-                android:id="@+id/mn_login"
-                android:icon="@drawable/ic_book_color_32"
-                android:title="@string/login" />
-
-            <item
                 android:id="@+id/mn_contact"
                 android:icon="@drawable/ic_book_color_32"
                 android:title="@string/contact" />

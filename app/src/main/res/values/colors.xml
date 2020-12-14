@@ -14,7 +14,6 @@
     <!-- All Color -->
 
     <!-- Black -->
-    <color name="color_black">#000000</color>
     <color name="color__black_70">#B3000000</color>
     <color name="color_black_50">#80000000</color>
     <color name="color_black_30">#4D000000</color>
@@ -86,4 +85,7 @@
     <!-- Another -->
     <color name="color_light">#f2f2f2</color>
     <color name="color_dark">#252525</color>
+    <color name="colorGreen">#7CB342</color>
+    <color name="color_red_c">#f4511e</color>
+    <color name="color_black">#000000</color>
 </resources>

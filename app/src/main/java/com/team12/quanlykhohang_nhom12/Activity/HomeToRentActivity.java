@@ -1,37 +1,43 @@
 package com.team12.quanlykhohang_nhom12.Activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
-
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.team12.quanlykhohang_nhom12.Fragment.AllocationFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.HomeFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeUserFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.RoleFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.StaftManagerFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.StationeryFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.MessagerFragment;
+import com.team12.quanlykhohang_nhom12.Notifications.Token;
 import com.team12.quanlykhohang_nhom12.R;
 
 public class HomeToRentActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawertorent;
-
+    private FirebaseAuth firebaseAuth;
+    String mUID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_to_rent);
 
         Toolbar toolbar = findViewById(R.id.toolbartorent);
+        firebaseAuth = FirebaseAuth.getInstance();
         setSupportActionBar(toolbar);
 
         drawertorent = findViewById(R.id.drawer_layout_hometorent);
@@ -45,8 +51,70 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new HomeUserFragment()).commit();
             navigationView.setCheckedItem(R.id.mn_home);
         }
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(selectedListener);
+
+        HomeUserFragment homeUserFragment = new HomeUserFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_torentcontainer, homeUserFragment);
+        fragmentTransaction.commit();
+
+        checkUser();
+        //
+        updateToken(FirebaseInstanceId.getInstance().getToken());
     }
 
+    private BottomNavigationView.OnNavigationItemSelectedListener selectedListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()){
+                        case R.id.mn_home:
+                            HomeUserFragment homeUserFragment = new HomeUserFragment();
+                            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction.replace(R.id.fragment_torentcontainer, homeUserFragment);
+                            fragmentTransaction.commit();
+                            return true;
+                        case R.id.mn_messager:
+                            MessagerFragment messagerFragment = new MessagerFragment();
+                            FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction2.replace(R.id.fragment_torentcontainer, messagerFragment, "");
+                            fragmentTransaction2.commit();
+                            return true;
+                    }
+                    return false;
+                }
+            };
+    @Override
+    protected void onResume() {
+        checkUser();
+        super.onResume();
+    }
+
+    // Kiểm tra tài khoản đã tồn tại hay chưa?
+    private void checkUser() {
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        if(user == null){
+            startActivity(new Intent(HomeToRentActivity.this, DangNhapActivity.class));
+            finish();
+
+        }
+        else
+        {
+
+            mUID = user.getUid();
+
+            SharedPreferences sp = getSharedPreferences("SP_USER", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putString("Current_USERID", mUID);
+            editor.apply();
+        }
+    }
+    public void updateToken(String token){
+        DatabaseReference ref  = FirebaseDatabase.getInstance().getReference("Tokens");
+        Token mToken = new Token(token);
+        ref.child(mUID).setValue(mToken);
+    }
     @Override
     public void onBackPressed() {
         if (drawertorent.isDrawerOpen(GravityCompat.START))
@@ -63,14 +131,8 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
         switch (item.getItemId())
         {
             case R.id.mn_allocation:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new AllocationFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_torentcontainer, new CapPhatFragment()).commit();
                 break;
-
-            case R.id.mn_login:
-                Intent login = new Intent(this, LoginActivity.class);
-                startActivity(login);
-                drawertorent.closeDrawers();
-                return true;
 
                 case R.id.mn_statistic:
                 Intent admin = new Intent(this, HomeActivity.class);
@@ -85,7 +147,7 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
                 return true;
 
             case R.id.mn_infor:
-                Intent info = new Intent(this, InfoAppActivity.class);
+                Intent info = new Intent(this, ThongTinAppActivity.class);
                 startActivity(info);
 
                 drawertorent.closeDrawers();
@@ -99,7 +161,7 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
         getMenuInflater().inflate(R.menu.menu_allocation, menu);
         return super.onCreateOptionsMenu(menu);
     }
-
+    //nut tiem kiem
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/color_grey_background"
     tools:context=".Activity.ThemKhoActivity">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:focusableInTouchMode="true"
         android:focusable="true"
@@ -15,43 +15,33 @@
 
         <include layout="@layout/toolbar"/>
         <ScrollView
+            android:layout_below="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 style="@style/area_layout_content"
                 android:orientation="vertical">
+                <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+
+                    android:id="@+id/ivavata_kho"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_centerHorizontal="true"
+                    app:c_border="true"
+                    android:src="@drawable/ic_avartar_48"
+                    app:c_border_color="@color/color_grey"
+                    app:c_border_width="1dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        app:cardCornerRadius="360dp">
-
-                        <ImageView
-                            android:id="@+id/ivKhoHang"
-                            android:layout_width="match_parent"
-                            android:src="@drawable/ic_avartar_48"
-                            android:scaleType="centerInside"
-                            android:layout_height="match_parent"/>
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivavata_kho"
                     android:orientation="vertical">
 
 
@@ -71,7 +61,7 @@
                             android:textSize="20sp"/>
 
                         <EditText
-                            android:id="@+id/edt_activity_add_staft_name"
+                            android:id="@+id/txtten_kho_khang"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionDone"
@@ -81,6 +71,34 @@
                             android:drawablePadding="3dp"
                             android:background="@drawable/state_background_text_box_white"
                             android:hint="Nhập tên kho"/>
+
+                    </LinearLayout>
+                    <!-- Dia chi kho -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Địa chỉ kho"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtdiachi_kho_hang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="text"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_people_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="Nhập địa chỉ kho hàng"/>
 
                     </LinearLayout>
                     <!-- dien tich -->
@@ -99,7 +117,7 @@
                             android:textSize="20sp"/>
 
                         <EditText
-                            android:id="@+id/txtDientich"
+                            android:id="@+id/txtdien_tich"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionDone"
@@ -130,7 +148,7 @@
                             android:textSize="20sp"/>
 
                         <EditText
-                            android:id="@+id/edt_activity_add_staft_phone"
+                            android:id="@+id/txtso_dien_thoai_kho"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionDone"
@@ -153,13 +171,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/email"
+                            android:text="Giá cho thuê"
                             android:layout_marginBottom="5dp"
                             android:textColor="@color/color_black"
                             android:textSize="20sp"/>
 
                         <EditText
-                            android:id="@+id/edt_activity_add_staft_email"
+                            android:id="@+id/txtgia_cho_thue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionDone"
@@ -168,7 +186,7 @@
                             android:drawableLeft="@drawable/ic_mail_24"
                             android:drawablePadding="3dp"
                             android:background="@drawable/state_background_text_box_white"
-                            android:hint="@string/enter_email"/>
+                            android:hint="Giá cho thuê"/>
 
                     </LinearLayout>
 
@@ -182,39 +200,22 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="5dp"
-                            android:text="Chọn Loại kho"
+                            android:text="Chọn loại kho"
                             android:textColor="@color/color_black"
                             android:textSize="20sp" />
 
 
-                        <Spinner
-                            android:id="@+id/spnloai"
+                        <TextView
+                            android:id="@+id/spntinh_trang_kho"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/state_background_text_box_white" />
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:text="Tình Trạng Kho"
-                            android:textColor="@color/color_black"
-                            android:textSize="20sp" />
-                        <TextView
-                            android:id="@+id/tvtinhtrang"
-                            android:textSize="20sp"
-                            android:text="Chưa thuê"
-                            android:layout_width="wrap_content"
+                            android:layout_margin="5dp"
+                            android:drawableStart="@drawable/ic_baseline_apps_24"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:drawableEnd="@drawable/ic_baseline_soxuong_blue"
+                            android:drawablePadding="10dp"
+                            android:text="Chọn loại kho"
                             android:layout_height="wrap_content"/>
 
-
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -225,25 +226,87 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/note"
+                            android:text="Mô tả"
                             android:layout_marginBottom="5dp"
                             android:textColor="@color/color_black"
                             android:textSize="20sp"/>
 
                         <EditText
-                            android:id="@+id/edt_activity_add_staft_note"
+                            android:id="@+id/txtghi_chu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:imeOptions="actionDone"
-                            android:inputType="text"
-                            android:maxLines="1"
+                            android:inputType="textCapSentences|textMultiLine"
                             android:drawableLeft="@drawable/ic_note_line_24"
+                            android:layout_weight="1"
                             android:drawablePadding="3dp"
                             android:background="@drawable/state_background_text_box_white"
-                            android:hint="@string/enter_note"/>
+                            android:hint="Mô tả"/>
 
                     </LinearLayout>
 
+                    <!-- giam gia cho kho -->
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/discountSwitch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        />
+                    <!-- gia giam -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Giá mới"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtgia_moi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_mail_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="Giá cho thuê"/>
+
+                    </LinearLayout>
+                    <!-- gia giam -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Phần trăm giảm "
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtgiamtheophamtram"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="textEmailAddress"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_mail_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="Giám 10% off"/>
+
+                    </LinearLayout>
 
 
                     <LinearLayout
@@ -254,7 +317,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/btn_activity_add_staft_add"
+                            android:id="@+id/btnthem_kho"
                             android:layout_width="wrap_content"
                             android:layout_height="42dp"
                             android:paddingHorizontal="15dp"
@@ -263,15 +326,16 @@
 
                     </LinearLayout>
 
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:orientation="vertical"
                         android:layout_height="60dp"/>
                 </LinearLayout>
-            </LinearLayout>
+            </RelativeLayout>
 
         </ScrollView>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

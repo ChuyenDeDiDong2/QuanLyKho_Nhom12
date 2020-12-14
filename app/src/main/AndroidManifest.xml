@@ -12,7 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ThemMauHopDongActivity"></activity>
+        <activity android:name=".Fragment.MessagerFragment"></activity>
+        <activity android:name=".Activity.TaoHopDongActivity" />
+        <activity android:name=".Activity.NhanTinActivity" />
+        <activity android:name=".Activity.OptionSignUpActivity" />
+        <activity android:name=".Activity.ChiTietChuKhoActivity" />
+        <activity android:name=".Activity.SuaKhoHangActivity" />
+        <activity android:name=".Activity.DangKyChoThueKhoActivity" />
+        <activity android:name=".Activity.DangKyActivity" />
+        <activity android:name=".Activity.QuenMatKhauActivity" />
+        <activity android:name=".Activity.DangNhapActivity" />
+        <activity android:name=".Fragment.HomeAdminKhoFragment" />
+        <activity android:name=".Activity.AdminKhoActivity" />
         <activity android:name=".Activity.ThemKhoActivity" />
         <activity android:name=".Activity.TimKiemActivity" />
         <activity android:name=".Activity.DieuKhoanActivity" />
@@ -20,30 +31,50 @@
         <activity android:name=".Activity.HomeToRentActivity" />
         <activity android:name=".Activity.NewProductActivity" />
         <activity
-            android:name=".Fragment.RoleFragment"
+            android:name=".Fragment.VaiTroFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".Fragment.AllocationFragment"
+            android:name=".Fragment.CapPhatFragment"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".Fragment.StationeryFragment"
+            android:name=".Fragment.VanPhongPhamActivity"
             tools:ignore="Instantiatable" />
         <activity
-            android:name=".Fragment.StaftManagerFragment"
+            android:name=".Fragment.TaiKhoanFragment"
             tools:ignore="Instantiatable" />
-        <activity android:name=".Activity.AddStaftActivity" />
-        <activity android:name=".Activity.InfoAppActivity" />
-        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.ThemTaiKhoanActivity" />
+        <activity android:name=".Activity.ThongTinAppActivity" />
         <activity android:name=".Activity.HomeActivity" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.PICK" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+
+        <service
+            android:name=".Notifications.FirebaseMessaging"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".Notifications.FirebaseService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_SERVICE" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
