@@ -1,11 +1,5 @@
 package com.team12.quanlykhohang_nhom12.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -24,25 +18,36 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.appcompat.widget.Toolbar;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.R;
 
 import java.io.IOException;
 import java.util.HashMap;
 
-public class NewProductActivity extends AppCompatActivity {
+public class SuaHangHoaActivity extends AppCompatActivity {
+    private String hanghoaId;
     Toolbar toolbar;
     private ImageView ivhinhanhhang;
-    private EditText txtloaihang,txtsoluong,txtxuatsu;
-    private Button btnThem_hang;
+    private EditText txtloaihang,txtsoluong,txtxuatxu;
+    private Button btnsua_hang;
 
     private Uri filePath;
     private FirebaseAuth firebaseAuth;
@@ -52,11 +57,44 @@ public class NewProductActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_product);
+        setContentView(R.layout.activity_sua_hanghoa);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setControls();
+        setControl();
         setEvent();
+        loadKhoHangDetail();
+    }
+
+    private void loadKhoHangDetail() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.child(firebaseAuth.getUid()).child("KhoHang").child(hanghoaId)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //get data
+                        String hanghoaID = ""+snapshot.child("hanghoaID").getValue();
+                        String loaihang = ""+snapshot.child("loaihang").getValue();
+                        String soluong = ""+snapshot.child("soluong").getValue();
+                        String xuatxu = ""+snapshot.child("xuatxu").getValue();
+                        String hinhanhhang = ""+snapshot.child("hinhanhhang").getValue();
+                        String timstamp = ""+snapshot.child("timstamp").getValue();
+                        String uid = ""+snapshot.child("uid").getValue();
+                        //set data to view
+                        txtloaihang.setText(loaihang);
+                        txtsoluong.setText(soluong);
+                        txtxuatxu.setText(xuatxu);
+                        try {
+                            Picasso.get().load(hinhanhhang).placeholder(R.drawable.google).into(ivhinhanhhang);
+                        }catch (Exception e){
+                            ivhinhanhhang.setImageResource(R.drawable.google);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
     private void setEvent() {
@@ -68,22 +106,20 @@ public class NewProductActivity extends AppCompatActivity {
             }
         });
         //
-        btnThem_hang.setOnClickListener(new View.OnClickListener() {
+        btnsua_hang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 inputData();
             }
         });
     }
-
     private String loaihang,soluong,xuatxu;
-    private boolean giamgiaAvailable  =false;
     private void inputData() {
         loaihang = txtloaihang.getText().toString().trim();
         soluong = txtsoluong.getText().toString().trim();
-        xuatxu = txtxuatsu.getText().toString().trim();
+        xuatxu = txtxuatxu.getText().toString().trim();
         if(TextUtils.isEmpty(loaihang)){
-            Toast.makeText(this, "Vui lòng nhập loại kho...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập loại hàng...", Toast.LENGTH_SHORT).show();
             return;
         }
         if(TextUtils.isEmpty(soluong)){
@@ -91,92 +127,79 @@ public class NewProductActivity extends AppCompatActivity {
             return;
         }
         if(TextUtils.isEmpty(xuatxu)){
-            Toast.makeText(this, "Vui lòng nhập nơi xuất xứ...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập xuất xứ...", Toast.LENGTH_SHORT).show();
             return;
         }
-        addHang();
-
+        CapNhatHang();
     }
 
-    private void addHang() {
-        progressDialog.setMessage("Thêm hàng...");
+    private void CapNhatHang() {
+        //Show
+        progressDialog.setMessage("Cập nhật hàng hóa");
         progressDialog.show();
-        String timestamp = ""+System.currentTimeMillis();
-
-        if (filePath == null){
-            //upload hinh anh
+        if(filePath == null)
+        {
             HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("khohangId", ""+timestamp);
             hashMap.put("loaihang", ""+loaihang);
             hashMap.put("soluong", ""+soluong);
-            hashMap.put("xuatsu", ""+xuatxu);
-            hashMap.put("hinhanhkho", "");//hinhanh
-            hashMap.put("timstamp", ""+timestamp);//
-            hashMap.put("uid", ""+firebaseAuth.getUid());//
-            //add to db
+            hashMap.put("xuatxu", ""+xuatxu);
+
+            //cap nhat db
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-            reference.child(firebaseAuth.getUid()).child("KhoHang").child(timestamp).setValue(hashMap)
+            reference.child(firebaseAuth.getUid()).child("KhoHang").child(hanghoaId)
+                    .updateChildren(hashMap)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            //
+                            //update
                             progressDialog.dismiss();
-                            Toast.makeText(NewProductActivity.this, "Thêm kho hàng  thành công...", Toast.LENGTH_SHORT).show();
-                            clearData();
+                            Toast.makeText(SuaHangHoaActivity.this, "Cập nhật thành công!",Toast.LENGTH_SHORT).show();
                         }
                     })
-
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            //
+                            //update failed
                             progressDialog.dismiss();
-                            Toast.makeText(NewProductActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SuaHangHoaActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-
         }else {
-            String filePathName = "profile_images/" + ""+timestamp;
-            //upload image
+            //update widh image
+            String filePathName = "profile_images/" + ""+hanghoaId;// lay từ id của kho
+            //cập nhật hình ảnh
             StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathName);
             storageReference.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            //
                             Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uriTask.isSuccessful());
-                            Uri downloadImageUri =uriTask.getResult();
-
+                            Uri downloadUri = uriTask.getResult();
                             if (uriTask.isSuccessful()){
-                                //upload hinh anh
                                 HashMap<String, Object> hashMap = new HashMap<>();
-                                hashMap.put("khohangId", ""+timestamp);
                                 hashMap.put("loaihang", ""+loaihang);
                                 hashMap.put("soluong", ""+soluong);
                                 hashMap.put("xuatxu", ""+xuatxu);
-                                hashMap.put("hinhanhkho", ""+downloadImageUri);//hinhanh
-                                hashMap.put("timstamp", ""+timestamp);//
-                                hashMap.put("uid", ""+firebaseAuth.getUid());//
-                                //add to db
+                                hashMap.put("hinhanhkho", ""+downloadUri);//hinhanh
+                                //cap nhat db
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-                                reference.child(firebaseAuth.getUid()).child("KhoHang").child(timestamp).setValue(hashMap)
+                                reference.child(firebaseAuth.getUid()).child("KhoHang").child(hanghoaId)
+                                        .updateChildren(hashMap)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
-                                                //
+                                                //update
                                                 progressDialog.dismiss();
-                                                Toast.makeText(NewProductActivity.this, "Thêm kho hàng thành công...", Toast.LENGTH_SHORT).show();
-                                                clearData();
+                                                Toast.makeText(SuaHangHoaActivity.this, "Cập nhật thành công!",Toast.LENGTH_SHORT).show();
                                             }
                                         })
-
                                         .addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
-                                                //
+                                                //update failed
                                                 progressDialog.dismiss();
-                                                Toast.makeText(NewProductActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(SuaHangHoaActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                                             }
                                         });
                             }
@@ -185,22 +208,12 @@ public class NewProductActivity extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            //
+                            //upload failed
                             progressDialog.dismiss();
-                            Toast.makeText(NewProductActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(SuaHangHoaActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-
         }
-    }
-
-    private void clearData() {
-        txtloaihang.setText("");
-        txtsoluong.setText("");
-        txtxuatsu.setText("");
-        ivhinhanhhang.setImageResource(R.drawable.ic_avartar_48);
-        filePath = null;
     }
 
     private void chooseImage() {
@@ -228,25 +241,22 @@ public class NewProductActivity extends AppCompatActivity {
         }
     }
 
-
-    private void setControls() {
+    private void setControl() {
+        hanghoaId = getIntent().getStringExtra("hanghoaId");
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Thêm kho hàng");
-
-        ivhinhanhhang= findViewById(R.id.ivavata_kho);
+        getSupportActionBar().setTitle("Sửa hàng hóa");
+        ivhinhanhhang = findViewById(R.id.ivavata_hang);
         txtloaihang = findViewById(R.id.txtloaihang);
         txtsoluong = findViewById(R.id.txtsoluong);
-        txtxuatsu = findViewById(R.id.txtxuatxu);
-        btnThem_hang = findViewById(R.id.btnthem_hang);
+        txtxuatxu = findViewById(R.id.txtxuatxu);
+        btnsua_hang = findViewById(R.id.btnsua_kho);
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Vui lòng đợi");
+        progressDialog.setTitle("Vui lòng đợi...");
         progressDialog.setCanceledOnTouchOutside(false);
-
-
     }
 
     @Override

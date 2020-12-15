@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/color_grey_background"
     android:layout_height="match_parent">
 
@@ -134,12 +133,10 @@
                     android:layout_height="wrap_content">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/dshanghoa"
+                        android:id="@+id/rv_fragment_stationary_manager_list_product"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:visibility="visible"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/cardviewkho" />
+                        android:layout_height="wrap_content"/>
 
                     <LinearLayout
                         android:id="@+id/lnl_fragment_stationary_manager_notify_emplty"

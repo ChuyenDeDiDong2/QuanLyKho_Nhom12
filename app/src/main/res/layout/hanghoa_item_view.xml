@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/bs_hanghoa_chitiet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imghanghoa"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="5dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/google"
+            />
+        <LinearLayout
+            android:id="@+id/lnthong_tin"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:layout_toEndOf="@+id/imghanghoa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/loaihang"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_iv_item"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:text="loai hang"
+                />
+            <TextView
+                android:id="@+id/soluong"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:text="so luong"
+                />
+            <TextView
+                android:id="@+id/xuatxu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/black"
+                android:text="xuat xu"
+                />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/lnthong_tin"
+            android:layout_marginEnd="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/btnsua_thong_tin_kho"
+                android:src="@drawable/ic_baseline_edit_24"
+                android:scaleType="fitCenter"
+                android:layout_toLeftOf="@+id/btnxoa_kho"
+                android:layout_marginRight="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/btnxoa_kho"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_remove_color_24" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

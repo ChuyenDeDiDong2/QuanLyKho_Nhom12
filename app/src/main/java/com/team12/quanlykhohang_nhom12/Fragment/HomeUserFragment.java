@@ -49,7 +49,7 @@ public class HomeUserFragment extends Fragment {
         recHomeNoiBat1.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.HORIZONTAL, false));
         firebaseAuth = FirebaseAuth.getInstance();
 
-        checkUser();
+        checkUser();//Icon Comeback;
         btndangxuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,7 +66,7 @@ public class HomeUserFragment extends Fragment {
 
 
 
-
+    // Kiem tra loai tai khoan da ton tai hay chua?
     private void checkUser() {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if(user == null){
@@ -78,7 +78,7 @@ public class HomeUserFragment extends Fragment {
             loadMyinfo();
         }
     }
-
+    // Thuc hien load thong tin cua nguoi dung:
     private void loadMyinfo() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
         reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
@@ -93,7 +93,7 @@ public class HomeUserFragment extends Fragment {
                             //String profileImage =""+ds.child("profileImage").getValue();
                             String accountType =""+ds.child("accountType").getValue();
 
-                            nametv.setText(name +"("+accountType+")");
+                            nametv.setText(name);
                             loadchukho(noibat);
 
                         }
@@ -105,7 +105,7 @@ public class HomeUserFragment extends Fragment {
                     }
                 });
     }
-
+    // Thuc hien load chu kho noi bat:
     private void loadchukho(final String myemail) {
         chukhoList = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");

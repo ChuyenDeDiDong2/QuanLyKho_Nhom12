@@ -3,11 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/color_grey_background"
     android:layout_height="match_parent"
-    tools:context=".Activity.NewProductActivity">
-
-<RelativeLayout
+    android:background="@color/color_grey_background"
+    tools:context=".Activity.SuaKhoHangActivity">
+    <RelativeLayout
         android:layout_width="match_parent"
         android:focusableInTouchMode="true"
         android:focusable="true"
@@ -142,11 +141,11 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/btnthem_hang"
+                            android:id="@+id/btnsua_hang"
                             android:layout_width="wrap_content"
                             android:layout_height="42dp"
                             android:paddingHorizontal="15dp"
-                            android:text="@string/save"
+                            android:text="@string/change"
                             tools:ignore="MissingClass" />
                     </LinearLayout>
 

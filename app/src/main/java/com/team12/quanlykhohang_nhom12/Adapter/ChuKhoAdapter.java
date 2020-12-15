@@ -41,9 +41,9 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
         ModelChuKho modelChuKho = chukhoList.get(position);
         String accountType = modelChuKho.getAccountType();
         String name = modelChuKho.getName();
-        String uid = modelChuKho.getUid();
+        final String uid = modelChuKho.getUid();
         String phone = modelChuKho.getPhone();
-        String email = modelChuKho.getEmail();
+        final String email = modelChuKho.getEmail();
         String sotaikhoan = modelChuKho.getSotaikhoan();
         String tentaikhoan = modelChuKho.getTentaikhoan();
         String online = modelChuKho.getOnline();

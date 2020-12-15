@@ -96,12 +96,11 @@
     <string name="enter_email">Nhập email</string>
     <string name="enter_note">Nhập ghi chú</string>
     <string name="please_setting_role_and_department_in_the_first">Vui lòng thiết lập phòng ban và vai trò trước</string>
-
     <string name="name_department_do_not_empty">Tên phòng bàn không được để trống!</string>
     <string name="enter_name_department">Nhập tên phòng bàn</string>
     <string name="list">Danh sách</string>
 
-    // Van phong Phẩm
+    // Văn Phòng Phẩm
     <string name="no_product">Chưa có sản phẩm</string>
     <string name="name_of_product">Tên sản phẩm</string>
     <string name="enter_name_of_product">Nhập tên sản phẩm</string>
@@ -109,7 +108,6 @@
     <string name="enter_unit">Nhập đơn vị</string>
     <string name="enter_price">Nhập giá</string>
     <string name="save">Lưu</string>
-    <string name="CH">Chọn hình</string>
     <string name="can_not_get_info_proudct">Không lấy được dữ liệu sản phẩm</string>
     <string name="please_enter_name_of_product">Vui lòng nhập tên sản phẩm</string>
     <string name="please_enter_number">Vui lòng nhập số lượng</string>

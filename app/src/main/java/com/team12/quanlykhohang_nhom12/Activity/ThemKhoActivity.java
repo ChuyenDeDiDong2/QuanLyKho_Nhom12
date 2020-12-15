@@ -160,6 +160,7 @@ public class ThemKhoActivity extends AppCompatActivity {
             //upload hinh anh
             HashMap<String, Object> hashMap = new HashMap<>();
             hashMap.put("khohangId", ""+timestamp);
+
             hashMap.put("tenkho", ""+tenkho);
             hashMap.put("diachikhohang", ""+diachikhohang);
             hashMap.put("dientichkho", ""+dientichkho);
@@ -264,6 +265,7 @@ public class ThemKhoActivity extends AppCompatActivity {
 
     private void clearData() {
         txtten_kho_hang.setText("");
+
         txtdiachi_kho_hang.setText("");
         txtdien_tich_kho.setText("");
         txtsodt_kho.setText("");

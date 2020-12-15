@@ -30,5 +30,7 @@ public class TaiKhoanFragment extends Fragment {
         });
 
         return root;
+
+
     }
 }

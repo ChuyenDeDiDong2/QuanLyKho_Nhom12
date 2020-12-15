@@ -48,6 +48,8 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
     private KhoUserAdapter khoUserAdapter;
 
 
+
+
     private String chukhoId;
     private String myLatitude, myLongitude;
     private String tentaikhoan, email,phone,  chukhodiachi;
@@ -91,6 +93,7 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
                     }
                 });
     }
+    //load thông tin chi tiết hãng kho
     private void loadChuKhoDetails() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
         reference.child(chukhoId).addValueEventListener(new ValueEventListener() {
@@ -117,10 +120,11 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
                     mocuatv.setText("Closed");
                 }
                 try {
-                    Picasso.get().load(profileImage).into(chuhkhoiv);
+                    Picasso.get().load(profileImage).placeholder(R.drawable.ic_people_24).into(chuhkhoiv);
                 }
                 catch (Exception e){
-
+                    //Picasso.get().load(chuhkhoiv).placeholder(R.drawable.google).into(holder.imgkho_hang);
+                    chuhkhoiv.setImageResource(R.drawable.google);
                 }
 
             }
@@ -131,6 +135,7 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
             }
         });
     }
+    //load kho theo hãng kho
     private void loadKhoHang() {
         khohangList = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
@@ -159,6 +164,7 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
 
 
     private void setEvent() {
+        //tim kiếm kho hàng của hãng kho
         txttim_kiem_chukho.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -181,6 +187,8 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
 
             }
         });
+
+        //lọc sản phẩn theo loại kho
         btnFilterKhoHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -213,6 +221,14 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openMap();
+            }
+        });
+        btnmessenger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChiTietChuKhoActivity.this, NhanTinActivity.class);
+                intent.putExtra("hisUid", chukhoId);
+                startActivity(intent);
             }
         });
 

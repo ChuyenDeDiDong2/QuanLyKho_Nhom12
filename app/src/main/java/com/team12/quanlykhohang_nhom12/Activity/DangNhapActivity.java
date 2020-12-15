@@ -157,6 +157,7 @@ public class DangNhapActivity extends AppCompatActivity {
         btnDangNhap = findViewById(R.id.btndangnhap);
         tvtao_tai_khoan = findViewById(R.id.tvtao_tai_khoan);
         tvtao_tai_khoan_dang_kho = findViewById(R.id.tvtao_tai_khoan_dang_kho);
+
         firebaseAuth = firebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Vui lòng đợi...");
