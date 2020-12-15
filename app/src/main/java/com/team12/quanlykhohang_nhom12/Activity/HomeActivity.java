@@ -14,12 +14,18 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
-import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.AllocationFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
+<<<<<<< Updated upstream
+import com.team12.quanlykhohang_nhom12.Fragment.RoleFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.StaftManagerFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.StationeryFragment;
+=======
 import com.team12.quanlykhohang_nhom12.Fragment.VaiTroFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.VanPhongPhamActivity;
+import com.team12.quanlykhohang_nhom12.Fragment.HangHoaActivity;
+>>>>>>> Stashed changes
 import com.team12.quanlykhohang_nhom12.R;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -44,7 +50,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.mn_home);
         }
-
     }
 
     @Override
@@ -69,24 +74,33 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PhongBanFragment()).commit();
                 break;
             case R.id.mn_staft_manager:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TaiKhoanFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StaftManagerFragment()).commit();
                 break;
 
             case R.id.mn_stationary_management:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VanPhongPhamActivity()).commit();
+<<<<<<< Updated upstream
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new StationeryFragment()).commit();
+=======
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HangHoaActivity()).commit();
+>>>>>>> Stashed changes
                 break;
 
             case R.id.mn_role_manager:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VaiTroFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new RoleFragment()).commit();
                 break;
 
              case R.id.mn_allocation:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CapPhatFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AllocationFragment()).commit();
                 break;
 
+            case R.id.mn_login:
+                Intent login = new Intent(this, LoginActivity.class);
+                startActivity(login);
+                drawer.closeDrawers();
+                return true;
 
             case R.id.mn_infor:
-                Intent info = new Intent(this, ThongTinAppActivity.class);
+                Intent info = new Intent(this, InfoAppActivity.class);
                 startActivity(info);
 
                 drawer.closeDrawers();

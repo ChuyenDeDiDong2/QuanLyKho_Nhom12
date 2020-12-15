@@ -99,7 +99,6 @@ public class KhoUserAdapter extends RecyclerView.Adapter<KhoUserAdapter.HolderKh
         View view = LayoutInflater.from(context).inflate(R.layout.chitiet_khohang_item_user, null);
         bottomSheetDialog.setContentView(view);
 
-
         ImageButton btnthoat = view.findViewById(R.id.backbtn);
         Button btnnhantin = view.findViewById(R.id.btn_nhan_tin);
         Button btntaohopdong = view.findViewById(R.id.btntao_hop_dong);

@@ -16,11 +16,10 @@ import android.widget.Toast;
 import com.google.android.material.navigation.NavigationView;
 import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeAdminKhoFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.HomeFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.VaiTroFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.VanPhongPhamActivity;
+import com.team12.quanlykhohang_nhom12.Fragment.HangHoaActivity;
 import com.team12.quanlykhohang_nhom12.R;
 
 public class AdminKhoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -74,7 +73,7 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
                 break;
 
             case R.id.mn_stationary_management:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VanPhongPhamActivity()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HangHoaActivity()).commit();
                 break;
 
             case R.id.mn_role_manager:
