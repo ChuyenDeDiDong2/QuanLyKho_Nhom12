@@ -7,13 +7,14 @@ import android.os.Bundle;
 
 import com.team12.quanlykhohang_nhom12.Activity.DangKyActivity;
 import com.team12.quanlykhohang_nhom12.Activity.DangnhapActivity;
+import com.team12.quanlykhohang_nhom12.Activity.DanhGiaActivity;
 
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent(MainActivity.this, DangnhapActivity.class);
+        Intent intent = new Intent(MainActivity.this, DanhGiaActivity.class);
         startActivity(intent);
 
     }

@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.DangKyActivity"></activity>
+        <activity android:name=".Activity.DanhGiaActivity"></activity>
+        <activity android:name=".Activity.DangKyActivity" />
         <activity android:name=".Activity.Dangkyhopdong1Activity" />
         <activity android:name=".Activity.ThemkhoActivity" />
         <activity android:name=".Activity.DangnhapActivity" />

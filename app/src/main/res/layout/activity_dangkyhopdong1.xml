@@ -79,20 +79,20 @@
         <Button
             android:id="@+id/button"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:layout_weight="1"
-            android:text="Tạo hợp đòng"
-            app:layout_constraintWidth_percent=".8"
-            app:layout_constraintVertical_bias=".7"
             android:background="@drawable/shape_background_button_login"
+            android:text="Tạo hợp đòng"
+            android:textColor="@color/color_white"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="@color/color_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/forgerpass"
-            tools:ignore="MissingConstraints"/>
+            app:layout_constraintVertical_bias=".7"
+            app:layout_constraintWidth_percent=".8"
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/btnLienhe"
