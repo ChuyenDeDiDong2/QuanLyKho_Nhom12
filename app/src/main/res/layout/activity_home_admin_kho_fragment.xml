@@ -102,6 +102,37 @@
 
 
             </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap_center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+
+                    android:id="@+id/btnHopDong"
+                    style="@style/w_wr_centerh_vertical">
+
+
+                    <RelativeLayout
+                        style="@style/styleButton_catelogy"
+                        android:background="@drawable/card1"
+                        android:elevation="8dp">
+
+
+                        <ImageView
+                            android:id="@+id/imgMHD"
+                            style="@style/imade_main"
+                            android:src="@drawable/ic_mauhopdong" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        style="@style/w_wr_text_catelogy"
+                        android:text="@string/lblHopDong" />
+                </LinearLayout>
+
+
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
