@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Activity.NhanTinActivity;
-import com.team12.quanlykhohang_nhom12.Activity.TaoHopDongActivity;
+import com.team12.quanlykhohang_nhom12.Activity.DangKyTaoHopDongActivity;
 import com.team12.quanlykhohang_nhom12.Filter.FilterKhoHangUser;
 import com.team12.quanlykhohang_nhom12.Library.ModelKhoHang;
 import com.team12.quanlykhohang_nhom12.R;
@@ -175,11 +175,12 @@ public class KhoUserAdapter extends RecyclerView.Adapter<KhoUserAdapter.HolderKh
         btntaohopdong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.getContext().startActivity(new Intent(context, TaoHopDongActivity.class));
+                view.getContext().startActivity(new Intent(context, DangKyTaoHopDongActivity.class));
             }
         });
 
     }
+
 
     @Override
     public int getItemCount() {

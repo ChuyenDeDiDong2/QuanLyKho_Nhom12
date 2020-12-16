@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".Fragment.HomeUserFragment">
    <ScrollView
@@ -23,7 +22,7 @@
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:textSize="22dp"
-                   android:textColor="#fff"
+                   android:textColor="@color/black"
                    android:textStyle="bold"
                    android:text="Nổi bật"/>
 
@@ -35,7 +34,7 @@
                        android:text="Name"
                        android:textStyle="bold"
                        android:textSize="25sp"
-                       android:textColor="@color/white"/>
+                       android:textColor="@color/black"/>
                    <ImageView
                        android:id="@+id/ivdangxuat"
                        android:layout_width="30dp"
