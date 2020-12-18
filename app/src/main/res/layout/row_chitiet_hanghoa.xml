@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlTop_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/shape_button_action_blue_press"
+        android:padding="10dp"
+        >
+        <ImageButton
+            android:id="@+id/backbtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:src="@drawable/ic_close_gray_32"/>
+        <ImageButton
+            android:id="@+id/btnxoahang"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:background="@null"
+            android:src="@drawable/ic_remove_color_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvtenkho_chitiet"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:text="Chi tiết hàng hóa"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+    <ScrollView
+        android:layout_below="@+id/rlTop_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/ivhinh_anh_san_pham_ct"
+                android:layout_width="match_parent"
+                android:layout_height="500px"
+                android:src="@drawable/logoapp"/>
+            <TextView
+                android:id="@+id/tvten_san_pham_ct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:text="Tên sản phẩm: Cam"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_below="@+id/ivhinh_anh_san_pham_ct"/>
+            <TextView
+                android:id="@+id/tvdon_vi_ct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đơn vị: Kg"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:padding="5dp"
+                android:layout_below="@+id/tvten_san_pham_ct"/>
+
+            <TextView
+                android:id="@+id/tv_so_luong_ct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đơn vị: Kg"
+                android:textColor="#000"
+                android:padding="5dp"
+                android:textSize="18dp"
+                android:layout_below="@+id/tvdon_vi_ct"/>
+            <TextView
+                android:id="@+id/tv_don_gia_ct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đơn giá: 500 000Vnd"
+                android:padding="5dp"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_below="@+id/tv_so_luong_ct"/>
+            <TextView
+                android:id="@+id/tv_ghi_chu_ct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đơn giá: 500 000Vnd"
+                android:padding="5dp"
+                android:textColor="#000"
+                android:textSize="18dp"
+                android:layout_below="@+id/tv_don_gia_ct"/>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

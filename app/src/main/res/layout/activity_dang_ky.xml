@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
     tools:context=".Activity.DangKyActivity">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,95 +25,104 @@
             android:textColor="@color/white"/>
 
     </RelativeLayout>
-    <ImageView
-        android:id="@+id/ivIcon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/shape_button_action_blue_normal"
-        android:layout_marginTop="60dp"
-        android:padding="5dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_baseline_vpn_key_24"
-        />
-
-    <com.blogspot.atifsoftwares.circularimageview.CircularImageView
-
-        android:id="@+id/ivtai_khoan"
-        android:layout_marginTop="20dp"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_below="@+id/ivIcon"
-        android:layout_centerHorizontal="true"
-        app:c_border="true"
-        android:src="@drawable/ic_avartar_48"
-        app:c_border_color="@color/color_grey"
-        app:c_border_width="1dp"/>
-
-
-
-    <EditText
-        android:id="@+id/txtEmaildk"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivtai_khoan"
-        android:hint="@string/email"
-        android:padding="10dp"
-        android:layout_margin="5dp"
-        android:inputType="textEmailAddress"
-        android:background="@drawable/shape_background_text_box_normal"
-        />
-    <EditText
-        android:id="@+id/txtten_cua_bandk"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtEmaildk"
-        android:hint="Nhập tên của bạn"
-        android:padding="10dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/shape_background_text_box_normal"
-        />
-    <EditText
-    android:id="@+id/txtdienthoaidk"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/txtten_cua_bandk"
-    android:hint="Nhập số điện thoại của bạn"
-    android:padding="10dp"
-    android:layout_margin="5dp"
-    android:background="@drawable/shape_background_text_box_normal"
-    />
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/shape_button_action_blue_normal"
+                android:layout_marginTop="60dp"
+                android:padding="5dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_baseline_vpn_key_24"
+                />
+
+            <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+
+                android:id="@+id/ivtai_khoan"
+                android:layout_marginTop="20dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_below="@+id/ivIcon"
+                android:layout_centerHorizontal="true"
+                app:c_border="true"
+                android:src="@drawable/ic_avartar_48"
+                app:c_border_color="@color/color_grey"
+                app:c_border_width="1dp"/>
 
 
-    <EditText
-        android:id="@+id/txtmatkhaudk"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtdienthoaidk"
-        android:hint="Mật khẩu"
-        android:padding="10dp"
-        android:layout_margin="5dp"
-        android:inputType="textPassword"
-        android:background="@drawable/shape_background_text_box_normal"
-        />
-    <EditText
-        android:id="@+id/txtnhap_lai_mat_khaudk"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txtmatkhaudk"
-        android:hint="Nhập lại mật khẩu"
-        android:padding="10dp"
-        android:layout_margin="5dp"
-        android:inputType="textPassword"
-        android:background="@drawable/shape_background_text_box_normal"
-        />
-    <Button
-        android:id="@+id/btndangkydk"
-        android:text="Đăng ký"
-        android:minWidth="120dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/txtnhap_lai_mat_khaudk"
-        android:textColor="@color/white"
-        android:background="@drawable/shape_background_button_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/txtEmaildk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivtai_khoan"
+                android:hint="@string/email"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/shape_background_text_box_normal"
+                />
+            <EditText
+                android:id="@+id/txtten_cua_bandk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtEmaildk"
+                android:hint="Nhập tên của bạn"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/shape_background_text_box_normal"
+                />
+            <EditText
+                android:id="@+id/txtdienthoaidk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtten_cua_bandk"
+                android:hint="Nhập số điện thoại của bạn"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/shape_background_text_box_normal"
+                />
+
+
+            <EditText
+                android:id="@+id/txtmatkhaudk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtdienthoaidk"
+                android:hint="Mật khẩu"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:inputType="textPassword"
+                android:background="@drawable/shape_background_text_box_normal"
+                />
+            <EditText
+                android:id="@+id/txtnhap_lai_mat_khaudk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtmatkhaudk"
+                android:hint="Nhập lại mật khẩu"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:inputType="textPassword"
+                android:background="@drawable/shape_background_text_box_normal"
+                />
+            <Button
+                android:id="@+id/btndangkydk"
+                android:text="Đăng ký"
+                android:minWidth="120dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/txtnhap_lai_mat_khaudk"
+                android:textColor="@color/white"
+                android:background="@drawable/shape_background_button_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
