@@ -27,6 +27,7 @@ import com.team12.quanlykhohang_nhom12.Fragment.HomeAdminKhoFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.MessagerFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanKhoFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.VaiTroFragment;
 import com.team12.quanlykhohang_nhom12.Notifications.Token;
 import com.team12.quanlykhohang_nhom12.R;
@@ -85,6 +86,12 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
                             FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                             fragmentTransaction2.replace(R.id.fragment_container, messagerFragment, "");
                             fragmentTransaction2.commit();
+                            return true;
+                        case R.id.mn_profile:
+                            TaiKhoanKhoFragment taiKhoanKhoFragment = new TaiKhoanKhoFragment();
+                            FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction3.replace(R.id.fragment_container, taiKhoanKhoFragment, "");
+                            fragmentTransaction3.commit();
                             return true;
                     }
                     return false;

@@ -9,7 +9,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.team12.quanlykhohang_nhom12.R;
 
-public class DangKyTaoHopDongActivity extends AppCompatActivity {
+public class
+DangKyTaoHopDongActivity extends AppCompatActivity {
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
