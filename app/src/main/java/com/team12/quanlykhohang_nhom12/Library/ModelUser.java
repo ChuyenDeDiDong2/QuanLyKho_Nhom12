@@ -1,7 +1,7 @@
 package com.team12.quanlykhohang_nhom12.Library;
 
 public class ModelUser {
-    private String uid, name,phone ,email, sotaikhoan, tentaikhoan, dichi, accountType, online, open, noibat, profileImage, typingTo;
+    private String uid, name,phone ,email, sotaikhoan, tentaikhoan, diachi, accountType, online, open, noibat, profileImage, typingTo;
 
     public ModelUser() {
     }
@@ -13,7 +13,7 @@ public class ModelUser {
         this.email = email;
         this.sotaikhoan = sotaikhoan;
         this.tentaikhoan = tentaikhoan;
-        this.dichi = dichi;
+        this.diachi = dichi;
         this.accountType = accountType;
         this.online = online;
         this.open = open;
@@ -71,11 +71,11 @@ public class ModelUser {
     }
 
     public String getDichi() {
-        return dichi;
+        return diachi;
     }
 
     public void setDichi(String dichi) {
-        this.dichi = dichi;
+        this.diachi = dichi;
     }
 
     public String getAccountType() {

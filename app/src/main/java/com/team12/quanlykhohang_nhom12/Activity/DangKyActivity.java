@@ -105,8 +105,6 @@ public class DangKyActivity extends AppCompatActivity {
             Toast.makeText(this, "Mật khẩu không đúng...", Toast.LENGTH_SHORT).show();
             return;
         }
-
-
         createAccount();
     }
 
