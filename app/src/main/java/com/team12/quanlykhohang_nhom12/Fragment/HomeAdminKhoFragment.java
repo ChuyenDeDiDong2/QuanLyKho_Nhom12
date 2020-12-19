@@ -22,13 +22,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Activity.DangNhapActivity;
 import com.team12.quanlykhohang_nhom12.R;
 
 public class HomeAdminKhoFragment extends Fragment {
-    LinearLayout btnNhanVien, btnPhongBan;
-    private TextView nametv;
-    private ImageView btndangxuat;
+    LinearLayout btnthongke, btnPhongBan;
+    private TextView nametv, tvtenhang;
+    private ImageView btndangxuat, iv_hang_icon;
     private FirebaseAuth firebaseAuth;
     @Nullable
     @Override
@@ -36,10 +37,12 @@ public class HomeAdminKhoFragment extends Fragment {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.activity_home_admin_kho_fragment, container, false);
         //getCantroll
 
-        btnNhanVien = root.findViewById(R.id.btnStaff);
+        btnthongke = root.findViewById(R.id.btnthongke);
         btnPhongBan = root.findViewById(R.id.btnDepartment);
         //
         nametv = root.findViewById(R.id.tvname);
+        tvtenhang = root.findViewById(R.id.tvtenhang);
+        iv_hang_icon = root.findViewById(R.id.iv_hang_icon);
         btndangxuat = root.findViewById(R.id.ivdangxuat);
         firebaseAuth = FirebaseAuth.getInstance();
         checkUser();
@@ -47,7 +50,7 @@ public class HomeAdminKhoFragment extends Fragment {
         //su kien khi nhan vao icon tren trang chu
 
         //----trang nhan vien
-        btnNhanVien.setOnClickListener(new View.OnClickListener() {
+        btnthongke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
@@ -98,9 +101,17 @@ public class HomeAdminKhoFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot ds: snapshot.getChildren()){
                             String name =""+ds.child("name").getValue();
+                            String tentaikhoan =""+ds.child("tentaikhoan").getValue();
                             String accountType =""+ds.child("accountType").getValue();
+                            String profileImage = ""+ds.child("profileImage").getValue();
 
                             nametv.setText(name +"("+accountType+")");
+                            tvtenhang.setText(tentaikhoan);
+                            try {
+                                Picasso.get().load(profileImage).placeholder(R.drawable.google).into(iv_hang_icon);
+                            }catch (Exception e){
+                                iv_hang_icon.setImageResource(R.drawable.google);
+                            }
                         }
                     }
 

@@ -146,25 +146,22 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
             case R.id.mn_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeAdminKhoFragment()).commit();
                 break;
-            case R.id.mn_department_manager:
+            case R.id.mn_danh_sach_kho:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PhongBanFragment()).commit();
                 break;
-            case R.id.mn_staft_manager:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TaiKhoanFragment()).commit();
+            case R.id.mn_thong_tin_tai_khoan:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TaiKhoanKhoFragment()).commit();
                 break;
 
-//            case R.id.mn_stationary_management:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VanPhongPhamActivity()).commit();
-//                break;
+            case R.id.mncontract:
+                Intent dieukhoan = new Intent(this, DieuKhoanActivity.class);
+                startActivity(dieukhoan);
+                return true;
 
-            case R.id.mn_role_manager:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VaiTroFragment()).commit();
-                break;
 
             case R.id.mn_allocation:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CapPhatFragment()).commit();
                 break;
-
 
             case R.id.mn_infor:
                 Intent info = new Intent(this, ThongTinAppActivity.class);

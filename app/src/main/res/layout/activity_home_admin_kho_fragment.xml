@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,10 +17,34 @@
             android:orientation="vertical">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:padding="5dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/shape_button_action_blue_namel">
+                android:background="@drawable/card2">
+                <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+
+                    android:id="@+id/iv_hang_icon"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_below="@+id/rltop"
+                    app:c_border="true"
+                    app:c_border_color="@color/color_grey"
+                    android:src="@drawable/ic_people_24"/>
+                <TextView
+                    android:id="@+id/tvtenhang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Name"
+                    android:textStyle="bold"
+                    android:textSize="22sp"
+                    android:textColor="@color/white"/>
 
                 <TextView
                     android:id="@+id/tvname"
@@ -27,9 +52,11 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="Name"
+                    android:layout_below="@+id/tvtenhang"
                     android:textStyle="bold"
-                    android:textSize="25sp"
+                    android:textSize="18sp"
                     android:textColor="@color/white"/>
+
                 <ImageView
                     android:id="@+id/ivdangxuat"
                     android:layout_width="30dp"
@@ -40,37 +67,6 @@
 
             </RelativeLayout>
 
-            <LinearLayout
-                style="@style/wrap_wrap_center"
-                android:orientation="horizontal">
-
-
-
-
-                <LinearLayout
-                    android:id="@+id/btnStaff"
-                    style="@style/w_wr_centerh_vertical">
-
-
-                    <RelativeLayout
-                        style="@style/styleButton_catelogy"
-                        android:background="@drawable/card1"
-                        android:elevation="8dp">
-
-
-                        <ImageView
-                            android:id="@+id/imgTTCB"
-                            style="@style/imade_main"
-                            android:src="@drawable/ic_people_24" />
-
-                    </RelativeLayout>
-
-                    <TextView
-                        style="@style/w_wr_text_catelogy"
-                        android:text="@string/staft" />
-                </LinearLayout>
-
-            </LinearLayout>
 
             <LinearLayout
                 style="@style/wrap_wrap_center"
@@ -102,7 +98,51 @@
 
 
             </LinearLayout>
+
+            <LinearLayout
+                style="@style/wrap_wrap_center"
+                android:orientation="horizontal">
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/btnthongke"
+                    style="@style/w_wr_centerh_vertical">
+
+
+                    <RelativeLayout
+                        style="@style/styleButton_catelogy"
+                        android:background="@drawable/card1"
+                        android:elevation="8dp">
+
+
+                        <ImageView
+                            android:id="@+id/imgTTCB"
+                            style="@style/imade_main"
+                            android:src="@drawable/ic_statistic_color_32" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        style="@style/w_wr_text_catelogy"
+                        android:text="Thống kê kho" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/logoapp"/>
+            </LinearLayout>
         </LinearLayout>
+
     </ScrollView>
 
 

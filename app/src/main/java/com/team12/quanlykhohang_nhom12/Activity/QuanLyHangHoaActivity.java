@@ -33,6 +33,7 @@ import java.util.ArrayList;
 public class QuanLyHangHoaActivity extends AppCompatActivity {
     ImageButton btnAddStation;
     private String khohangId;
+    private String hanghoaId;
     Toolbar toolbar;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
