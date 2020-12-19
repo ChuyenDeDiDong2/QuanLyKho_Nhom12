@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
 
 public class DangKyActivity extends AppCompatActivity {
     private ImageView btnBack, ivprofile;
-    private EditText txtEmail, txtPhone, txtName, txtPassword, txtRePassword;
+    private EditText txtEmail, txtPhone, txtName, txtPassword, txtRePassword,txtdiachiad;
     private Button btnDangKy;
     private Uri filePath;
     private FirebaseAuth firebaseAuth;
@@ -76,13 +76,14 @@ public class DangKyActivity extends AppCompatActivity {
         });
 
     }
-    private String ten, pass, repass, email, soDT;
+    private String ten, pass, repass, email, soDT, diachi;
     private void inputData() {
          ten = txtName.getText().toString().trim();
          pass = txtPassword.getText().toString().trim();
          repass= txtRePassword.getText().toString().trim();
          email= txtEmail .getText().toString().trim();
          soDT = txtPhone.getText().toString().trim();
+         diachi = txtdiachiad.getText().toString().trim();
 
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
@@ -95,6 +96,10 @@ public class DangKyActivity extends AppCompatActivity {
         }
         if(TextUtils.isEmpty(soDT)){
             Toast.makeText(this, "Vui lòng nhập số điện thoại của bạn...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(diachi)){
+            Toast.makeText(this, "Vui lòng nhập địa chỉ của bạn...", Toast.LENGTH_SHORT).show();
             return;
         }
         if(pass.length()<8){
@@ -137,6 +142,7 @@ public class DangKyActivity extends AppCompatActivity {
             hashMap.put("name", ""+ten);
             hashMap.put("phone", ""+soDT);
             hashMap.put("email", ""+email);
+            hashMap.put("diachi", ""+diachi);
             hashMap.put("accountType", "user");
             hashMap.put("online", "true");
             hashMap.put("noibat", "true");
@@ -179,6 +185,7 @@ public class DangKyActivity extends AppCompatActivity {
                                 hashMap.put("name", ""+ten);
                                 hashMap.put("phone", ""+soDT);
                                 hashMap.put("email", ""+email);
+                                hashMap.put("diachi", ""+diachi);
                                 hashMap.put("accountType", "user");
                                 hashMap.put("online", "true");
                                 hashMap.put("noibat", "true");
@@ -250,6 +257,7 @@ public class DangKyActivity extends AppCompatActivity {
         txtName = findViewById(R.id.txtten_cua_bandk);
         txtPassword = findViewById(R.id.txtmatkhaudk);
         txtRePassword = findViewById(R.id.txtnhap_lai_mat_khaudk);
+        txtdiachiad = findViewById(R.id.txtdiachiad);
         btnDangKy = findViewById(R.id.btndangkydk);
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
