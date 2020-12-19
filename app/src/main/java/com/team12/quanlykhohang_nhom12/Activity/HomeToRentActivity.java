@@ -24,6 +24,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeUserFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.MessagerFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanKhoFragment;
 import com.team12.quanlykhohang_nhom12.Notifications.Token;
 import com.team12.quanlykhohang_nhom12.R;
 
@@ -80,6 +81,12 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
                             FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
                             fragmentTransaction2.replace(R.id.fragment_torentcontainer, messagerFragment, "");
                             fragmentTransaction2.commit();
+                            return true;
+                        case R.id.mn_profile:
+                            TaiKhoanKhoFragment taiKhoanKhoFragment = new TaiKhoanKhoFragment();
+                            FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
+                            fragmentTransaction3.replace(R.id.fragment_torentcontainer, taiKhoanKhoFragment, "");
+                            fragmentTransaction3.commit();
                             return true;
                     }
                     return false;

@@ -25,6 +25,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -41,6 +42,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Activity.AdminKhoActivity;
+import com.team12.quanlykhohang_nhom12.Activity.DangNhapActivity;
+import com.team12.quanlykhohang_nhom12.Activity.HomeToRentActivity;
 import com.team12.quanlykhohang_nhom12.Activity.SuaKhoHangActivity;
 import com.team12.quanlykhohang_nhom12.Activity.ThemTaiKhoanActivity;
 import com.team12.quanlykhohang_nhom12.R;
@@ -54,11 +57,12 @@ import static android.app.Activity.RESULT_OK;
 
 public class TaiKhoanKhoFragment extends Fragment {
 
-    private ImageButton backbtn;
-    private TextView txtEmailad,txtten_tai_khoan_chukhoad;
+    //private ImageButton backbtn;
+    private TextView txtEmailad,txtten_tai_khoan_chukhoad,tvdongcua;
     private EditText txtten_cua_banad,txtdienthoaiad,txtsotaikhoanad,txtdiachiad;
     private ImageView tk_kho_icon;
     private Button btnupdate;
+    private SwitchCompat swdongmo;
     private FirebaseAuth firebaseAuth;
     //
     private Uri filePath;
@@ -70,7 +74,7 @@ public class TaiKhoanKhoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.row_chitiet_tk_kho, container, false);
 
-        backbtn = root.findViewById(R.id.backbtn);
+        //backbtn = root.findViewById(R.id.backbtn);
         //
         txtten_tai_khoan_chukhoad = root.findViewById(R.id.txtten_tai_khoan_chukhoad);
         txtEmailad = root.findViewById(R.id.txtEmailad);
@@ -81,6 +85,8 @@ public class TaiKhoanKhoFragment extends Fragment {
         //
         tk_kho_icon = root.findViewById(R.id.tk_kho_icon);
         btnupdate = root.findViewById(R.id.btnupdate);
+        swdongmo = root.findViewById(R.id.swdongmo);
+        tvdongcua = root.findViewById(R.id.tvdongcua);
 
         //
         progressDialog = new ProgressDialog(getContext());
@@ -89,13 +95,14 @@ public class TaiKhoanKhoFragment extends Fragment {
 
         firebaseAuth = FirebaseAuth.getInstance();
         loadKhoHangDetail();
+        checkUserType();
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(root.getContext(), AdminKhoActivity.class));
-            }
-        });
+//        backbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(root.getContext(), AdminKhoActivity.class));
+//            }
+//        });
         tk_kho_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,6 +141,7 @@ public class TaiKhoanKhoFragment extends Fragment {
                         String profileImage = ""+snapshot.child("profileImage").getValue();
                         String typingTo = ""+snapshot.child("typingTo").getValue();
                         String uid = ""+snapshot.child("uid").getValue();
+                        String dongmoAvailable = ""+snapshot.child("dongmoAvailable").getValue();
                         //set data to view
                         txtten_cua_banad.setText(name);
                         txtEmailad.setText(email);
@@ -145,6 +153,30 @@ public class TaiKhoanKhoFragment extends Fragment {
                             Picasso.get().load(profileImage).placeholder(R.drawable.google).into(tk_kho_icon);
                         }catch (Exception e){
                             tk_kho_icon.setImageResource(R.drawable.google);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+    //hien thi (giua kho va thue)
+    private void checkUserType() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            String accountType =""+ds.child("accountType").getValue();
+                            if(accountType.equals("user")){
+                                txtten_tai_khoan_chukhoad.setVisibility(View.GONE);
+                                txtsotaikhoanad.setVisibility(View.GONE);
+                                swdongmo.setVisibility(View.GONE);
+                                tvdongcua.setVisibility(View.GONE);
+                            }
                         }
                     }
 
@@ -185,7 +217,6 @@ public class TaiKhoanKhoFragment extends Fragment {
     }
 
     //cập nhật
-
     private void capNhatKhoHang() {
         //Show
         progressDialog.setMessage("Cập nhật tài khoản");
@@ -198,6 +229,8 @@ public class TaiKhoanKhoFragment extends Fragment {
             hashMap.put("phone", ""+phone);
             hashMap.put("sotaikhoan", ""+sotaikhoan);
             hashMap.put("diachi", ""+diachi);
+            hashMap.put("open", ""+open);
+
 
             //cap nhat db
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");

@@ -15,12 +15,12 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 >
-                <ImageButton
+                <!--ImageButton
                     android:id="@+id/backbtn"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@null"
-                    android:src="@drawable/ic_close_gray_32"/>
+                    android:src="@drawable/ic_close_gray_32"/-->
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -61,6 +61,7 @@
                 android:padding="10dp"
                 android:layout_margin="5dp"
                 android:inputType="textEmailAddress"
+                android:textStyle="bold"
                 android:background="@drawable/shape_background_text_box_normal" />
             <TextView
                 android:id="@+id/txtEmailad"
@@ -71,6 +72,7 @@
                 android:padding="10dp"
                 android:layout_margin="5dp"
                 android:inputType="textEmailAddress"
+                android:textStyle="bold"
                 android:background="@drawable/shape_background_text_box_normal" />
             <EditText
                 android:id="@+id/txtten_cua_banad"
@@ -115,6 +117,26 @@
                 android:inputType="text"
                 android:background="@drawable/shape_background_text_box_normal"/>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/tvdongcua"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="@string/dongmocua"/>
+
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:layout_alignParentEnd="true"
+                        android:id="@+id/swdongmo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp" />
+                </RelativeLayout>
                 <Button
                     android:id="@+id/btnupdate"
                     android:text="Lưu"
@@ -125,6 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"/>
             </LinearLayout>
+
         </RelativeLayout>
     </ScrollView>
 
