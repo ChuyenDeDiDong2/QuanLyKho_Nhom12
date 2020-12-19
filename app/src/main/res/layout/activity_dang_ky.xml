@@ -56,14 +56,6 @@
                 android:src="@drawable/ic_people_24"
                 app:c_border_color="@color/color_grey"
                 app:c_border_width="1dp"/>
-
-
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> a281ac0242d20ac4965dcad8a7109af63af20d79
             <EditText
                 android:id="@+id/txtEmaildk"
                 android:layout_width="match_parent"
@@ -109,11 +101,6 @@
                 android:background="@drawable/shape_background_text_box_normal"
                 />
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> a281ac0242d20ac4965dcad8a7109af63af20d79
             <EditText
                 android:id="@+id/txtmatkhaudk"
                 android:layout_width="match_parent"
