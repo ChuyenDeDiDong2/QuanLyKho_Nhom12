@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -62,7 +63,7 @@ public class TaiKhoanKhoFragment extends Fragment {
     private EditText txtten_cua_banad,txtdienthoaiad,txtsotaikhoanad,txtdiachiad;
     private ImageView tk_kho_icon;
     private Button btnupdate;
-    private SwitchCompat swdongmo;
+    private SwitchCompat dongmoAvailable;
     private FirebaseAuth firebaseAuth;
     //
     private Uri filePath;
@@ -85,8 +86,7 @@ public class TaiKhoanKhoFragment extends Fragment {
         //
         tk_kho_icon = root.findViewById(R.id.tk_kho_icon);
         btnupdate = root.findViewById(R.id.btnupdate);
-        swdongmo = root.findViewById(R.id.swdongmo);
-        tvdongcua = root.findViewById(R.id.tvdongcua);
+        dongmoAvailable = root.findViewById(R.id.swdongmo);
 
         //
         progressDialog = new ProgressDialog(getContext());
@@ -117,6 +117,16 @@ public class TaiKhoanKhoFragment extends Fragment {
 
             }
         });
+        dongmoAvailable.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    open = "true";
+                }else {
+                    open = "false";
+                }
+            }
+        });
         return root;
     }
 
@@ -136,7 +146,7 @@ public class TaiKhoanKhoFragment extends Fragment {
                         String diachi = ""+snapshot.child("diachi").getValue();
                         String accountType = ""+snapshot.child("accountType").getValue();
                         String online = ""+snapshot.child("online").getValue();
-                        String open = ""+snapshot.child("open").getValue();
+                        String open = ""+snapshot.child("open").getValue();//String giamgiaAvailable = ""+snapshot.child("giamgiaAvailable").getValue();
                         String noibat = ""+snapshot.child("noibat").getValue();
                         String profileImage = ""+snapshot.child("profileImage").getValue();
                         String typingTo = ""+snapshot.child("typingTo").getValue();
@@ -154,6 +164,15 @@ public class TaiKhoanKhoFragment extends Fragment {
                         }catch (Exception e){
                             tk_kho_icon.setImageResource(R.drawable.google);
                         }
+                        if(open.equals("true")){
+                            TaiKhoanKhoFragment.this.dongmoAvailable.setChecked(true);
+
+                        }else {
+
+                            TaiKhoanKhoFragment.this.dongmoAvailable.setChecked(false);
+
+                        }
+
                     }
 
                     @Override
@@ -174,7 +193,7 @@ public class TaiKhoanKhoFragment extends Fragment {
                             if(accountType.equals("user")){
                                 txtten_tai_khoan_chukhoad.setVisibility(View.GONE);
                                 txtsotaikhoanad.setVisibility(View.GONE);
-                                swdongmo.setVisibility(View.GONE);
+                                dongmoAvailable.setVisibility(View.GONE);
                                 tvdongcua.setVisibility(View.GONE);
                             }
                         }
@@ -189,7 +208,7 @@ public class TaiKhoanKhoFragment extends Fragment {
 
     //lấy dữ liệu
     private String name,phone ,email, sotaikhoan, tentaikhoan, diachi, accountType, online, open, noibat, profileImage, typingTo;
-    private boolean giamgiaAvailable  =false;
+    private boolean dongAvailable  = true;
     private void inputData() {
         //tentaikhoan = txtten_tai_khoan_chukhoad.getText().toString().trim();
         name = txtten_cua_banad.getText().toString().trim();
@@ -197,6 +216,8 @@ public class TaiKhoanKhoFragment extends Fragment {
         phone = txtdienthoaiad.getText().toString().trim();
         sotaikhoan = txtsotaikhoanad.getText().toString().trim();
         diachi = txtdiachiad.getText().toString().trim();
+
+        dongAvailable = dongmoAvailable.isChecked();//true/false
         if(TextUtils.isEmpty(name)){
             Toast.makeText(getActivity(), "Vui lòng nhập tên...", Toast.LENGTH_SHORT).show();
             return;
@@ -271,6 +292,7 @@ public class TaiKhoanKhoFragment extends Fragment {
                                 hashMap.put("phone", ""+phone);
                                 hashMap.put("sotaikhoan", ""+sotaikhoan);
                                 hashMap.put("diachi", ""+diachi);
+                                hashMap.put("open", ""+open);
                                 hashMap.put("profileImage", ""+downloadUri);//hinhanh
                                 //cap nhat db
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
