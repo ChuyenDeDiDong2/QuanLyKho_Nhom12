@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Activity.DangKyActivity">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -52,7 +53,7 @@
                 android:layout_below="@+id/ivIcon"
                 android:layout_centerHorizontal="true"
                 app:c_border="true"
-                android:src="@drawable/ic_avartar_48"
+                android:src="@drawable/ic_people_24"
                 app:c_border_color="@color/color_grey"
                 app:c_border_width="1dp"/>
 

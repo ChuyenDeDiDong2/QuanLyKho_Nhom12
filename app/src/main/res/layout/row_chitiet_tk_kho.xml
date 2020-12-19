@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <ScrollView
         android:layout_width="match_parent"
@@ -44,7 +45,7 @@
                 app:c_border="true"
                 app:c_border_color="@color/color_grey"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/ic_avartar_48"/>
+                android:src="@drawable/ic_people_24"/>
             <LinearLayout
                 android:layout_marginTop="10pt"
                 android:layout_below="@+id/tk_kho_icon"

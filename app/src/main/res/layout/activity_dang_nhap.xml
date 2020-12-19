@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Activity.DangNhapActivity">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -61,7 +62,7 @@
         android:text="Quên mật khẩu"
         android:padding="10dp"
         android:layout_margin="5dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:layout_below="@+id/txtmatkhau"/>
     <TextView
         android:id="@+id/tvtao_tai_khoan"
@@ -69,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:text="Tạo tài khoản"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:padding="10dp"
         android:layout_margin="5dp"
         android:layout_below="@+id/txtmatkhau"/>
@@ -84,6 +85,13 @@
         android:layout_below="@+id/tvtao_tai_khoan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    <ImageView
+        android:layout_below="@+id/btndangnhap"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logoapp"/>
 
 
 </RelativeLayout>
