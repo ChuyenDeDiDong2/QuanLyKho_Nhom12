@@ -105,7 +105,7 @@
                 android:inputType="text"
                 android:background="@drawable/shape_background_text_box_normal"
                 />
-            
+
             <EditText
                 android:id="@+id/txtmatkhaudk"
                 android:layout_width="match_parent"
