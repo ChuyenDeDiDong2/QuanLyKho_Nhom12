@@ -57,6 +57,10 @@
                 app:c_border_color="@color/color_grey"
                 app:c_border_width="1dp"/>
 
+
+
+
+
             <EditText
                 android:id="@+id/txtEmaildk"
                 android:layout_width="match_parent"
@@ -91,10 +95,22 @@
 
 
             <EditText
-                android:id="@+id/txtmatkhaudk"
+                android:id="@+id/txtdiachiad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtdienthoaidk"
+                android:hint="Nhập địa chỉ của bạn"
+                android:padding="10dp"
+                android:layout_margin="5dp"
+                android:inputType="text"
+                android:background="@drawable/shape_background_text_box_normal"
+                />
+            
+            <EditText
+                android:id="@+id/txtmatkhaudk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtdiachiad"
                 android:hint="Mật khẩu"
                 android:padding="10dp"
                 android:layout_margin="5dp"
