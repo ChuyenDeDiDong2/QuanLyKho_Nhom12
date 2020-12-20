@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Activity.ChiTietChuKhoActivity;
 import com.team12.quanlykhohang_nhom12.Library.ModelChuKho;
@@ -21,25 +22,25 @@ import com.team12.quanlykhohang_nhom12.R;
 
 import java.util.ArrayList;
 
-public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuKho> {
+public class ChuKhoDCAdapter extends RecyclerView.Adapter<ChuKhoDCAdapter.HolderChuKhoDC> {
     private Context context;
     public ArrayList<ModelChuKho> chukhoList;
 
-    public ChuKhoAdapter(Context context, ArrayList<ModelChuKho> chukhoList) {
+    public ChuKhoDCAdapter(Context context, ArrayList<ModelChuKho> chukhoList) {
         this.context = context;
         this.chukhoList = chukhoList;
     }
 
     @NonNull
     @Override
-    public HolderChuKho onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public HolderChuKhoDC onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //ìnfale layout row item show
-        View view = LayoutInflater.from(context).inflate(R.layout.chukho_item_show, parent, false);
-        return new HolderChuKho(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.chukho_tem_show_dc, parent, false);
+        return new HolderChuKhoDC(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HolderChuKho holder, int position) {
+    public void onBindViewHolder(@NonNull HolderChuKhoDC holder, int position) {
         ModelChuKho modelChuKho = chukhoList.get(position);
         String accountType = modelChuKho.getAccountType();
         String name = modelChuKho.getName();
@@ -54,10 +55,11 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
         String profileImage = modelChuKho.getProfileImage();
         //setdate
 
+
         holder.cvchukhodc.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_list));
-        holder.ten_chu_kho_tv.setText(tentaikhoan);
-        holder.phone_chu_kho_tv.setText(phone);
-        //holder.diachiemail_chu_kho_tv.setText(email);
+        holder.ten_chu_kho_tv.setText("Hãng kho: "+ tentaikhoan);
+        holder.phone_chu_kho_tv.setText("Liên hệ: "+ phone);
+        holder.tv_email.setText("Liên hệ gmail: "+ email);
         if (online.equals("true")){
             //chu kho online
             holder.onlineiv.setVisibility(View.VISIBLE);
@@ -99,20 +101,20 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
     }
 
     //view holder
-    class HolderChuKho extends RecyclerView.ViewHolder{
+    class HolderChuKhoDC extends RecyclerView.ViewHolder{
         private ImageView chukhotv, onlineiv;
-        private TextView ten_chu_kho_tv, phone_chu_kho_tv, diachiemail_chu_kho_tv, opentv;
+        private TextView ten_chu_kho_tv, phone_chu_kho_tv, tv_email, opentv;
         private RatingBar ratingbarchukho;
         private CardView cvchukhodc;
 
-        public HolderChuKho(@NonNull View itemView) {
+        public HolderChuKhoDC(@NonNull View itemView) {
             super(itemView);
             cvchukhodc = itemView.findViewById(R.id.cvchukhodc);
             chukhotv = itemView.findViewById(R.id.chukhotv);
             onlineiv = itemView.findViewById(R.id.onlineiv);
             ten_chu_kho_tv = itemView.findViewById(R.id.ten_chu_kho_tv);
             phone_chu_kho_tv = itemView.findViewById(R.id.phone_chu_kho_tv);
-            //diachiemail_chu_kho_tv = itemView.findViewById(R.id.diachiemail_chu_kho_tv);
+            tv_email = itemView.findViewById(R.id.tv_email);
             opentv = itemView.findViewById(R.id.opentv);
             ratingbarchukho = itemView.findViewById(R.id.ratingbarchukho);
         }

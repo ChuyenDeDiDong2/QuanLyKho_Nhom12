@@ -236,7 +236,7 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
     }
 
     private void openMap() {
-        String diachi  ="htpps://maps.google.com/maps?saddr="+diachichukhotv+"&daddr";
+        String diachi  ="https://maps.google.com/maps?saddr="+diachichukhotv+"&daddr";
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(diachi));
         startActivity(intent);
     }

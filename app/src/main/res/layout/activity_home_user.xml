@@ -11,43 +11,43 @@
        android:layout_margin="10dp"
        android:layout_width="match_parent"
        android:layout_height="match_parent">
-       <LinearLayout
+       <RelativeLayout
            android:orientation="vertical"
            android:layout_width="match_parent"
            android:layout_height="match_parent">
+
+           <com.denzcoskun.imageslider.ImageSlider
+               android:layout_width="match_parent"
+               android:layout_height="140dp"
+               android:id="@+id/slider"
+               app:placeholder="@drawable/ic_add_blue_24"
+               app:error_image="@drawable/ic_add_blue_24"
+               app:auto_cycle="true"
+               app:delay="0"
+               app:period="5000"
+               app:corner_radius="20">
+
+           </com.denzcoskun.imageslider.ImageSlider>
            <RelativeLayout
+               android:id="@+id/tltop_user"
+               android:layout_below="@+id/slider"
                android:orientation="horizontal"
                android:layout_width="match_parent"
                android:layout_height="wrap_content">
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:textSize="22dp"
-                   android:textColor="@color/black"
+                   android:textSize="20dp"
+                   android:layout_marginTop="5dp"
+                   android:layout_marginBottom="5dp"
+                   android:textColor="@color/color_light_blue"
                    android:textStyle="bold"
                    android:text="Nổi bật"/>
-
-                   <TextView
-                       android:id="@+id/tvname"
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:layout_centerHorizontal="true"
-                       android:text="Name"
-                       android:textStyle="bold"
-                       android:textSize="25sp"
-                       android:textColor="@color/black"/>
-                   <ImageView
-                       android:id="@+id/ivdangxuat"
-                       android:layout_width="30dp"
-                       android:layout_height="30dp"
-                       android:layout_alignParentEnd="true"
-                       android:src="@drawable/ic_baseline_logout"/>
-
-
                </RelativeLayout>
             <!--Hiện thị danh sách chủ kho-->
            <androidx.recyclerview.widget.RecyclerView
                android:id="@+id/recHomeNoiBat"
+               android:layout_below="@+id/tltop_user"
                android:layout_weight="2"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
@@ -56,17 +56,24 @@
 
 
            <TextView
+                android:id="@+id/tvtitle_ganban"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:textSize="22dp"
+               android:textSize="20dp"
+               android:layout_below="@+id/recHomeNoiBat"
                android:textStyle="bold"
-               android:textColor="#fff"
-               android:text="Danh sách kho"/>
+               android:textColor="@color/color_light_blue"
+               android:layout_marginTop="5dp"
+               android:layout_marginBottom="5dp"
+               android:text="Hãng kho gần bạn"/>
            <androidx.recyclerview.widget.RecyclerView
                android:id="@+id/recHomeUser"
+               android:layout_below="@+id/tvtitle_ganban"
                android:layout_width="match_parent"
-               android:layout_height="match_parent"/>
-       </LinearLayout>
+               android:layout_height="match_parent"
+               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+               tools:listitem="@layout/chukho_tem_show_dc"/>
+       </RelativeLayout>
    </ScrollView>
 
 </LinearLayout>

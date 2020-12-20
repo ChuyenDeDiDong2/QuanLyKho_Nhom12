@@ -172,9 +172,9 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_seach:
-                startActivity(new Intent(this, TimKiemActivity.class));
-                //Toast.makeText(this, "Search button selected", Toast.LENGTH_SHORT).show();
+            case R.id.btndangxuat:
+                firebaseAuth.signOut();
+                checkUser();
                 return true;
 
         }
