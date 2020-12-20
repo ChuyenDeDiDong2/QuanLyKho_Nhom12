@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:id="@+id/search_kho"
+        android:orderInCategory="100"
+        android:title="Lọc"
+        android:icon="@drawable/ic_white_search_24"
+        app:showAsAction="always" />
     <item
         android:id="@+id/btndangxuat"
         android:orderInCategory="100"
         android:title="Tìm kiếm"
         android:icon="@drawable/ic_baseline_logout"
         app:showAsAction="always" />
-
-    <!-- <item
-         android:id="@+id/action_filter"
-         android:orderInCategory="100"
-         android:title="Lọc"
-         android:icon="@drawable/ic_filter_blue_24"
-         app:showAsAction="always" />-->
 </menu>
