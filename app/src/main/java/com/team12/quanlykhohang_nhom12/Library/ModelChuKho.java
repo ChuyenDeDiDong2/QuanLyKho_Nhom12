@@ -1,23 +1,26 @@
 package com.team12.quanlykhohang_nhom12.Library;
 
 public class ModelChuKho {
-    private String uid, name, phone, email, sotaikhoan, tentaikhoan, accountType, online,open, noibat, profileImage;
+    private String uid, name, phone, email, sotaikhoan, tentaikhoan, diachi, tinhthanh, accountType, online, open, noibat, profileImage, typingTo;
 
     public ModelChuKho() {
     }
 
-    public ModelChuKho(String uid, String name, String phone, String email, String sotaikhoan, String tentaikhoan, String accountType, String online, String open, String noibat, String profileImage) {
+    public ModelChuKho(String uid, String name, String phone, String email, String sotaikhoan, String tentaikhoan, String diachi, String tinhthanh, String accountType, String online, String open, String noibat, String profileImage, String typingTo) {
         this.uid = uid;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.sotaikhoan = sotaikhoan;
         this.tentaikhoan = tentaikhoan;
+        this.diachi = diachi;
+        this.tinhthanh = tinhthanh;
         this.accountType = accountType;
         this.online = online;
         this.open = open;
         this.noibat = noibat;
         this.profileImage = profileImage;
+        this.typingTo = typingTo;
     }
 
     public String getUid() {
@@ -68,6 +71,22 @@ public class ModelChuKho {
         this.tentaikhoan = tentaikhoan;
     }
 
+    public String getDiachi() {
+        return diachi;
+    }
+
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
+    }
+
+    public String getTinhthanh() {
+        return tinhthanh;
+    }
+
+    public void setTinhthanh(String tinhthanh) {
+        this.tinhthanh = tinhthanh;
+    }
+
     public String getAccountType() {
         return accountType;
     }
@@ -106,5 +125,13 @@ public class ModelChuKho {
 
     public void setProfileImage(String profileImage) {
         this.profileImage = profileImage;
+    }
+
+    public String getTypingTo() {
+        return typingTo;
+    }
+
+    public void setTypingTo(String typingTo) {
+        this.typingTo = typingTo;
     }
 }

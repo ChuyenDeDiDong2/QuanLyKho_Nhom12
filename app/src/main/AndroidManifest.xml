@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Fragment.HomeAdminAppFragment"></activity>
+        <activity android:name=".Activity.ThemSliderActivity"></activity>
+        <activity android:name=".Fragment.SliderFragment" />
+        <activity android:name=".Fragment.DanhSachHangKhoFragment" />
+        <activity android:name=".Fragment.HomeAdminAppFragment" />
         <activity android:name=".Activity.AdminAppActivity" />
         <activity android:name=".Activity.QuanLyHangHoaActivity" />
         <activity android:name=".Fragment.MessagerFragment" />

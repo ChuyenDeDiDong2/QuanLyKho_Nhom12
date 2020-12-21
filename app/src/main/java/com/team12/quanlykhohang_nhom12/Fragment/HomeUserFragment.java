@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +38,7 @@ public class HomeUserFragment extends Fragment {
 
     private ArrayList<ModelChuKho> chukhoList, chukholistdc;
     private ChuKhoAdapter chuKhoAdapter;
+    ImageSlider imageSlider;
     private ChuKhoDCAdapter chukhoDCAdapter;
 
     @Nullable
@@ -52,20 +53,34 @@ public class HomeUserFragment extends Fragment {
         recHomeUser.setLayoutManager(new LinearLayoutManager(this.getActivity(), LinearLayoutManager.VERTICAL, false));
         firebaseAuth = FirebaseAuth.getInstance();
 
-        ImageSlider imageSlider = root.findViewById(R.id.slider);
-        List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel("https://sec-warehouse.vn/wp-content/uploads/2020/08/kho-hoa-chat-800x400.jpg", ""));
-        slideModels.add(new SlideModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Y0EVQGEcoPtGKXtXaPIU_mysnqzzT14qZg&usqp=CAU", ""));
-        slideModels.add(new SlideModel("https://vilas.edu.vn/wp-content/uploads/2019/05/flow.jpg", ""));
-        slideModels.add(new SlideModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh-P8PfdVxPiswy3TyUqklTPnOF9QkqKEYMg&usqp=CAU", ""));
-        imageSlider.setImageList(slideModels, true);
+        imageSlider = root.findViewById(R.id.slider);
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        loadSloder();
         checkUser();//Nút quay lại;
 
         return root;
 
     }
 
+    private void loadSloder() {
+
+       final List<SlideModel> slideModels = new ArrayList<>();
+        FirebaseDatabase.getInstance().getReference("Tb_Slider")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds: snapshot.getChildren())
+                            slideModels.add(new SlideModel(ds.child("hinhanh").getValue().toString(),ds.child("tieude").getValue().toString(), true));
+                            imageSlider.setImageList(slideModels, true);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
 
 
     // Kiểm tra tài khoản đã tồn tại hay chưa?
@@ -106,7 +121,7 @@ public class HomeUserFragment extends Fragment {
                 });
     }
     // Thực hiện load thông tin kho nổi bật:
-    private void loadchukho(final String noibat, final String diachi) {
+    private void loadchukho(final String noibat, final String tinhthanh) {
         chukhoList = new ArrayList<>();
         chukholistdc = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
@@ -126,9 +141,9 @@ public class HomeUserFragment extends Fragment {
                         chukholistdc.clear();
                         for (DataSnapshot ds: snapshot.getChildren()){
                             ModelChuKho modelChuKho = ds.getValue(ModelChuKho.class);
-                            String chukhodiachi =""+ds.child("diachi").getValue();
+                            String chukhotinhthanh =""+ds.child("tinhthanh").getValue();
                             //chỉ hiển thị hãng nổi bật cho người dùng nhìn thấy:
-                            if (chukhodiachi.equals(diachi)){
+                            if (chukhotinhthanh.equals(tinhthanh)){
                                 chukholistdc.add(modelChuKho);
                             }
                         }
