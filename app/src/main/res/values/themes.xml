@@ -78,22 +78,28 @@
     <!-- style button. -->
     <style name="styleButton_catelogy">
         <!-- Customize your theme here. -->
-        <item name="android:layout_height">70dp</item>
-        <item name="android:layout_width">400dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:layout_gravity">center</item>
     </style>
     <style name="w_wr_text_catelogy">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">20px</item>
+        <item name="android:textSize">22px</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textAlignment">center</item>
     </style>
     <!-- wrap_wrap_centerh_vertical -->
     <style name="w_wr_centerh_vertical">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingRight">30dp</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:orientation">vertical</item>
     </style>

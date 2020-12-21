@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/color_grey_background"
+    android:background="@drawable/background"
     android:layout_height="match_parent"
     tools:context=".Activity.NewProductActivity">
 
@@ -45,7 +45,7 @@
                             android:layout_height="120dp">
 
                             <ImageView
-                                android:id="@+id/iv_activity_new_product_photo"
+                                android:id="@+id/ivnew_product_photo"
                                 android:layout_width="match_parent"
                                 android:src="@drawable/ic_picture_blue_48"
                                 android:layout_height="match_parent"/>
@@ -53,7 +53,7 @@
 
 
                         <TextView
-                            android:id="@+id/tv_activity_new_product_name_preview"
+                            android:id="@+id/tvnew_product_name_preview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="7dp"
@@ -89,7 +89,7 @@
                                 android:textSize="20sp"/>
 
                             <EditText
-                                android:id="@+id/edt_activity_new_product_name_product"
+                                android:id="@+id/edtnew_product_name_product"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:imeOptions="actionNext"
@@ -120,7 +120,7 @@
                                 android:textSize="20sp"/>
 
                             <EditText
-                                android:id="@+id/edt_activity_new_product_unit_product"
+                                android:id="@+id/edtnew_product_unit_product"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:maxLines="1"
@@ -151,7 +151,7 @@
                                 android:textSize="20sp"/>
 
                             <EditText
-                                android:id="@+id/edt_activity_new_product_number"
+                                android:id="@+id/edtnew_product_number"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:imeOptions="actionNext"
@@ -181,7 +181,7 @@
                                 android:textSize="20sp"/>
 
                             <EditText
-                                android:id="@+id/edt_activity_new_product_price"
+                                android:id="@+id/edtnew_product_price"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:maxLines="1"
@@ -211,7 +211,7 @@
                                 android:textSize="20sp"/>
 
                             <EditText
-                                android:id="@+id/edt_activity_new_product_note"
+                                android:id="@+id/edtnew_product_note"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:maxLines="1"
@@ -235,7 +235,7 @@
                             android:gravity="center">
 
                             <Button
-                                android:id="@+id/btn_activity_new_product_done"
+                                android:id="@+id/btnnew_product_done"
                                 android:layout_width="wrap_content"
                                 android:layout_height="42dp"
                                 android:text="@string/save"/>

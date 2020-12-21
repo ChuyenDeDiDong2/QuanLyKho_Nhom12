@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DangKyTaoHopDongActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/black"
+                android:textAllCaps="true"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:text="Đăng ký thuê kho"/>
+            <TextView
+                android:id="@+id/ngaydangkyhopdong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text="Ngày đăng ký: 20/12/2020"/>
+            <TextView
+                android:id="@+id/tvtenuser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:text="Họ tên: Nguyễn Viết Thuận"/>
+            <TextView
+                android:id="@+id/tvsodienthoaiuser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:text="Số điện thoại: 0979964930"/>
+            <TextView
+                android:id="@+id/tvtenkhodangky"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:text="Tên kho: Kho Tam Bình"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:text="Chọn thời gian thuê: "/>
+                <Spinner
+                    android:id="@+id/spChonthangmuonthue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvhienthigia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textAllCaps="true"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:text="Giá thuê kho: "/>
+                <TextView
+                    android:id="@+id/tvgiakhothuemotthang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="900.000 vnd"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textAllCaps="true"
+                    android:layout_below="@+id/tvhienthigia"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:text="Số tiền ước tính: "/>
+                <TextView
+                    android:id="@+id/tvsotienuoctinh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:layout_below="@+id/tvgiakhothuemotthang"
+                    android:layout_alignParentEnd="true"
+                    android:text="15.200.000 vnd"/>
+            </RelativeLayout>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Gửi"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="@drawable/shape_background_button_login"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

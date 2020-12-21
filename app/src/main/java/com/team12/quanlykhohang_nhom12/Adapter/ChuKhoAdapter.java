@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -51,6 +53,8 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
         String noibat = modelChuKho.getNoibat();
         String profileImage = modelChuKho.getProfileImage();
         //setdate
+
+        holder.cvchukhodc.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_list));
         holder.ten_chu_kho_tv.setText(tentaikhoan);
         holder.phone_chu_kho_tv.setText(phone);
         //holder.diachiemail_chu_kho_tv.setText(email);
@@ -99,9 +103,11 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
         private ImageView chukhotv, onlineiv;
         private TextView ten_chu_kho_tv, phone_chu_kho_tv, diachiemail_chu_kho_tv, opentv;
         private RatingBar ratingbarchukho;
+        private CardView cvchukhodc;
 
         public HolderChuKho(@NonNull View itemView) {
             super(itemView);
+            cvchukhodc = itemView.findViewById(R.id.cvchukhodc);
             chukhotv = itemView.findViewById(R.id.chukhotv);
             onlineiv = itemView.findViewById(R.id.onlineiv);
             ten_chu_kho_tv = itemView.findViewById(R.id.ten_chu_kho_tv);

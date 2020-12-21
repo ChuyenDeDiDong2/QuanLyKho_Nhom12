@@ -7,24 +7,39 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.HomeFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.VaiTroFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.VanPhongPhamActivity;
 import com.team12.quanlykhohang_nhom12.R;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private DrawerLayout drawer;
+import java.util.ArrayList;
+import java.util.List;
 
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    private DrawerLayout drawer;private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
+
+    LinearLayout btnCapPhat, btnThongKe, btnVanPhongPham;
+    private String khohangId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +47,15 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        khohangId = getIntent().getStringExtra("khohangId");
         drawer = findViewById(R.id.drawer_layout);
+        ImageSlider imageSlider = findViewById(R.id.slider);
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel("https://sec-warehouse.vn/wp-content/uploads/2020/08/kho-hoa-chat-800x400.jpg", ""));
+        slideModels.add(new SlideModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Y0EVQGEcoPtGKXtXaPIU_mysnqzzT14qZg&usqp=CAU", ""));
+        slideModels.add(new SlideModel("https://vilas.edu.vn/wp-content/uploads/2019/05/flow.jpg", ""));
+        slideModels.add(new SlideModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh-P8PfdVxPiswy3TyUqklTPnOF9QkqKEYMg&usqp=CAU", ""));
+        imageSlider.setImageList(slideModels, true);
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -41,9 +63,81 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
-            navigationView.setCheckedItem(R.id.mn_home);
         }
+
+        setCantrol();
+        setEVent();
+        loadKhoHangDetail();
+    }
+
+    private void setEVent() {
+        //su kien khi nhan vao icon tren trang chu
+        //----trang cap phat
+        btnCapPhat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+        //----trang thong ke
+        btnThongKe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        //----trang nhan vien
+        btnVanPhongPham.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, QuanLyHangHoaActivity.class);
+                intent.putExtra("khohangId",khohangId);
+                startActivity(intent);
+            }
+        });
+    }
+    private void loadKhoHangDetail() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.child(firebaseAuth.getUid()).child("KhoHang").child(khohangId)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //get data
+                        String khohangId = ""+snapshot.child("khohangId").getValue();
+                        String tenkho = ""+snapshot.child("tenkho").getValue();
+                        String diachikhohang = ""+snapshot.child("diachikhohang").getValue();
+                        String dientichkho = ""+snapshot.child("dientichkho").getValue();
+                        String dienthoaikho = ""+snapshot.child("dienthoaikho").getValue();
+                        String giachothue = ""+snapshot.child("giachothue").getValue();
+                        String tinhtrangkho = ""+snapshot.child("tinhtrangkho").getValue();
+                        String ghichukhho = ""+snapshot.child("ghichukhho").getValue();
+                        String giamgiaAvailable = ""+snapshot.child("giamgiaAvailable").getValue();
+                        String giamoi = ""+snapshot.child("giamoi").getValue();
+                        String phantramkm = ""+snapshot.child("phantramkm").getValue();
+                        String hinhanhkho = ""+snapshot.child("hinhanhkho").getValue();
+                        String timstamp = ""+snapshot.child("timstamp").getValue();
+                        String uid = ""+snapshot.child("uid").getValue();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+    private void setCantrol() {
+        //getCantroll
+        btnCapPhat = findViewById(R.id.btnaLlocation);
+        btnThongKe = findViewById(R.id.btnStatistics);
+
+        btnVanPhongPham = findViewById(R.id.btnStationery);
+        khohangId = getIntent().getStringExtra("khohangId");
+        firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Vui lòng đợi");
+        progressDialog.setCanceledOnTouchOutside(false);
+
 
     }
 
@@ -63,7 +157,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId())
         {
             case R.id.mn_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
                 break;
             case R.id.mn_department_manager:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PhongBanFragment()).commit();
@@ -72,9 +165,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TaiKhoanFragment()).commit();
                 break;
 
-            case R.id.mn_stationary_management:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VanPhongPhamActivity()).commit();
-                break;
+
 
             case R.id.mn_role_manager:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VaiTroFragment()).commit();

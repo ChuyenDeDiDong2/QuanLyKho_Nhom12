@@ -12,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Fragment.MessagerFragment"></activity>
-        <activity android:name=".Activity.TaoHopDongActivity" />
+        <activity android:name=".Activity.QuanLyHangHoaActivity"></activity>
+        <activity android:name=".Fragment.MessagerFragment" />
+        <activity android:name=".Activity.DangKyTaoHopDongActivity" />
         <activity android:name=".Activity.NhanTinActivity" />
         <activity android:name=".Activity.OptionSignUpActivity" />
         <activity android:name=".Activity.ChiTietChuKhoActivity" />
@@ -35,9 +36,6 @@
             tools:ignore="Instantiatable" />
         <activity
             android:name=".Fragment.CapPhatFragment"
-            tools:ignore="Instantiatable" />
-        <activity
-            android:name=".Fragment.VanPhongPhamActivity"
             tools:ignore="Instantiatable" />
         <activity
             android:name=".Fragment.TaiKhoanFragment"

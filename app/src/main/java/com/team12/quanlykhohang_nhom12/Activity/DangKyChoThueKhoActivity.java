@@ -152,7 +152,7 @@ public class DangKyChoThueKhoActivity extends AppCompatActivity {
             hashMap.put("email", ""+email);
             hashMap.put("sotaikhoan", ""+sotaikhoan);
             hashMap.put("tentaikhoan", ""+tenTaiKhoan);
-            hashMap.put("dichi", ""+diachi);
+            hashMap.put("diachi", ""+diachi);
             hashMap.put("accountType", "admin");
             hashMap.put("online", "true");
             hashMap.put("open", "true");

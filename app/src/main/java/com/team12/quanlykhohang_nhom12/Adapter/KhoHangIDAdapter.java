@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageButton;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,12 +27,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
-import com.team12.quanlykhohang_nhom12.Activity.AdminKhoActivity;
 import com.team12.quanlykhohang_nhom12.Activity.HomeActivity;
-import com.team12.quanlykhohang_nhom12.Activity.HomeToRentActivity;
 import com.team12.quanlykhohang_nhom12.Activity.SuaKhoHangActivity;
 import com.team12.quanlykhohang_nhom12.Filter.FilterKhoHang;
-import com.team12.quanlykhohang_nhom12.Fragment.VanPhongPhamActivity;
 import com.team12.quanlykhohang_nhom12.Library.ModelKhoHang;
 import com.team12.quanlykhohang_nhom12.R;
 
@@ -74,8 +73,10 @@ public class KhoHangIDAdapter extends RecyclerView.Adapter<KhoHangIDAdapter.Hord
         String hinhanhkho = modelKhoHang.getHinhanhkho();
         String timstamp = modelKhoHang.getTimstamp();
         //set data
-        holder.tvtenkho_hang.setText(tenkho);
-        holder.tvdientich_kho.setText(dientichkho);
+        holder.cvkhokang.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_list));
+
+        holder.tvtenkho_hang.setText("Tên kho: "+ tenkho);
+        holder.tvdientich_kho.setText("Diện tích: "+ dientichkho);
         //holder.tvdientich_kho.setText(dientichkho);
         holder.tv_giamgiapt.setText(phantramkm);
         holder.tvgiagiam.setText(giamoi+"VND");
@@ -173,6 +174,7 @@ public class KhoHangIDAdapter extends RecyclerView.Adapter<KhoHangIDAdapter.Hord
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, HomeActivity.class);
+                intent.putExtra("khohangId", id);
                 context.startActivity(intent);
             }
         });
@@ -258,6 +260,7 @@ public class KhoHangIDAdapter extends RecyclerView.Adapter<KhoHangIDAdapter.Hord
     class HorderKhoHang extends RecyclerView.ViewHolder{
         private ImageView imghinhanhkho;
         private TextView tvtenkho_hang, tv_giamgiapt, tvgiaban, tvdientich_kho, tvgiagiam;
+        private CardView cvkhokang;
         public HorderKhoHang(@NonNull View itemView) {
             super(itemView);
              imghinhanhkho = itemView.findViewById(R.id.imgkho_hang);
@@ -266,6 +269,7 @@ public class KhoHangIDAdapter extends RecyclerView.Adapter<KhoHangIDAdapter.Hord
             tvgiaban = itemView.findViewById(R.id.tvgiaban);
             tvgiagiam = itemView.findViewById(R.id.tvgiagiam);
             tvdientich_kho = itemView.findViewById(R.id.tvdien_tich_kho);
+            cvkhokang = itemView.findViewById(R.id.cvkhokang);
         }
     }
 }
