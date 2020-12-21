@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Menu">
+        <menu>
+
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/mn_home"
+                    android:icon="@drawable/ic_home_color_32"
+                    android:title="@string/home_screen" />
+                <item
+                    android:id="@+id/mndanhsachtaikhoan_hang"
+                    android:icon="@drawable/ic_desktop_color_32"
+                    android:title="@string/department" />
+                <item
+                    android:id="@+id/mn_statistic"
+                    android:icon="@drawable/ic_statistic_color_32"
+                    android:title="@string/statistic" />
+
+            </group>
+        </menu>
+
+    </item>
+
+
+
+    <item android:title="App">
+        <menu>
+            <item
+                android:id="@+id/mn_infor"
+                android:icon="@drawable/ic_information_color_32"
+                android:title="@string/information" />
+        </menu>
+    </item>
+
+
+</menu>
