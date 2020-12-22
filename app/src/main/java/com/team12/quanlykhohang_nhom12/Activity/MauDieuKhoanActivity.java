@@ -80,16 +80,16 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
 
         if(filePath == null) {
             HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("maHDK", ""+timestamp);
+            hashMap.put("maMDK", ""+timestamp);
             hashMap.put("uid", ""+firebaseAuth.getUid());
 
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-            reference.child(firebaseAuth.getUid()).child("KhoHang").child(timestamp).child("MauDieuKhoan").setValue(hashMap)
+            reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child(timestamp).setValue(hashMap)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
                             progressDialog.dismiss();
-                            Toast.makeText(MauDieuKhoanActivity.this, "Tạo mẫu điều khoản thành công ...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MauDieuKhoanActivity.this, "Tạo mẫu điều khoản thành công", Toast.LENGTH_SHORT).show();
                             clearData();
                         }
                     })
@@ -113,11 +113,11 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
 
                             if(uriTask.isSuccessful()) {
                                 HashMap<String, Object> hashMap = new HashMap<>();
-                                hashMap.put("maHDK", ""+timestamp);
+                                hashMap.put("maMDK", ""+timestamp);
                                 hashMap.put("uid", ""+firebaseAuth.getUid());
 
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-                                reference.child(firebaseAuth.getUid()).child("KhoHang").child(timestamp).child("MauDieuKhoan").setValue(hashMap)
+                                reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child(timestamp).setValue(hashMap)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {

@@ -7,8 +7,8 @@
 
 
     //NguyenGiaHuy
-    <dimen name="imgavatarMHD_width">350dp</dimen>
-    <dimen name="imgavatarMHD_height">500dp</dimen>
+    <dimen name="imgavatarMHD_width">250dp</dimen>
+    <dimen name="imgavatarMHD_height">300dp</dimen>
     <dimen name="layout_marginTop">20dp</dimen>
 
 </resources>

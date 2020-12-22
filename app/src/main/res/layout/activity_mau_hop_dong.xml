@@ -43,7 +43,7 @@
                     android:layout_height="@dimen/imgavatarMHD_height"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/layout_marginTop"
-                    android:src="@drawable/ic_avartar_48" />
+                    android:src="@drawable/ic_mauhopdong" />
 
                 <Button
                     android:id="@+id/btnLuu"
