@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.DanhGia1Activity"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card1"
+        android:padding="10dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="#115088"
+            android:src="@drawable/ic_close_gray_32" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="ĐÁNH GIÁ KHO"
+            android:textColor="@color/color_black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+    <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+        android:id="@+id/profileIV"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_camera_32"
+        app:c_border="true"
+        app:c_border_color="#03A9F4"
+        app:c_border_width="2dp" />
+
+    <TextView
+        android:id="@+id/txtTenkho"
+        android:layout_below="@+id/profileIV"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Tên kho"
+        android:textColor="@color/color_black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/labelTV"
+        android:layout_below="@+id/txtTenkho"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Cảm ơn quý khách đã sử dung dịch vụ này, xin hãy đánh giá dịch vụ của chúng tôi!"
+        android:textAlignment="center"
+        android:textColor="@color/color_black" />
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_below="@+id/labelTV"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:numStars="5" />
+
+    <EditText
+        android:id="@+id/edtNhanXet"
+        android:layout_below="@+id/ratingBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_chukho_normal"
+        android:gravity="top"
+        android:hint="Nơi nhận xet..."
+        android:minHeight="100dp"
+        android:padding="10dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnXacNhan"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_add_blue_24"
+        android:layout_margin="5dp"/>
+</RelativeLayout>
