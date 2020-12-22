@@ -1,18 +1,29 @@
 package com.team12.quanlykhohang_nhom12.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Library.ModelChuKho;
 import com.team12.quanlykhohang_nhom12.Library.ModelUser;
@@ -76,9 +87,48 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(context, ChiTietChuKhoActivity.class);
-//                intent.putExtra("chukhoId", uid);
-//                context.startActivity(intent);
+
+                holder.btnxoataikhoan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        builder.setTitle("Xóa")
+                                .setMessage("Bạn có chắc muốn xóa"+tentaikhoan+"?")
+                                .setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        //xóa
+                                        //xoaTaiKhoan(uid);
+
+                                        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+                                        //reference.child(firebaseAuth.getUid()).child(uid).removeValue()
+                                        Query mQuery = reference.orderByChild("uid").equalTo(uid);
+                                        mQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                for (DataSnapshot ds: snapshot.getChildren()){
+                                                    ds.getRef().removeValue();
+                                                    Toast.makeText(context, "Xóa tài khoản thành công!", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+                                                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    }
+                                })
+                                .setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                    }
+                                })
+                                .show();
+                    }
+                });
             }
         });
     }
@@ -94,6 +144,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
         private TextView tvten_hk, tvsodienthoai_hk;
         private RatingBar ratingbarchukho;
         private CardView cvchukhodc;
+        private ImageButton btnxoataikhoan;
 
         public HolderUser(@NonNull View itemView) {
             super(itemView);
@@ -102,6 +153,8 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
             ivonline_status = itemView.findViewById(R.id.ivonline_status);
             tvten_hk = itemView.findViewById(R.id.tvten_hk);
             tvsodienthoai_hk = itemView.findViewById(R.id.tvsodienthoai_hk);
+            //xoa tai khoan
+            btnxoataikhoan = itemView.findViewById(R.id.btnxoataikhoan);
         }
     }
 }
