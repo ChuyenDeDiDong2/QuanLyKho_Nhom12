@@ -38,7 +38,7 @@ public class HomeAdminKhoFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.activity_home_admin_kho_fragment, container, false);
         //getCantroll
-
+        btnMauDK = root.findViewById(R.id.btnHopDong);
         btnthongke = root.findViewById(R.id.btnthongke);
         btnPhongBan = root.findViewById(R.id.btnDepartment);
         //
