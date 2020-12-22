@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="5dp"
+    android:id="@+id/cvchukhodc"
     android:layout_width="120dp"
-    app:cardCornerRadius="10dp"
-    app:cardBackgroundColor="#CBCEDF"
-    android:layout_height="160dp">
+    android:layout_height="160dp"
+    android:layout_margin="5dp"
+    app:cardBackgroundColor="#3F51B5"
+    app:cardCornerRadius="10dp">
+
     <RelativeLayout
         android:id="@+id/bs_khohang_chitiet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        >
+        android:padding="5dp">
         <!--hinh anh-->
         <com.blogspot.atifsoftwares.circularimageview.CircularImageView
             android:id="@+id/chukhotv"
@@ -21,36 +21,37 @@
             android:layout_marginEnd="5dp"
             android:src="@drawable/google"
             app:c_border="true"
-            app:c_border_width="1dp"
-            app:c_border_color="@color/color_grey"/>
+            app:c_border_color="@color/color_grey"
+            app:c_border_width="1dp" />
         <!--online/offline-->
         <ImageView
             android:id="@+id/onlineiv"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/kho_online"
-            />
+            android:src="@drawable/kho_online" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_below="@+id/chukhotv">
+            android:layout_below="@+id/chukhotv"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/ten_chu_kho_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:maxLines="1"
-                android:textStyle="bold"
                 android:text="Tên Chủ kho"
-                android:textColor="@color/color_black"/>
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/phone_chu_kho_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="09090909090"
-                android:textColor="@color/color_black"/>
+                android:textColor="@color/white" />
             <!--<TextView
                 android:id="@+id/diachiemail_chu_kho_tv"
                 android:layout_width="wrap_content"
@@ -61,21 +62,21 @@
                 android:id="@+id/opentv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shap_rebo"
                 android:padding="5dp"
                 android:text="Đóng cửa"
-                android:background="@drawable/shap_rebo"
-                android:textSize="10sp"
                 android:textColor="@color/color_red_c"
-            />
+                android:textSize="10sp" />
+
             <RatingBar
                 android:id="@+id/ratingbarchukho"
+                style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_gravity="left"
-                android:numStars="5"
                 android:layout_marginTop="5dp"
-                android:rating="3.5"/>
+                android:numStars="5"
+                android:rating="3.5" />
 
         </LinearLayout>
         <!---->

@@ -16,10 +16,10 @@
 
         <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
             android:background="#115088"
-            android:src="@drawable/ic_close_gray_32" />
+            android:src="@drawable/ic_close_gray_32"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
 
         <TextView
             android:layout_width="wrap_content"

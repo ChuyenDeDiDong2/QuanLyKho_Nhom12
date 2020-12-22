@@ -87,10 +87,11 @@ public class TaiKhoanKhoFragment extends Fragment {
         tk_kho_icon = root.findViewById(R.id.tk_kho_icon);
         btnupdate = root.findViewById(R.id.btnupdate);
         dongmoAvailable = root.findViewById(R.id.swdongmo);
+        tvdongcua = root.findViewById(R.id.tvdongcua);
 
         //
         progressDialog = new ProgressDialog(getContext());
-        progressDialog.setTitle("đợi");
+        progressDialog.setTitle("Vui lòng đợi");
         progressDialog.setCanceledOnTouchOutside(false);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -151,7 +152,6 @@ public class TaiKhoanKhoFragment extends Fragment {
                         String profileImage = ""+snapshot.child("profileImage").getValue();
                         String typingTo = ""+snapshot.child("typingTo").getValue();
                         String uid = ""+snapshot.child("uid").getValue();
-                        String dongmoAvailable = ""+snapshot.child("dongmoAvailable").getValue();
                         //set data to view
                         txtten_cua_banad.setText(name);
                         txtEmailad.setText(email);

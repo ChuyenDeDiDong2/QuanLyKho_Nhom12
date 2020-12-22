@@ -135,6 +135,10 @@ public class DangNhapActivity extends AppCompatActivity {
                                     progressDialog.dismiss();
                                     startActivity(new Intent(DangNhapActivity.this, AdminKhoActivity.class));
                                     finish();
+                                }else if(accountType.equals("adminapp")){
+                                    progressDialog.dismiss();
+                                    startActivity(new Intent(DangNhapActivity.this, AdminAppActivity.class));
+                                    finish();
                                 }else {
                                     progressDialog.dismiss();
                                     startActivity(new Intent(DangNhapActivity.this, HomeToRentActivity.class));

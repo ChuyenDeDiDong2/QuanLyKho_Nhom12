@@ -100,12 +100,21 @@
                 android:inputType="text"
                 android:background="@drawable/shape_background_text_box_normal"
                 />
+            <TextView
+                android:id="@+id/tvTinhThanh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtdiachiad"
+                android:text="Chọn tỉnh thành"
+                android:layout_margin="5dp"
+                android:background="@drawable/shape_background_text_box_normal"
+                android:padding="10dp"/>
 
             <EditText
                 android:id="@+id/txtmatkhaudk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtdiachiad"
+                android:layout_below="@+id/tvTinhThanh"
                 android:hint="Mật khẩu"
                 android:padding="10dp"
                 android:layout_margin="5dp"

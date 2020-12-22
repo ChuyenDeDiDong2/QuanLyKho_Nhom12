@@ -43,12 +43,13 @@ public class DanhGia1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_danh_gia1);
 
-        btnBack = findViewById(R.id.btnBack);
-        profileIV = findViewById(R.id.profileIV);
-        txtTenkho = findViewById(R.id.txtTenkho);
         ratingBar = findViewById(R.id.ratingBar);
         edtNhanXet = findViewById(R.id.edtNhanXet);
         btnXacNhan = findViewById(R.id.btnXacNhan);
+        btnBack = findViewById(R.id.btnBack);
+        profileIV = findViewById(R.id.profileIV);
+        txtTenkho = findViewById(R.id.txtTenkho);
+
 
         khohangUid = getIntent().getStringExtra("KhoHanguid");
         auth = FirebaseAuth.getInstance();
