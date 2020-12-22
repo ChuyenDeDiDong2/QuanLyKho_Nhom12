@@ -24,10 +24,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Activity.DangNhapActivity;
+import com.team12.quanlykhohang_nhom12.Activity.MauDieuKhoanActivity;
+import com.team12.quanlykhohang_nhom12.Activity.ThemKhoActivity;
 import com.team12.quanlykhohang_nhom12.R;
 
 public class HomeAdminKhoFragment extends Fragment {
-    LinearLayout btnthongke, btnPhongBan;
+    LinearLayout btnthongke, btnPhongBan, btnMauDK;
     private TextView nametv, tvtenhang;
     private ImageView btndangxuat, iv_hang_icon;
     private FirebaseAuth firebaseAuth;
@@ -77,6 +79,12 @@ public class HomeAdminKhoFragment extends Fragment {
             }
         });
 
+        btnMauDK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(root.getContext(), MauDieuKhoanActivity.class));
+            }
+        });
 
         return root;
     }

@@ -130,17 +130,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_margin="20dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/logoapp"/>
-            </LinearLayout>
 
             <LinearLayout
                 style="@style/wrap_wrap_center"

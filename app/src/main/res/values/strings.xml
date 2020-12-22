@@ -136,4 +136,8 @@
     <string name="trangchu">Trang chủ</string>
     <string name="tinnhan">Tin nhắn</string>
     <string name="dongmocua">Đóng/Mở cửa</string>
+
+    //Nguyen Gia Huy
+    <string name="lblHopDong">Mẫu điều khoản</string>
+    <string name="btnLuu">Lưu</string>
 </resources>

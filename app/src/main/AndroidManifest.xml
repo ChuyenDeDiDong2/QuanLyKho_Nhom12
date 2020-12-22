@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.QuanLyHangHoaActivity"></activity>
+        <activity android:name=".Activity.MauDieuKhoanActivity"></activity>
+        <activity android:name=".Activity.QuanLyHangHoaActivity" />
         <activity android:name=".Fragment.MessagerFragment" />
         <activity android:name=".Activity.DangKyTaoHopDongActivity" />
         <activity android:name=".Activity.NhanTinActivity" />
