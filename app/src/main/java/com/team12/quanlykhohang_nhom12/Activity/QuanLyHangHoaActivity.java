@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +29,10 @@ import com.team12.quanlykhohang_nhom12.Library.ModelHangHoa;
 import com.team12.quanlykhohang_nhom12.Library.ModelKhoHang;
 import com.team12.quanlykhohang_nhom12.R;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Map;
 
 public class QuanLyHangHoaActivity extends AppCompatActivity {
     ImageButton btnAddStation;
@@ -40,6 +44,7 @@ public class QuanLyHangHoaActivity extends AppCompatActivity {
     private RecyclerView danhsachhanghoa;
     private ArrayList<ModelHangHoa> hanghoalist;
     private HangHoaAdapter hangHoaAdapter;
+    private TextView tv_total_product, tv_total_price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,9 @@ public class QuanLyHangHoaActivity extends AppCompatActivity {
         loadKhoHangDetail();
         loadKhoHang();
 
+        totalsoluong();
+        totalgia();
+
     }
 
     private void setEvent() {btnAddStation.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +70,59 @@ public class QuanLyHangHoaActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    private void totalsoluong() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.child(firebaseAuth.getUid()).child("KhoHang").child(khohangId).child("HangHoa")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int sum=0;
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            Map<String, Object> map =  (Map<String, Object>)ds.getValue();
+                            Object soluong = map.get("soluong");
+                            int pValue  = Integer.parseInt(String.valueOf(soluong));
+                            sum += pValue;
+
+                            tv_total_product.setText(String.valueOf(sum));
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+    }
+    private void totalgia() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.child(firebaseAuth.getUid()).child("KhoHang").child(khohangId).child("HangHoa")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int sum=0;
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            Map<String, Object> map =  (Map<String, Object>)ds.getValue();
+                            Object soluong = map.get("soluong");
+                            Object dongia = map.get("dongia");
+                            int pValue  = Integer.parseInt(String.valueOf(soluong));
+                            int dgValue  = Integer.parseInt(String.valueOf(dongia));
+                            sum += (pValue*dgValue);
+                            Locale localeVN = new Locale("vi", "VN");
+                            NumberFormat vn = NumberFormat.getInstance(localeVN);
+
+
+                            tv_total_price.setText(vn.format(sum)+" Vnd");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
     }
 
     private void loadKhoHangDetail() {
@@ -128,6 +189,8 @@ public class QuanLyHangHoaActivity extends AppCompatActivity {
 
         btnAddStation = findViewById(R.id.btnAddStation);
         danhsachhanghoa = findViewById(R.id.rv__stationary_manager_list_product);
+        tv_total_product = findViewById(R.id.tv_total_product);
+        tv_total_price = findViewById(R.id.tv_total_price);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Danh sách hàng hóa ");
