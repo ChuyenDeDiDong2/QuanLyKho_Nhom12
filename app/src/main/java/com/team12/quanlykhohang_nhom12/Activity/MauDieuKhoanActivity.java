@@ -84,7 +84,7 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
             hashMap.put("uid", ""+firebaseAuth.getUid());
 
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-            reference.child(firebaseAuth.getUid()).child("KhoHang").child(timestamp).setValue(hashMap)
+            reference.child(firebaseAuth.getUid()).child("KhoHang").child(timestamp).child("MauDieuKhoan").setValue(hashMap)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -117,7 +117,7 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
                                 hashMap.put("uid", ""+firebaseAuth.getUid());
 
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-                                reference.child(firebaseAuth.getUid()).child("KhoHang").child(timestamp).setValue(hashMap)
+                                reference.child(firebaseAuth.getUid()).child("KhoHang").child(timestamp).child("MauDieuKhoan").setValue(hashMap)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
