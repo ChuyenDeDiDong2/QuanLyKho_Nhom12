@@ -44,7 +44,7 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mau_hop_dong);
+        setContentView(R.layout.activity_mau_dieu_khoan);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setControls();
