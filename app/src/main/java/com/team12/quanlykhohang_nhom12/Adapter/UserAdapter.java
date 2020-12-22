@@ -54,7 +54,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
         //setdate
 
         holder.cvchukhodc.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_list));
-        holder.tvten_hk.setText(tentaikhoan);
+        holder.tvten_hk.setText(name);
         holder.tvsodienthoai_hk.setText(phone);
 
         if (online.equals("true")){
