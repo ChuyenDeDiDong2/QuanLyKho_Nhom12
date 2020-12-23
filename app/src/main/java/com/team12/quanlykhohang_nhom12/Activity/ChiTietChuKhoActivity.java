@@ -37,10 +37,11 @@ import java.util.ArrayList;
 
 public class ChiTietChuKhoActivity extends AppCompatActivity {
     private ImageView chuhkhoiv;
-    private TextView tenchukhotv, sodienthoaitv, emailchukhotv, mocuatv, delivereFeetv, diachichukhotv, tvkhohang_filter;
+    private TextView tenchukhotv, sodienthoaitv, emailchukhotv, mocuatv, delivereFeetv, diachichukhotv, tvkhohang_filter, tvDanhGia;
     private ImageButton btncall, btnmessenger, btnmap, btnFilterKhoHang;
     private RecyclerView recdanhsach_kho;
     private EditText txttim_kiem_chukho;
+
     Toolbar toolbar;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
@@ -231,6 +232,14 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        tvDanhGia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChiTietChuKhoActivity.this, DanhGia1Activity.class);
+                intent.putExtra("hisUid", chukhoId);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -262,7 +271,7 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
         btnFilterKhoHang = findViewById(R.id.btnFilterKhoHang);
         recdanhsach_kho = findViewById(R.id.redanhsach_khohang);
         tvkhohang_filter = findViewById(R.id.tvkhohanguser_filter);
-
+        tvDanhGia = findViewById(R.id.tvDanhGia);
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Vui lòng đợi");

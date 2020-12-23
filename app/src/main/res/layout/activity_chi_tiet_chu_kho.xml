@@ -78,6 +78,16 @@
                 android:layout_below="@+id/emailchukho_ct"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="3dp"/>
+            <TextView
+                android:id="@+id/tvDanhGia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đánh giá"
+                android:textColor="@color/white"
+                android:layout_below="@+id/delivereFeetv"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="3dp"/>
             <LinearLayout
                 android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
@@ -146,6 +156,7 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_baseline_apps_24"
                 />
+
             <TextView
                 android:id="@+id/tvkhohanguser_filter"
                 android:layout_below="@+id/txttim_kiem_chukho"

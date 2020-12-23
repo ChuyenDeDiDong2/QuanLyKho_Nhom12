@@ -3,7 +3,6 @@ package com.team12.quanlykhohang_nhom12;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -14,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.team12.quanlykhohang_nhom12.Activity.DangNhapActivity;
+import com.team12.quanlykhohang_nhom12.Activity.DanhGia1Activity;
 
 public class MainActivity extends AppCompatActivity implements Animation.AnimationListener {
     private static int SPLASH_TIME = 5000;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         //startActivity(intent);
         imageView = findViewById(R.id.imagebackg);
         textView = findViewById(R.id.by_line);
-        // load the animation
+        // load the animatio
         sideAnim = AnimationUtils.loadAnimation(this, R.anim.side_anim);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_anim);
         //set Animations on elements
