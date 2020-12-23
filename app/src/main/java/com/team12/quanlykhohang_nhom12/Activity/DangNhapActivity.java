@@ -131,17 +131,31 @@ public class DangNhapActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot ds: snapshot.getChildren()){
                                 String accountType =""+ds.child("accountType").getValue();
-                                if(accountType.equals("admin")){
+                                String block =""+ds.child("block").getValue();
+                                if(accountType.equals("admin") && block.equals("false") ){
                                     progressDialog.dismiss();
                                     startActivity(new Intent(DangNhapActivity.this, AdminKhoActivity.class));
                                     finish();
-                                }else if(accountType.equals("adminapp")){
+                                }else if(accountType.equals("admin") && block.equals("true")){
+                                    progressDialog.dismiss();
+                                    startActivity(new Intent(DangNhapActivity.this, DangNhapActivity.class));
+                                    Toast.makeText(DangNhapActivity.this, "Tài khoản đã bị khóa vui lòng liên hệ chủ app",Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                                else if(accountType.equals("adminapp")){
                                     progressDialog.dismiss();
                                     startActivity(new Intent(DangNhapActivity.this, AdminAppActivity.class));
                                     finish();
-                                }else {
+                                }
+                                else if(accountType.equals("user") && block.equals("false")){
                                     progressDialog.dismiss();
                                     startActivity(new Intent(DangNhapActivity.this, HomeToRentActivity.class));
+                                    finish();
+                                }
+                                else if(accountType.equals("user") && block.equals("true")){
+                                    progressDialog.dismiss();
+                                    startActivity(new Intent(DangNhapActivity.this, DangNhapActivity.class));
+                                    Toast.makeText(DangNhapActivity.this, "Tài khoản đã bị khóa vui lòng liên hệ chủ app",Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
                             }
@@ -153,6 +167,7 @@ public class DangNhapActivity extends AppCompatActivity {
                     }
                 });
     }
+
 
     private void setCantrol() {
         txtEmail = findViewById(R.id.txtEmail);

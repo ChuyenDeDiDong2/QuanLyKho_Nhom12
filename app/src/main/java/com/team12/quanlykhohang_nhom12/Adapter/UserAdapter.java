@@ -88,47 +88,48 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
             @Override
             public void onClick(View view) {
 
-                holder.btnxoataikhoan.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                        builder.setTitle("Xóa")
-                                .setMessage("Bạn có chắc muốn xóa"+tentaikhoan+"?")
-                                .setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        //xóa
-                                        //xoaTaiKhoan(uid);
 
-                                        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-                                        //reference.child(firebaseAuth.getUid()).child(uid).removeValue()
-                                        Query mQuery = reference.orderByChild("uid").equalTo(uid);
-                                        mQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                for (DataSnapshot ds: snapshot.getChildren()){
-                                                    ds.getRef().removeValue();
-                                                    Toast.makeText(context, "Xóa tài khoản thành công!", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
+            }
+        });
+        holder.btnxoataikhoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Xóa")
+                        .setMessage("Bạn có chắc muốn xóa"+tentaikhoan+"?")
+                        .setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //xóa
+                                //xoaTaiKhoan(uid);
 
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError error) {
-                                                Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-                                    }
-                                })
-                                .setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
+                                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+                                //reference.child(firebaseAuth.getUid()).child(uid).removeValue()
+                                Query mQuery = reference.orderByChild("uid").equalTo(uid);
+                                mQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        dialogInterface.dismiss();
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        for (DataSnapshot ds: snapshot.getChildren()){
+                                            ds.getRef().removeValue();
+                                            Toast.makeText(context, "Xóa tài khoản thành công!", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
-                                })
-                                .show();
-                    }
-                });
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        })
+                        .setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .show();
             }
         });
     }

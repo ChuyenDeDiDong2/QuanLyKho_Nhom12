@@ -185,6 +185,7 @@ public class DangKyChoThueKhoActivity extends AppCompatActivity {
             hashMap.put("tinhthanh", ""+tinhthanh);
             hashMap.put("accountType", "admin");
             hashMap.put("online", "true");
+            hashMap.put("block", "false");
             hashMap.put("open", "true");
             hashMap.put("noibat", "true");
             hashMap.put("profileImage", "");
@@ -232,6 +233,7 @@ public class DangKyChoThueKhoActivity extends AppCompatActivity {
                                 hashMap.put("tinhthanh", ""+tinhthanh);
                                 hashMap.put("accountType", "admin");
                                 hashMap.put("online", "true");
+                                hashMap.put("block", "false");
                                 hashMap.put("open", "true");
                                 hashMap.put("noibat", "true");
                                 hashMap.put("profileImage", ""+downloadIamgeUri);//url upload image

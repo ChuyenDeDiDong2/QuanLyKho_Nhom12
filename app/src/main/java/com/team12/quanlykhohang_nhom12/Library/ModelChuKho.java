@@ -1,12 +1,12 @@
 package com.team12.quanlykhohang_nhom12.Library;
 
 public class ModelChuKho {
-    private String uid, name, phone, email, sotaikhoan, tentaikhoan, diachi, tinhthanh, accountType, online, open, noibat, profileImage, typingTo;
+    private String uid, name, phone, email, sotaikhoan, tentaikhoan, diachi, tinhthanh, accountType, online,block, open, noibat, profileImage, typingTo;
 
     public ModelChuKho() {
     }
 
-    public ModelChuKho(String uid, String name, String phone, String email, String sotaikhoan, String tentaikhoan, String diachi, String tinhthanh, String accountType, String online, String open, String noibat, String profileImage, String typingTo) {
+    public ModelChuKho(String uid, String name, String phone, String email, String sotaikhoan, String tentaikhoan, String diachi, String tinhthanh, String accountType, String online, String block, String open, String noibat, String profileImage, String typingTo) {
         this.uid = uid;
         this.name = name;
         this.phone = phone;
@@ -17,6 +17,7 @@ public class ModelChuKho {
         this.tinhthanh = tinhthanh;
         this.accountType = accountType;
         this.online = online;
+        this.block = block;
         this.open = open;
         this.noibat = noibat;
         this.profileImage = profileImage;
@@ -101,6 +102,14 @@ public class ModelChuKho {
 
     public void setOnline(String online) {
         this.online = online;
+    }
+
+    public String getBlock() {
+        return block;
+    }
+
+    public void setBlock(String block) {
+        this.block = block;
     }
 
     public String getOpen() {

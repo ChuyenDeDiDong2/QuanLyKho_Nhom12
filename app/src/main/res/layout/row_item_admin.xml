@@ -56,6 +56,13 @@
             android:layout_centerVertical="true"
             android:orientation="horizontal">
 
+            <ImageButton
+                android:id="@+id/btnmokhoataikhoan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@null"
+                android:src="@drawable/ic_baseline_check_24" />
 
             <ImageButton
                 android:id="@+id/btnkhoataikhoan"
@@ -64,6 +71,7 @@
                 android:layout_margin="5dp"
                 android:background="@null"
                 android:src="@drawable/ic_baseline_block_24" />
+
             <ImageButton
                 android:id="@+id/btnxoataikhoan"
                 android:layout_width="wrap_content"

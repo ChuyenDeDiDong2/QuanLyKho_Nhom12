@@ -175,6 +175,7 @@ public class DangKyActivity extends AppCompatActivity {
             hashMap.put("tinhthanh", ""+tinhthanh);
             hashMap.put("accountType", "user");
             hashMap.put("online", "true");
+            hashMap.put("block", "false");
             hashMap.put("noibat", "true");
             hashMap.put("profileImage", "");
 
@@ -219,6 +220,7 @@ public class DangKyActivity extends AppCompatActivity {
                                 hashMap.put("tinhthanh", ""+tinhthanh);
                                 hashMap.put("accountType", "user");
                                 hashMap.put("online", "true");
+                                hashMap.put("block", "false");
                                 hashMap.put("noibat", "true");
                                 hashMap.put("profileImage", ""+downloadIamgeUri);//url upload image
 
