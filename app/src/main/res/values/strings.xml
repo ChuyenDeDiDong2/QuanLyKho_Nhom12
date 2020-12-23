@@ -140,4 +140,5 @@
     //Nguyen Gia Huy
     <string name="lblHopDong">Mẫu điều khoản</string>
     <string name="btnLuu">Lưu</string>
+    <string name="btnSua">Sửa</string>
 </resources>

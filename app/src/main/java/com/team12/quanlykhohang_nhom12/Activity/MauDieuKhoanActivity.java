@@ -1,11 +1,14 @@
 package com.team12.quanlykhohang_nhom12.Activity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,11 +23,16 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+import com.team12.quanlykhohang_nhom12.Library.Constants_kho;
 import com.team12.quanlykhohang_nhom12.R;
 
 import java.io.IOException;
@@ -34,7 +42,8 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     private ImageView ivavatarMDK;
-    private Button btnLuu;
+    private Button btnSua;
+    private ImageView hinhanhMDK;
 
     private Uri filePath;
     private FirebaseAuth firebaseAuth;
@@ -49,6 +58,7 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setControls();
         setEvent();
+        loadKhoHangDetail();
     }
 
     private void setEvent() {
@@ -58,50 +68,75 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
                 chooseImage();
             }
         });
-        btnLuu.setOnClickListener(new View.OnClickListener() {
+        btnSua.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                inputData();
+
+                capNhatKhoHang();
             }
         });
     }
 
-    private ImageView hinhanhMDK;
+    private void loadKhoHangDetail() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child("1608693716705")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //get data
+                        String hinhMDK = ""+snapshot.child("hinhMDK").getValue();
+                        String maMDK = ""+snapshot.child("maMDK").getValue();
+                        String uid = ""+snapshot.child("uid").getValue();
+                        //set data to view
 
-    private void inputData() {
-        addMauDK();
+                        try {
+                            Picasso.get().load(hinhMDK).placeholder(R.drawable.google).into(ivavatarMDK);
+                        }catch (Exception e){
+                            ivavatarMDK.setImageResource(R.drawable.google);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
     }
 
-    private void addMauDK() {
-        progressDialog.setMessage("Thêm mẫu điều khoản ...");
+
+    private void capNhatKhoHang() {
+        //Show
+        progressDialog.setMessage("Cập nhật kho hàng");
         progressDialog.show();
-        String timestamp = ""+System.currentTimeMillis();
-
-        if(filePath == null) {
+        if(filePath == null)
+        {
             HashMap<String, Object> hashMap = new HashMap<>();
-            hashMap.put("maMDK", ""+timestamp);
-            hashMap.put("uid", ""+firebaseAuth.getUid());
 
+            //cap nhat db
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-            reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child(timestamp).setValue(hashMap)
+            reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child("1608693716705")
+                    .updateChildren(hashMap)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
+                            //update
                             progressDialog.dismiss();
-                            Toast.makeText(MauDieuKhoanActivity.this, "Tạo mẫu điều khoản thành công", Toast.LENGTH_SHORT).show();
-                            clearData();
+                            Toast.makeText(MauDieuKhoanActivity.this, "Cập nhật thành công!",Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            //update failed
                             progressDialog.dismiss();
-                            Toast.makeText(MauDieuKhoanActivity.this, ""+e.getMessage(),Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MauDieuKhoanActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
-         } else {
-            String filePathName = "profile_images/" + ""+timestamp;
+        }else {
+            //update widh image
+            String filePathName = "profile_images/1608693716705" ;// lay từ id của kho
+            //cập nhật hình ảnh
             StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathName);
             storageReference.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -109,29 +144,28 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
                             while (!uriTask.isSuccessful());
-                            Uri downloadImageUri = uriTask.getResult();
-
-                            if(uriTask.isSuccessful()) {
+                            Uri downloadUri = uriTask.getResult();
+                            if (uriTask.isSuccessful()){
                                 HashMap<String, Object> hashMap = new HashMap<>();
-                                hashMap.put("maMDK", ""+timestamp);
-                                hashMap.put("uid", ""+firebaseAuth.getUid());
-
+                                hashMap.put("hinhMDK", ""+downloadUri);//hinhanh
+                                //cap nhat db
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-                                reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child(timestamp).setValue(hashMap)
+                                reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child("1608693716705")
+                                        .updateChildren(hashMap)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {
+                                                //update
                                                 progressDialog.dismiss();
-                                                Toast.makeText(MauDieuKhoanActivity.this, "Thêm mẫu điều khoản", Toast.LENGTH_SHORT).show();
-                                                clearData();
+                                                Toast.makeText(MauDieuKhoanActivity.this, "Cập nhật thành công!",Toast.LENGTH_SHORT).show();
                                             }
                                         })
-
                                         .addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
+                                                //update failed
                                                 progressDialog.dismiss();
-                                                Toast.makeText(MauDieuKhoanActivity.this, ""+e.getMessage(),Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(MauDieuKhoanActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                                             }
                                         });
                             }
@@ -140,6 +174,7 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            //upload failed
                             progressDialog.dismiss();
                             Toast.makeText(MauDieuKhoanActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -147,10 +182,93 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
         }
     }
 
-    private void clearData() {
-        ivavatarMDK.setImageResource(R.drawable.ic_avartar_48);
-        filePath = null;
-    }
+
+
+
+//    private void inputData() {
+//        addMauDK();
+//    }
+//
+//    private void addMauDK() {
+//        progressDialog.setMessage("Thêm mẫu điều khoản ...");
+//        progressDialog.show();
+//        String timestamp = ""+System.currentTimeMillis();
+//
+//        if(filePath == null) {
+//            HashMap<String, Object> hashMap = new HashMap<>();
+//            hashMap.put("maMDK", ""+timestamp);
+//            hashMap.put("hinhMDK", "");
+//            hashMap.put("uid", ""+firebaseAuth.getUid());
+//
+//            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+//            reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child(timestamp).setValue(hashMap)
+//                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void aVoid) {
+//                            progressDialog.dismiss();
+//                            Toast.makeText(MauDieuKhoanActivity.this, "Tạo mẫu điều khoản thành công", Toast.LENGTH_SHORT).show();
+//                            clearData();
+//                        }
+//                    })
+//                    .addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            progressDialog.dismiss();
+//                            Toast.makeText(MauDieuKhoanActivity.this, ""+e.getMessage(),Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//         } else {
+//            String filePathName = "profile_images/" + ""+timestamp;
+//            StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathName);
+//            storageReference.putFile(filePath)
+//                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                            Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+//                            while (!uriTask.isSuccessful());
+//                            Uri downloadImageUri = uriTask.getResult();
+//
+//                            if(uriTask.isSuccessful()) {
+//                                HashMap<String, Object> hashMap = new HashMap<>();
+//                                hashMap.put("maMDK", ""+timestamp);
+//                                hashMap.put("hinhMDK", ""+downloadImageUri);
+//                                hashMap.put("uid", ""+firebaseAuth.getUid());
+//
+//                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+//                                reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child(timestamp).setValue(hashMap)
+//                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                            @Override
+//                                            public void onSuccess(Void aVoid) {
+//                                                progressDialog.dismiss();
+//                                                Toast.makeText(MauDieuKhoanActivity.this, "Thêm mẫu điều khoản", Toast.LENGTH_SHORT).show();
+//                                                clearData();
+//                                            }
+//                                        })
+//
+//                                        .addOnFailureListener(new OnFailureListener() {
+//                                            @Override
+//                                            public void onFailure(@NonNull Exception e) {
+//                                                progressDialog.dismiss();
+//                                                Toast.makeText(MauDieuKhoanActivity.this, ""+e.getMessage(),Toast.LENGTH_SHORT).show();
+//                                            }
+//                                        });
+//                            }
+//                        }
+//                    })
+//                    .addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(@NonNull Exception e) {
+//                            progressDialog.dismiss();
+//                            Toast.makeText(MauDieuKhoanActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+//                        }
+//                    });
+//        }
+//    }
+//
+//    private void clearData() {
+//        ivavatarMDK.setImageResource(R.drawable.ic_mauhopdong);
+//        filePath = null;
+//    }
 
     private void chooseImage() {
         Intent intent = new Intent();
@@ -166,7 +284,7 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Sửa mẫu hợp đồng");
 
         ivavatarMDK = findViewById(R.id.imgIDavatarMDK);
-        btnLuu = findViewById(R.id.btnLuu);
+        btnSua = findViewById(R.id.btnSua);
 
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
