@@ -35,26 +35,26 @@ import com.team12.quanlykhohang_nhom12.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
+public class TaiKhoanBlockAdapter extends RecyclerView.Adapter<TaiKhoanBlockAdapter.HolderChuKho> {
     private Context context;
-    public ArrayList<ModelUser> userlist;
+    public ArrayList<ModelUser> taikhoanList;
 
-    public UserAdapter(Context context, ArrayList<ModelUser> userlist) {
+    public TaiKhoanBlockAdapter(Context context, ArrayList<ModelUser> taikhoanList) {
         this.context = context;
-        this.userlist = userlist;
+        this.taikhoanList = taikhoanList;
     }
 
     @NonNull
     @Override
-    public HolderUser onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public HolderChuKho onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //ìnfale layout row item show
         View view = LayoutInflater.from(context).inflate(R.layout.row_item_admin, parent, false);
-        return new HolderUser(view);
+        return new HolderChuKho(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HolderUser holder, int position) {
-        ModelUser modelUser = userlist.get(position);
+    public void onBindViewHolder(@NonNull HolderChuKho holder, int position) {
+        ModelUser modelUser = taikhoanList.get(position);
         String accountType = modelUser.getAccountType();
         String name = modelUser.getName();
         final String uid = modelUser.getUid();
@@ -69,7 +69,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
         //setdate
 
         holder.cvchukhodc.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_list));
-        holder.tvten_hk.setText(name);
+        if (accountType.equals("admin")){
+            holder.tvten_hk.setText(tentaikhoan);
+        }else if(accountType.equals("user")) {
+
+            holder.tvten_hk.setText(name);
+        }
         holder.tvsodienthoai_hk.setText(phone);
 
         if (online.equals("true")){
@@ -91,7 +96,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
             }
         });
@@ -204,18 +208,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
 
     @Override
     public int getItemCount() {
-        return userlist.size();
+        return taikhoanList.size();
     }
 
     //view holder
-    class HolderUser extends RecyclerView.ViewHolder{
+    class HolderChuKho extends RecyclerView.ViewHolder{
         private ImageView ivpeople_hk, ivonline_status;
         private TextView tvten_hk, tvsodienthoai_hk;
         private RatingBar ratingbarchukho;
         private CardView cvchukhodc;
         private ImageButton btnxoataikhoan, btnkhoataikhoan, btnmokhoataikhoan;
 
-        public HolderUser(@NonNull View itemView) {
+        public HolderChuKho(@NonNull View itemView) {
             super(itemView);
             cvchukhodc = itemView.findViewById(R.id.cvchukhodc);
             ivpeople_hk = itemView.findViewById(R.id.ivpeople_hk);
