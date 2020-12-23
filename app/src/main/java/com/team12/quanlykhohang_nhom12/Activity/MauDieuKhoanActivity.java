@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -80,7 +81,7 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
 
     private void loadKhoHangDetail() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-        reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child("1608693716705")
+        reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child("Mau")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -115,7 +116,7 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
 
             //cap nhat db
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-            reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child("1608693716705")
+            reference.child(firebaseAuth.getUid()).child("MauDieuKhoan")
                     .updateChildren(hashMap)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -135,7 +136,7 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
                     });
         }else {
             //update widh image
-            String filePathName = "profile_images/1608693716705" ;// lay từ id của kho
+            String filePathName = "profile_images/MauDieuKhoan" ;// lay từ id của kho
             //cập nhật hình ảnh
             StorageReference storageReference = FirebaseStorage.getInstance().getReference(filePathName);
             storageReference.putFile(filePath)
@@ -150,7 +151,7 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
                                 hashMap.put("hinhMDK", ""+downloadUri);//hinhanh
                                 //cap nhat db
                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-                                reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child("1608693716705")
+                                reference.child(firebaseAuth.getUid()).child("MauDieuKhoan")
                                         .updateChildren(hashMap)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
@@ -308,6 +309,16 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:  // Sự kiện nút back
+                onBackPressed();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

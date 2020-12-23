@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.DangKyTaoHopDongActivity">
+    tools:context=".Activity.DangKyTaoHopDongActivity"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,14 +40,14 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:layout_marginTop="5dp"
-                android:text="Họ tên: Nguyễn Viết Thuận"/>
+                android:text="Họ tên: "/>
             <TextView
                 android:id="@+id/tvsodienthoaiuser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:layout_marginTop="5dp"
-                android:text="Số điện thoại: 0979964930"/>
+                android:text="Số điện thoại: "/>
             <TextView
                 android:id="@+id/tvtenkhodangky"
                 android:layout_width="match_parent"
@@ -70,6 +71,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
+
+
 
             <RelativeLayout
                 android:padding="10dp"
