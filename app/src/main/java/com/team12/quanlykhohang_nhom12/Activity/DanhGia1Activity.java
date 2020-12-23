@@ -35,7 +35,7 @@ public class DanhGia1Activity extends AppCompatActivity {
     ImageView profileIV;
     RatingBar ratingBar;
     TextView txtTenkho;
-    String khohangUid;
+    String hisUid;
 
     FirebaseAuth auth;
     @Override
@@ -51,9 +51,9 @@ public class DanhGia1Activity extends AppCompatActivity {
         txtTenkho = findViewById(R.id.txtTenkho);
 
 
-        khohangUid = getIntent().getStringExtra("KhoHanguid");
+        hisUid = getIntent().getStringExtra("hisUid");
         auth = FirebaseAuth.getInstance();
-        loadMyReview();
+        //loadMyReview();
         loadKhoInfo();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -79,51 +79,50 @@ public class DanhGia1Activity extends AppCompatActivity {
 
     private void loadKhoInfo() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-        reference.child(khohangUid).addValueEventListener(new ValueEventListener() {
+        reference.child(hisUid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String tenKho = ""+snapshot.child("tenKho").getValue();
+                String tenkho = ""+snapshot.child("tentaikhoan").getValue();
                 String KhoImage = ""+snapshot.child("profileImage").getValue();
 
-                txtTenkho.setText(tenKho);
+                txtTenkho.setText(tenkho);
                 try {
-                    Picasso.get().load(KhoImage).placeholder(R.drawable.ic_more_gray_24).into(profileIV);
+                    Picasso.get().load(KhoImage).placeholder(R.drawable.ic_avartar_48).into(profileIV);
                 }catch (Exception e){
-                    profileIV.setImageResource(R.drawable.ic_more_gray_24);
+                    profileIV.setImageResource(R.drawable.ic_avartar_48);
                 }
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            @Override public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
     }
 
-    private void loadMyReview() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-        reference.child(khohangUid).child("ratings").child(auth.getUid())
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
-                            String uid = ""+snapshot.child("uid").getValue();
-                            String ratings = ""+snapshot.child("ratings").getValue();
-                            String review = ""+snapshot.child("review").getValue();
-                            String timestamp = ""+snapshot.child("timestamp").getValue();
-
-                            float myRating = Float.parseFloat(ratings);
-                            ratingBar.setRating(myRating);
-                            edtNhanXet.setText(review);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-    }
+//    private void loadMyReview() {
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+//        reference.child(hisUid).child("ratings").child(auth.getUid())
+//                .addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        if (snapshot.exists()){
+//                            String uid = ""+snapshot.child("uid").getValue();
+//                            String ratings = ""+snapshot.child("diem").getValue();
+//                            String review = ""+snapshot.child("nhanxet").getValue();
+//                            String timestamp = ""+snapshot.child("timestamp").getValue();
+//
+//                            float myRating = Float.parseFloat(ratings);
+//                            ratingBar.setRating(myRating);
+//                            edtNhanXet.setText(review);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//    }
 
     private void inputData() {
 
@@ -138,7 +137,7 @@ public class DanhGia1Activity extends AppCompatActivity {
         hashMap.put("timestamp", "" + timestamp);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-        reference.child("danhgia").child(auth.getUid()).updateChildren(hashMap).
+        reference.child(hisUid).child("DanhGia").child(timestamp).updateChildren(hashMap).
                 addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
