@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -108,33 +109,9 @@ public class HangHoaAdapter extends RecyclerView.Adapter<HangHoaAdapter.HorderHa
                             break;
 
                         case R.id.mn_import_product:
-                            int block = 0;
-                            FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                            ProgressDialog progressDialog = new ProgressDialog(context);
-                            HashMap<String, Object> hashMap = new HashMap<>();
 
-                            hashMap.put("block", ""+ block);
+                            themsoluong(modelHangHoa);
 
-                            //cap nhat db
-                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-                            reference.child(uid)
-                                    .updateChildren(hashMap)
-                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
-                                            //update
-                                            progressDialog.dismiss();
-                                            Toast.makeText(context, "Thêm thành công!",Toast.LENGTH_SHORT).show();
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            //update failed
-                                            progressDialog.dismiss();
-                                            Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
                             break;
 
                         case R.id.mn_delete_product:
@@ -186,28 +163,69 @@ public class HangHoaAdapter extends RecyclerView.Adapter<HangHoaAdapter.HorderHa
                 });
     }
 
-
+    private String soluongtam;
     private void themsoluong(ModelHangHoa modelHangHoa){
         AlertDialog.Builder builderadd = new AlertDialog.Builder(context);
         //BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
         View view = LayoutInflater.from(context).inflate(R.layout.dialog_add_role, null);
         builderadd.setView(view);
-        TextView btnthoat = view.findViewById(R.id.tv_dialog_add_role_close);
-        EditText edt_dialog_add_role_role = view.findViewById(R.id.edt_dialog_add_role_role);
+        //TextView btnthoat = view.findViewById(R.id.tv_dialog_add_role_close);
+        EditText edt_dialog_add_number = view.findViewById(R.id.edt_dialog_add_number);
         Button btn_dialog_add_role_add = view.findViewById(R.id.btn_dialog_add_role_add);
 
-        String id = modelHangHoa.getHanghoaId();
-        String uid = modelHangHoa.getUid();
-        String tensanpham = modelHangHoa.getTensanpham();
-        String donvi = modelHangHoa.getDonvi();
-        double dongia = Double.parseDouble(modelHangHoa.getDongia());
-        String soluong = modelHangHoa.getSoluong();
-        String ghichu = modelHangHoa.getGhichu();
-        String hinhanhhang = modelHangHoa.getHinhanhhang();
-        final String khohangId = modelHangHoa.getKhohangId();
-        String timstamphh = modelHangHoa.getTimstamphh();// , ,
 
-        soluong = edt_dialog_add_role_role.getText().toString().trim();
+
+        btn_dialog_add_role_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String id = modelHangHoa.getHanghoaId();
+                String uid = modelHangHoa.getUid();
+                String tensanpham = modelHangHoa.getTensanpham();
+                String donvi = modelHangHoa.getDonvi();
+                int dongia = Integer.parseInt(modelHangHoa.getDongia());
+                int soluong = Integer.parseInt(modelHangHoa.getSoluong());
+                String ghichu = modelHangHoa.getGhichu();
+                String hinhanhhang = modelHangHoa.getHinhanhhang();
+                final String khohangId = modelHangHoa.getKhohangId();
+                String timstamphh = modelHangHoa.getTimstamphh();//
+
+                soluongtam = edt_dialog_add_number.getText().toString().trim();
+                if(TextUtils.isEmpty(soluongtam)){
+                    Toast.makeText(context, "Vui lòng nhập số lượng...", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int number =  0;
+                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                ProgressDialog progressDialog = new ProgressDialog(context);
+
+                number = Integer.parseInt(soluongtam ) + soluong;
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("soluong", ""+ number );
+
+                //cap nhat db
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+                reference.child(firebaseAuth.getUid()).child("KhoHang").child(khohangId).child("HangHoa").child(id)
+                        .updateChildren(hashMap)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                //update
+                                progressDialog.dismiss();
+                                Toast.makeText(context, "Thêm thành công!",Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                //update failed
+                                progressDialog.dismiss();
+                                Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+
         
         builderadd.show();
     }
