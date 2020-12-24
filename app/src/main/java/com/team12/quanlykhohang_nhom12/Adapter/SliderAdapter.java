@@ -69,7 +69,7 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.HolderChuK
         {
             holder.imgsilier.setImageResource(R.drawable.google);
         }
-        //nhận vào để xem chi tiết kho
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

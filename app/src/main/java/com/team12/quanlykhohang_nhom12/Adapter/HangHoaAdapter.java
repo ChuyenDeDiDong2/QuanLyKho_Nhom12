@@ -108,9 +108,33 @@ public class HangHoaAdapter extends RecyclerView.Adapter<HangHoaAdapter.HorderHa
                             break;
 
                         case R.id.mn_import_product:
+                            int block = 0;
+                            FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                            ProgressDialog progressDialog = new ProgressDialog(context);
+                            HashMap<String, Object> hashMap = new HashMap<>();
 
-                            themsoluong(modelHangHoa);
+                            hashMap.put("block", ""+ block);
 
+                            //cap nhat db
+                            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+                            reference.child(uid)
+                                    .updateChildren(hashMap)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            //update
+                                            progressDialog.dismiss();
+                                            Toast.makeText(context, "Thêm thành công!",Toast.LENGTH_SHORT).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            //update failed
+                                            progressDialog.dismiss();
+                                            Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
                             break;
 
                         case R.id.mn_delete_product:

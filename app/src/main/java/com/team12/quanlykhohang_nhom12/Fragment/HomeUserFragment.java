@@ -62,9 +62,8 @@ public class HomeUserFragment extends Fragment {
         return root;
 
     }
-
+    //Thực hiện show slider quảng cáo ra màn hình chính:
     private void loadSloder() {
-
        final List<SlideModel> slideModels = new ArrayList<>();
         FirebaseDatabase.getInstance().getReference("Tb_Slider")
                 .addListenerForSingleValueEvent(new ValueEventListener() {

@@ -124,6 +124,7 @@ public class DangNhapActivity extends AppCompatActivity {
     }
 
     private void checkUserType() {
+        //Check tài khoản đăng nhập:
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
         reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -139,7 +140,7 @@ public class DangNhapActivity extends AppCompatActivity {
                                 }else if(accountType.equals("admin") && block.equals("true")){
                                     progressDialog.dismiss();
                                     startActivity(new Intent(DangNhapActivity.this, DangNhapActivity.class));
-                                    Toast.makeText(DangNhapActivity.this, "Tài khoản đã bị khóa vui lòng liên hệ chủ app",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(DangNhapActivity.this, "Tài khoản đã bị khóa vui lòng liên hệ 1900 *** ***",Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
                                 else if(accountType.equals("adminapp")){
@@ -155,7 +156,7 @@ public class DangNhapActivity extends AppCompatActivity {
                                 else if(accountType.equals("user") && block.equals("true")){
                                     progressDialog.dismiss();
                                     startActivity(new Intent(DangNhapActivity.this, DangNhapActivity.class));
-                                    Toast.makeText(DangNhapActivity.this, "Tài khoản đã bị khóa vui lòng liên hệ chủ app",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(DangNhapActivity.this, "Tài khoản đã bị khóa vui lòng liên hệ 1900 *** ***",Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
                             }

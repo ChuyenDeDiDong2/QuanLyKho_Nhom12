@@ -23,9 +23,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.DanhSachHangKhoFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.DanhSachTaiKhoanBlockFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.DanhSachUserFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeAdminAppFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeAdminKhoFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.SliderFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanKhoFragment;
 import com.team12.quanlykhohang_nhom12.Notifications.Token;
 import com.team12.quanlykhohang_nhom12.R;
@@ -43,6 +47,7 @@ public class AdminAppActivity extends AppCompatActivity implements NavigationVie
 
         firebaseAuth = FirebaseAuth.getInstance();
         drawer = findViewById(R.id.drawer_layout);
+        //Thanh menu:
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -83,6 +88,7 @@ public class AdminAppActivity extends AppCompatActivity implements NavigationVie
             editor.apply();
         }
     }
+    //Update token lên firebase:
     public void updateToken(String token){
         DatabaseReference ref  = FirebaseDatabase.getInstance().getReference("Tokens");
         Token mToken = new Token(token);
@@ -107,7 +113,21 @@ public class AdminAppActivity extends AppCompatActivity implements NavigationVie
             case R.id.mn_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_adminapp_container, new HomeAdminAppFragment()).commit();
                 break;
-
+            case R.id.mn_danhsachhangkho:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_adminapp_container, new DanhSachHangKhoFragment()).commit();
+                break;
+            case R.id.mn_danhsachnguoidung:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_adminapp_container, new DanhSachUserFragment()).commit();
+                break;
+            case R.id.mn_danhsachtaikhoanbikhoa:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_adminapp_container, new DanhSachTaiKhoanBlockFragment()).commit();
+                break;
+            case R.id.mn_slider:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_adminapp_container, new SliderFragment()).commit();
+                break;
+            //case R.id.mn_guithongbao:
+                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_adminapp_container, new ()).commit();
+                //break;
             case R.id.mn_infor:
                 Intent info = new Intent(this, ThongTinAppActivity.class);
                 startActivity(info);
@@ -125,6 +145,7 @@ public class AdminAppActivity extends AppCompatActivity implements NavigationVie
 
         return super.onCreateOptionsMenu(menu);
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

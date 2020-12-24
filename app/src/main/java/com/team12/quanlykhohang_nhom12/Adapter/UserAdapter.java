@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,8 +33,10 @@ import com.team12.quanlykhohang_nhom12.Library.ModelChuKho;
 import com.team12.quanlykhohang_nhom12.Library.ModelUser;
 import com.team12.quanlykhohang_nhom12.R;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
     private Context context;
@@ -91,7 +94,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                chitietBottomSheet(modelUser);
 
             }
         });
@@ -200,6 +203,72 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
                         });
             }
         });
+    }
+
+    private void chitietBottomSheet(ModelUser modelUser) {
+        //bottom sheet
+        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+        View view = LayoutInflater.from(context).inflate(R.layout.chitiet_hangkho_item, null);
+        bottomSheetDialog.setContentView(view);
+
+
+        ImageButton btnthoat = view.findViewById(R.id.backbtn);
+        TextView tvtenhang0 = view.findViewById(R.id.tvtenhang0);
+        TextView tvtenhang1 = view.findViewById(R.id.tvtenhang1);
+        ImageView khohang_icon_ct = view.findViewById(R.id.khohang_icon_ct);
+        TextView tvtenchuhang = view.findViewById(R.id.tvtenchuhang);
+        TextView  tvdiachihang = view.findViewById(R.id.tvdiachihang);
+        TextView  tvsodientthoaihang = view.findViewById(R.id.tvsodientthoaihang);
+        TextView  tvemailhang = view.findViewById(R.id.tvemailhang);
+        TextView  tvsotaikhoanhang = view.findViewById(R.id.tvsotaikhoanhang);
+        TextView  tvsotaikhoanhang1 = view.findViewById(R.id.tvsotaikhoanhang1);
+
+        String accountType = modelUser.getAccountType();
+        String name = modelUser.getName();
+        final String uid = modelUser.getUid();
+        String phone = modelUser.getPhone();
+        final String email = modelUser.getEmail();
+        String sotaikhoan = modelUser.getSotaikhoan();
+        String tentaikhoan = modelUser.getTentaikhoan();
+        String online = modelUser.getOnline();
+        String diachi = modelUser.getDiachi();
+        String cuahangOpen = modelUser.getOpen();
+        String noibat = modelUser.getNoibat();
+        String block = modelUser.getBlock();
+        String profileImage = modelUser.getProfileImage();
+
+        //setdata trên firebase:
+
+        Locale localeVN = new Locale("vi", "VN");
+        NumberFormat vn = NumberFormat.getInstance(localeVN);
+        tvtenchuhang.setText(name);
+        tvdiachihang.setText(diachi);
+        tvsodientthoaihang.setText(phone);
+        tvemailhang.setText(email);
+        if (accountType.equals("user")){
+            //chu kho online
+            tvsotaikhoanhang.setVisibility(View.GONE);
+            tvtenhang0.setVisibility(View.GONE);
+            tvtenhang1.setVisibility(View.GONE);
+            tvsotaikhoanhang1.setVisibility(View.GONE);
+        }
+        try {
+            Picasso.get().load(profileImage).placeholder(R.drawable.google).into(khohang_icon_ct);
+        }catch (Exception e)
+        {
+            khohang_icon_ct.setImageResource(R.drawable.google);
+        }
+        //show diglog
+        bottomSheetDialog.show();
+        //chuc nang thoát
+        btnthoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomSheetDialog.dismiss();
+            }
+        });
+
+
     }
 
     @Override
