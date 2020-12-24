@@ -27,34 +27,78 @@
                 android:textAlignment="center"
                 android:textStyle="bold"
                 android:text="Đăng ký thuê kho"/>
-            <TextView
-                android:id="@+id/ngaydangkyhopdong"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:text="Ngày đăng ký: 20/12/2020"/>
-            <TextView
-                android:id="@+id/tvtenuser"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:text="Ngày đăng ký: "/>
+                <TextView
+                    android:id="@+id/ngaydangkyhopdong"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="10dp"
+                    android:text=" 20/12/2020"/>
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:text="Họ tên: "/>
-            <TextView
-                android:id="@+id/tvsodienthoaiuser"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:text="Họ tên: "/>
+                <TextView
+                    android:id="@+id/tvtenuser"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:text="Họ tên: "/>
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="5dp"
-                android:text="Số điện thoại: "/>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:text="Số điện thoại: "/>
+                <TextView
+                    android:id="@+id/tvsodienthoaiuser"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="5dp"
+                    android:text="Số điện thoại: "/>
+            </RelativeLayout>
+
             <TextView
-                android:id="@+id/tvtenkhodangky"
+                android:id="@+id/tvtenkhodk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:layout_marginTop="5dp"
                 android:text="Tên kho: Kho Tam Bình"/>
+
+            <ImageView
+                android:id="@+id/ivmauhopdong"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:src="@drawable/icon_mauhopdong"
+                android:layout_margin="10dp"/>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -64,11 +108,12 @@
                     android:textColor="@color/black"
                     android:layout_marginTop="5dp"
                     android:text="Chọn thời gian thuê: "/>
-                <Spinner
+                <TextView
                     android:id="@+id/spChonthangmuonthue"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:text="12"
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
 
