@@ -81,7 +81,7 @@ public class MauDieuKhoanActivity extends AppCompatActivity {
 
     private void loadKhoHangDetail() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-        reference.child(firebaseAuth.getUid()).child("MauDieuKhoan").child("Mau")
+        reference.child(firebaseAuth.getUid()).child("MauDieuKhoan")
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
