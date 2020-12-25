@@ -57,7 +57,7 @@ public class SliderFragment extends Fragment {
 
     private void loadslider() {
         sliders = new ArrayList<>();
-        //hiển thị slider
+        //Hiển thị slider
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Slider");
         reference
                 .addValueEventListener(new ValueEventListener() {

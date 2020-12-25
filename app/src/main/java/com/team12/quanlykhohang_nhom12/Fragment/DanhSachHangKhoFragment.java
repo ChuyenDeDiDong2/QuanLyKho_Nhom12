@@ -42,7 +42,7 @@ public class DanhSachHangKhoFragment extends Fragment {
         loadchukho();
         return root;
     }
-    // Thực hiện load thông tin kho nổi bật:
+    // Thực hiện load thông tin kho:
     private void loadchukho() {
         danhsachlist = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");

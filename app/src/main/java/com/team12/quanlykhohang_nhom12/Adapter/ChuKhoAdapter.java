@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -93,6 +95,7 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
 //            }
 //        });
         //holder.diachiemail_chu_kho_tv.setText(email);
+
         if (online.equals("true")){
             //chu kho online
             holder.onlineiv.setVisibility(View.VISIBLE);
@@ -121,9 +124,16 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ChiTietChuKhoActivity.class);
-                intent.putExtra("chukhoId", uid);
-                context.startActivity(intent);
+                if (cuahangOpen.equals("false")){
+                    Toast.makeText(context, "Cửa hàng đã đóng cửa", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Intent intent = new Intent(context, ChiTietChuKhoActivity.class);
+                    intent.putExtra("chukhoId", uid);
+                    context.startActivity(intent);
+                    Toast.makeText(context, "Chào mừng bạn đến với hãng kho", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -150,6 +160,7 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
             //diachiemail_chu_kho_tv = itemView.findViewById(R.id.diachiemail_chu_kho_tv);
             opentv = itemView.findViewById(R.id.opentv);
             ratingbarchukho = itemView.findViewById(R.id.ratingbarchukho);
+
         }
     }
 }

@@ -34,14 +34,14 @@ public class QuenMatKhauActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //su kien quay lai
+                //Sự kiện quay lại:
                 onBackPressed();
             }
         });
         btnquenmatkhau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //su kien khi nhan vào nút quên mật khẩu
+                //Sự kiện khi nhấn vào nút quên mật khẩu:
                 recoverPassword();
 
             }
@@ -58,7 +58,7 @@ public class QuenMatKhauActivity extends AppCompatActivity {
         progressDialog.setMessage("Gửi hướng dẫn để đặt lại mật khẩu...");
         progressDialog.show();
 
-        //Thuc hiện bước reset passwork vào email:
+        //Thực hiện bước reset passwork vào email:
         firebaseAuth.sendPasswordResetEmail(email)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

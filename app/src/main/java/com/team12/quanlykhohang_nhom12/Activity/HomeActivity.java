@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanKhoFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.VaiTroFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanFragment;
 import com.team12.quanlykhohang_nhom12.R;
@@ -158,23 +159,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         {
             case R.id.mn_home:
                 break;
-            case R.id.mn_department_manager:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PhongBanFragment()).commit();
+            case R.id.mn_thong_tin_tk:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TaiKhoanKhoFragment()).commit();
                 break;
-            case R.id.mn_staft_manager:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TaiKhoanFragment()).commit();
-                break;
-
-
-
-            case R.id.mn_role_manager:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new VaiTroFragment()).commit();
-                break;
-
-             case R.id.mn_allocation:
+            case R.id.mn_allocation:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CapPhatFragment()).commit();
                 break;
 
+            case R.id.mn_san_pham:
+                Intent intent = new Intent(this, QuanLyHangHoaActivity.class);
+                startActivity(intent);
+                drawer.closeDrawers();
+                return  true;
 
             case R.id.mn_infor:
                 Intent info = new Intent(this, ThongTinAppActivity.class);

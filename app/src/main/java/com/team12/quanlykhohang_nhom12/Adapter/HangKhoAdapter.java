@@ -162,6 +162,7 @@ public class HangKhoAdapter extends RecyclerView.Adapter<HangKhoAdapter.HolderCh
                         .show();
             }
         });
+        //Thực hiện chức năng khóa tk:
         holder.btnkhoataikhoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
