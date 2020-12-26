@@ -60,7 +60,6 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
         tvtenuser = findViewById(R.id.tvtenuser);
         tvsodienthoaiuser = findViewById(R.id.tvsodienthoaiuser);
         tvtenkhodangky = findViewById(R.id.tvtenkhodk);
-        ivmauhopdong = findViewById(R.id.ivmauhopdong);
         tvgiakhothuemotthang = findViewById(R.id.tvgiakhothuemotthang);
         ngaydangkyhopdong = findViewById(R.id.ngaydangkyhopdong);
         spChonthangmuonthue = findViewById(R.id.spChonthangmuonthue);
