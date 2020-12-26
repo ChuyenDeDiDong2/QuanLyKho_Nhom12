@@ -7,19 +7,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Activity.ChiTietChuKhoActivity;
 import com.team12.quanlykhohang_nhom12.Library.ModelChuKho;
 import com.team12.quanlykhohang_nhom12.R;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuKho> {
     private Context context;
@@ -57,7 +66,36 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
         holder.cvchukhodc.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_list));
         holder.ten_chu_kho_tv.setText(tentaikhoan);
         holder.phone_chu_kho_tv.setText(phone);
+        holder.ratingbarchukho.setRating(5);
+
+//        holder.ratingbarchukho.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+//            @Override
+//            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+//                FirebaseAuth firebaseAuth =  FirebaseAuth.getInstance();
+//                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+//                reference.child(firebaseAuth.getUid()).child("DanhGia")
+//                        .addValueEventListener(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                double sum=0;
+//                                for (DataSnapshot ds: snapshot.getChildren()){
+//                                    Map<String, Object> map =  (Map<String, Object>)ds.getValue();
+//                                    Object soluong = map.get("diem");
+//                                    double pValue  = Double.parseDouble(String.valueOf(soluong));
+//                                    sum += pValue;
+//                                    holder.ratingbarchukho.setRating((float) sum);
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onCancelled(@NonNull DatabaseError error) {
+//
+//                            }
+//                        });
+//            }
+//        });
         //holder.diachiemail_chu_kho_tv.setText(email);
+
         if (online.equals("true")){
             //chu kho online
             holder.onlineiv.setVisibility(View.VISIBLE);
@@ -86,9 +124,16 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ChiTietChuKhoActivity.class);
-                intent.putExtra("chukhoId", uid);
-                context.startActivity(intent);
+                if (cuahangOpen.equals("false")){
+                    Toast.makeText(context, "Cửa hàng đã đóng cửa", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Intent intent = new Intent(context, ChiTietChuKhoActivity.class);
+                    intent.putExtra("chukhoId", uid);
+                    context.startActivity(intent);
+                    Toast.makeText(context, "Chào mừng bạn đến với hãng kho", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }
@@ -115,6 +160,7 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
             //diachiemail_chu_kho_tv = itemView.findViewById(R.id.diachiemail_chu_kho_tv);
             opentv = itemView.findViewById(R.id.opentv);
             ratingbarchukho = itemView.findViewById(R.id.ratingbarchukho);
+
         }
     }
 }

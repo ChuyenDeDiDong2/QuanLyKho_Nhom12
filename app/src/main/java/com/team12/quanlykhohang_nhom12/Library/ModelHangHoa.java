@@ -1,12 +1,12 @@
 package com.team12.quanlykhohang_nhom12.Library;
 
 public class ModelHangHoa {
-    private String hanghoaId, timstamphh, uid, tensanpham, donvi, hinhanhhang, ghichu, dongia, soluong;
+    private String hanghoaId, timstamphh, uid, tensanpham, donvi, hinhanhhang, ghichu, dongia, soluong, khohangId;
     //private int dongia, soluong;
     public ModelHangHoa() {
     }
 
-    public ModelHangHoa(String hanghoaId, String timstamphh, String uid, String tensanpham, String donvi, String hinhanhhang, String ghichu, String dongia, String soluong) {
+    public ModelHangHoa(String hanghoaId, String timstamphh, String uid, String tensanpham, String donvi, String hinhanhhang, String ghichu, String dongia, String soluong, String khohangId) {
         this.hanghoaId = hanghoaId;
         this.timstamphh = timstamphh;
         this.uid = uid;
@@ -16,6 +16,7 @@ public class ModelHangHoa {
         this.ghichu = ghichu;
         this.dongia = dongia;
         this.soluong = soluong;
+        this.khohangId = khohangId;
     }
 
     public String getHanghoaId() {
@@ -88,5 +89,13 @@ public class ModelHangHoa {
 
     public void setSoluong(String soluong) {
         this.soluong = soluong;
+    }
+
+    public String getKhohangId() {
+        return khohangId;
+    }
+
+    public void setKhohangId(String khohangId) {
+        this.khohangId = khohangId;
     }
 }

@@ -12,31 +12,18 @@
                     android:id="@+id/mn_home"
                     android:icon="@drawable/ic_home_color_32"
                     android:title="@string/home_screen" />
-
+                <item
+                    android:id="@+id/mn_thong_tin_tk"
+                    android:icon="@drawable/ic_people_color_32"
+                    android:title="@string/staft" />
                 <item
                     android:id="@+id/mn_allocation"
                     android:icon="@drawable/ic_sheet_color_32"
                     android:title="@string/allocation" />
-
                 <item
-                    android:id="@+id/mn_staft_manager"
-                    android:icon="@drawable/ic_people_color_32"
-                    android:title="@string/staft" />
-
-                <item
-                    android:id="@+id/mn_department_manager"
+                    android:id="@+id/mn_san_pham"
                     android:icon="@drawable/ic_desktop_color_32"
-                    android:title="@string/department" />
-
-                <item
-                    android:id="@+id/mn_stationary_management"
-                    android:icon="@drawable/ic_printer_color_32"
-                    android:title="@string/stationery" />
-
-                <item
-                    android:id="@+id/mn_role_manager"
-                    android:icon="@drawable/ic_task_color_32"
-                    android:title="@string/role" />
+                    android:title="@string/product" />
 
             </group>
         </menu>
@@ -55,10 +42,7 @@
                 android:icon="@drawable/ic_statistic_color_32"
                 android:title="@string/statistic" />
 
-            <item
-                android:id="@+id/mncost"
-                android:icon="@drawable/ic_book_color_32"
-                android:title="@string/cost" />
+
 
         </menu>
     </item>

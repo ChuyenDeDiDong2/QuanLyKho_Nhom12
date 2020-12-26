@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -28,6 +31,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.team12.quanlykhohang_nhom12.Library.Constants_kho;
 import com.team12.quanlykhohang_nhom12.R;
 
 import java.io.IOException;
@@ -38,6 +42,7 @@ public class DangKyActivity extends AppCompatActivity {
     private ImageView btnBack, ivprofile;
     private EditText txtEmail, txtPhone, txtName, txtPassword, txtRePassword,txtdiachiad;
     private Button btnDangKy;
+    private TextView txttinhthanh;
     private Uri filePath;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
@@ -74,16 +79,36 @@ public class DangKyActivity extends AppCompatActivity {
                 inputData();
             }
         });
+        txttinhthanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //
+                tinhthanhDialog();
+            }
+        });
 
     }
-    private String ten, pass, repass, email, soDT, diachi;
+    private void tinhthanhDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Tỉnh thành")
+                .setItems(Constants_kho.options3, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String tinhthanh = Constants_kho.options3[i];
+                        txttinhthanh.setText(tinhthanh);
+                    }
+                })
+                .show();
+    }
+    private String ten, pass, repass, email, soDT, diachi, tinhthanh;
     private void inputData() {
          ten = txtName.getText().toString().trim();
          pass = txtPassword.getText().toString().trim();
          repass= txtRePassword.getText().toString().trim();
          email= txtEmail .getText().toString().trim();
          soDT = txtPhone.getText().toString().trim();
-         diachi = txtdiachiad.getText().toString().trim();
+        tinhthanh = txttinhthanh.getText().toString().trim();
+        diachi = txttinhthanh.getText().toString().trim();
 
 
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
@@ -100,6 +125,10 @@ public class DangKyActivity extends AppCompatActivity {
         }
         if(TextUtils.isEmpty(diachi)){
             Toast.makeText(this, "Vui lòng nhập địa chỉ của bạn...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(tinhthanh)){
+            Toast.makeText(this, "Vui lòng chọn tỉnh thành/thành phố...", Toast.LENGTH_SHORT).show();
             return;
         }
         if(pass.length()<8){
@@ -143,8 +172,10 @@ public class DangKyActivity extends AppCompatActivity {
             hashMap.put("phone", ""+soDT);
             hashMap.put("email", ""+email);
             hashMap.put("diachi", ""+diachi);
+            hashMap.put("tinhthanh", ""+tinhthanh);
             hashMap.put("accountType", "user");
             hashMap.put("online", "true");
+            hashMap.put("block", "false");
             hashMap.put("noibat", "true");
             hashMap.put("profileImage", "");
 
@@ -186,8 +217,10 @@ public class DangKyActivity extends AppCompatActivity {
                                 hashMap.put("phone", ""+soDT);
                                 hashMap.put("email", ""+email);
                                 hashMap.put("diachi", ""+diachi);
+                                hashMap.put("tinhthanh", ""+tinhthanh);
                                 hashMap.put("accountType", "user");
                                 hashMap.put("online", "true");
+                                hashMap.put("block", "false");
                                 hashMap.put("noibat", "true");
                                 hashMap.put("profileImage", ""+downloadIamgeUri);//url upload image
 
@@ -258,6 +291,7 @@ public class DangKyActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.txtmatkhaudk);
         txtRePassword = findViewById(R.id.txtnhap_lai_mat_khaudk);
         txtdiachiad = findViewById(R.id.txtdiachiad);
+        txttinhthanh = findViewById(R.id.tvTinhThanh);
         btnDangKy = findViewById(R.id.btndangkydk);
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);

@@ -1,21 +1,23 @@
 package com.team12.quanlykhohang_nhom12.Library;
 
 public class ModelUser {
-    private String uid, name,phone ,email, sotaikhoan, tentaikhoan, diachi, accountType, online, open, noibat, profileImage, typingTo;
+    private String uid, name, phone, email, sotaikhoan, tentaikhoan, diachi, tinhthanh, accountType, online, block, open, noibat, profileImage, typingTo;
 
     public ModelUser() {
     }
 
-    public ModelUser(String uid, String name, String phone, String email, String sotaikhoan, String tentaikhoan, String dichi, String accountType, String online, String open, String noibat, String profileImage, String typingTo) {
+    public ModelUser(String uid, String name, String phone, String email, String sotaikhoan, String tentaikhoan, String diachi, String tinhthanh, String accountType, String online, String block, String open, String noibat, String profileImage, String typingTo) {
         this.uid = uid;
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.sotaikhoan = sotaikhoan;
         this.tentaikhoan = tentaikhoan;
-        this.diachi = dichi;
+        this.diachi = diachi;
+        this.tinhthanh = tinhthanh;
         this.accountType = accountType;
         this.online = online;
+        this.block = block;
         this.open = open;
         this.noibat = noibat;
         this.profileImage = profileImage;
@@ -70,12 +72,20 @@ public class ModelUser {
         this.tentaikhoan = tentaikhoan;
     }
 
-    public String getDichi() {
+    public String getDiachi() {
         return diachi;
     }
 
-    public void setDichi(String dichi) {
-        this.diachi = dichi;
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
+    }
+
+    public String getTinhthanh() {
+        return tinhthanh;
+    }
+
+    public void setTinhthanh(String tinhthanh) {
+        this.tinhthanh = tinhthanh;
     }
 
     public String getAccountType() {
@@ -92,6 +102,14 @@ public class ModelUser {
 
     public void setOnline(String online) {
         this.online = online;
+    }
+
+    public String getBlock() {
+        return block;
+    }
+
+    public void setBlock(String block) {
+        this.block = block;
     }
 
     public String getOpen() {

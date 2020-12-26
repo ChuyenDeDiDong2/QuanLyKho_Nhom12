@@ -7,11 +7,12 @@
     android:background="@drawable/background"
     tools:context=".Activity.QuanLyHangHoaActivity">
 
-    <include layout="@layout/toolbar"/>
+    <include layout="@layout/toolbar" />
+
     <LinearLayout
+        style="@style/area_layout_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        style="@style/area_layout_content"
         android:layout_below="@+id/toolbar"
         android:orientation="vertical">
 
@@ -21,8 +22,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -33,43 +34,45 @@
 
                     <!-- Total -->
                     <LinearLayout
-                        android:layout_width="170dp"
-                        android:layout_height="100dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/llvbottom"
                         android:orientation="vertical">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
-                            android:background="@drawable/shape_background_statistical"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape_background_statistical">
 
                             <ImageView
                                 android:layout_width="42dp"
+                                android:layout_height="42dp"
                                 android:layout_marginLeft="5dp"
-                                android:scaleType="centerInside"
                                 android:layout_marginTop="5dp"
-                                android:src="@drawable/ic_calculator_32"
-                                android:layout_height="42dp"/>
+                                android:scaleType="centerInside"
+                                android:src="@drawable/ic_calculator_32" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginBottom="5dp"
-                                android:layout_alignParentBottom="true"
-                                android:textSize="18sp"
+                                android:text="@string/number"
                                 android:textColor="@color/color_purple"
-                                android:text="@string/number"/>
+                                android:textSize="18sp" />
 
                             <TextView
-                                android:id="@+id/tv_fragment_stationary_manager_total_product"
+                                android:id="@+id/tv_total_product"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textSize="18sp"
                                 android:layout_alignParentRight="true"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginRight="5dp"
-                                android:textColor="@color/color_black"/>
+                                android:text="0"
+                                android:textColor="@color/color_black"
+                                android:textSize="18sp" />
 
                         </RelativeLayout>
 
@@ -78,15 +81,16 @@
 
                     <!-- Price -->
                     <LinearLayout
-                        android:layout_width="170dp"
-                        android:layout_height="100dp"
-                        android:layout_alignParentRight="true"
+                        android:id="@+id/llvbottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginBottom="5dp"
                         android:orientation="vertical">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
-                            android:background="@drawable/shape_background_statistical"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape_background_statistical">
 
                             <ImageView
                                 android:layout_width="42dp"
@@ -99,23 +103,23 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
                                 android:layout_marginLeft="5dp"
                                 android:layout_marginBottom="5dp"
-                                android:layout_alignParentBottom="true"
-                                android:textSize="18sp"
+                                android:text="@string/total_price"
                                 android:textColor="@color/color_orange"
-                                android:text="@string/total_price"/>
+                                android:textSize="18sp" />
 
                             <TextView
-                                android:id="@+id/tv_fragment_stationary_manager_total_price"
+                                android:id="@+id/tv_total_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textSize="18sp"
                                 android:layout_alignParentRight="true"
                                 android:layout_marginTop="5dp"
                                 android:layout_marginRight="5dp"
-                                android:textColor="@color/color_black"/>
+                                android:text="0"
+                                android:textColor="@color/color_black"
+                                android:textSize="18sp" />
 
                         </RelativeLayout>
 
@@ -127,36 +131,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
+                    android:text="@string/list"
                     android:textColor="@color/color_black"
-                    android:textSize="24sp"
-                    android:text="@string/list"/>
+                    android:textSize="24sp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv__stationary_manager_list_product"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/row_item_hanghoa"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/row_item_hanghoa" />
 
                     <LinearLayout
                         android:id="@+id/lnl_fragment_stationary_manager_notify_emplty"
                         android:layout_width="match_parent"
                         android:layout_height="300dp"
-                        android:visibility="gone"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
+                            android:text="@string/no_product"
                             android:textColor="@color/color_blue"
-                            android:textSize="22sp"
-                            android:text="@string/no_product"/>
+                            android:textSize="22sp" />
 
                     </LinearLayout>
 
@@ -172,8 +177,8 @@
         android:id="@+id/btnAddStation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@drawable/ic_add_white_24" />
 

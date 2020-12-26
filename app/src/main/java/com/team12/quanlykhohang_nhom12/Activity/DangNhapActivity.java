@@ -124,6 +124,7 @@ public class DangNhapActivity extends AppCompatActivity {
     }
 
     private void checkUserType() {
+        //Check tài khoản đăng nhập:
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
         reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -131,13 +132,31 @@ public class DangNhapActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for (DataSnapshot ds: snapshot.getChildren()){
                                 String accountType =""+ds.child("accountType").getValue();
-                                if(accountType.equals("admin")){
+                                String block =""+ds.child("block").getValue();
+                                if(accountType.equals("admin") && block.equals("false") ){
                                     progressDialog.dismiss();
                                     startActivity(new Intent(DangNhapActivity.this, AdminKhoActivity.class));
                                     finish();
-                                }else {
+                                }else if(accountType.equals("admin") && block.equals("true")){
+                                    progressDialog.dismiss();
+                                    startActivity(new Intent(DangNhapActivity.this, DangNhapActivity.class));
+                                    Toast.makeText(DangNhapActivity.this, "Tài khoản đã bị khóa vui lòng liên hệ 1900 *** ***",Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }
+                                else if(accountType.equals("adminapp")){
+                                    progressDialog.dismiss();
+                                    startActivity(new Intent(DangNhapActivity.this, AdminAppActivity.class));
+                                    finish();
+                                }
+                                else if(accountType.equals("user") && block.equals("false")){
                                     progressDialog.dismiss();
                                     startActivity(new Intent(DangNhapActivity.this, HomeToRentActivity.class));
+                                    finish();
+                                }
+                                else if(accountType.equals("user") && block.equals("true")){
+                                    progressDialog.dismiss();
+                                    startActivity(new Intent(DangNhapActivity.this, DangNhapActivity.class));
+                                    Toast.makeText(DangNhapActivity.this, "Tài khoản đã bị khóa vui lòng liên hệ 1900 *** ***",Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
                             }
@@ -149,6 +168,7 @@ public class DangNhapActivity extends AppCompatActivity {
                     }
                 });
     }
+
 
     private void setCantrol() {
         txtEmail = findViewById(R.id.txtEmail);
