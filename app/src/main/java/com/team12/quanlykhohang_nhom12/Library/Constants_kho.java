@@ -10,6 +10,7 @@ public class Constants_kho {
             "Kho lạnh",
             "Kho thường"
     };
+    
     public static final String[] options4 ={
             "3",
             "6",
