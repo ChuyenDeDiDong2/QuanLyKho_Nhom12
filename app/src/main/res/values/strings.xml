@@ -142,4 +142,6 @@
     <string name="btnLuu">Lưu</string>
     <string name="btnSua">Sửa</string>
     <string name="xoasp">Xóa sp</string>
+    <string name="swonthang">tháng</string>
+    <string name="swoffnam">năm</string>
 </resources>
