@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -88,9 +89,15 @@ public class ChuKhoDCAdapter extends RecyclerView.Adapter<ChuKhoDCAdapter.Holder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ChiTietChuKhoActivity.class);
-                intent.putExtra("chukhoId", uid);
-                context.startActivity(intent);
+                if (cuahangOpen.equals("false")){
+                    Toast.makeText(context, "Cửa hàng đã đóng cửa", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Intent intent = new Intent(context, ChiTietChuKhoActivity.class);
+                    intent.putExtra("chukhoId", uid);
+                    context.startActivity(intent);
+                    Toast.makeText(context, "Chào mừng bạn đến với hãng kho", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
