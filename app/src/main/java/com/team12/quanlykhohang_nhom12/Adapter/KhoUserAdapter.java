@@ -183,7 +183,10 @@ public class KhoUserAdapter extends RecyclerView.Adapter<KhoUserAdapter.HolderKh
         btntaohopdong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.getContext().startActivity(new Intent(context, DangKyTaoHopDongActivity.class));
+                Intent intent = new Intent(context, DangKyTaoHopDongActivity.class);
+                intent.putExtra("hisUid", uid);
+                intent.putExtra("khohangId", id);
+                context.startActivity(intent);
             }
         });
 

@@ -10,6 +10,35 @@ public class Constants_kho {
             "Kho lạnh",
             "Kho thường"
     };
+    public static final String[] options4 ={
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+    };
+    public static final String[] options5 ={
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+    };
     public static final String[] options3 ={
             "An Giang",
             "Bà Rịa - Vũng Tàu",
