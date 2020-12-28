@@ -11,8 +11,10 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,12 +50,14 @@ public class
 DangKyTaoHopDongActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView tvtenuser, tvdientichdathue,tvdientichkho, tvsotienuoctinh,spchonnammuonthue, tvsodienthoaiuser, tvtenkhodangky, tvgiakhothuemotthang, ngaydangkyhopdong, spChonthangmuonthue;
+    TextView tvnoidungdieukhoan;
     String hisUid;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private String khohangId;
     private Button btndangkythue;
     private EditText txtchondientichthue;
+    private Switch swdocdieukhoan;
     String timestamp = ""+System.currentTimeMillis();
     private Locale localeVN = new Locale("vi", "VN");
     private NumberFormat vn = NumberFormat.getInstance(localeVN);
@@ -72,6 +76,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
         setEvent();//tat ca cac su kien
         loadThueinfo();
         loadKhoinfo();
+        loaddieukhoan();
 
     }
 
@@ -82,6 +87,18 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //
                 chonthangDialog();
+            }
+        });
+        //tắt mở điều khoản thuê
+        tvnoidungdieukhoan.setVisibility(View.GONE);
+        swdocdieukhoan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    tvnoidungdieukhoan.setVisibility(View.VISIBLE);
+                }else {
+                    tvnoidungdieukhoan.setVisibility(View.GONE);
+                }
             }
         });
         //su kien chon thang muon thue
@@ -133,6 +150,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
                 .show();
     }
     //tinh tong tien
+    private int thoigianthue;
     private void tinhtongtien(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
         reference.child(hisUid).child("KhoHang").child(khohangId).addValueEventListener(new ValueEventListener() {
@@ -146,6 +164,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
                     int tamp = 0;
                     String thangthue = spChonthangmuonthue.getText().toString().trim();
                     String namthue = spchonnammuonthue.getText().toString().trim();
+                    thoigianthue = Integer.parseInt(thangthue) + (Integer.parseInt(namthue)*12);
                     String dientichthue = txtchondientichthue.getText().toString().trim();
                     if (giamoi.equals("0")){
                         tamp = (((Integer.parseInt(thangthue) * Integer.parseInt(giachothue)) + (Integer.parseInt(giachothue) * Integer.parseInt(namthue) * 12))/(Integer.parseInt(dientichkho))) * (Integer.parseInt(dientichthue));
@@ -193,7 +212,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         //update
                         progressDialog.dismiss();
-                        Toast.makeText(DangKyTaoHopDongActivity.this, "Cập nhật thành công!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DangKyTaoHopDongActivity.this, "",Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -224,6 +243,8 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
         txtchondientichthue = findViewById(R.id.txtchondientichthue);
         tvdientichkho = findViewById(R.id.tvdientichkho);
         btndangkythue = findViewById(R.id.btndangkythue);
+        swdocdieukhoan = findViewById(R.id.swdocdieukhoan);
+        tvnoidungdieukhoan = findViewById(R.id.tvnoidungdieukhoan);
         hisUid = getIntent().getStringExtra("hisUid");
         khohangId = getIntent().getStringExtra("khohangId");
 
@@ -240,6 +261,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
     }
     private String tenThue, soDT, dientichkho;
     private void loadThueinfo(){//moc thoi gian
+
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         cal.setTimeInMillis(Long.parseLong(timestamp));
         String dateTime  = DateFormat.format("dd/MM/yyyy", cal).toString();
@@ -267,7 +289,6 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
     }
     private String tenkho;
     private void loadKhoinfo(){
-
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
         reference.child(hisUid).child("KhoHang").child(khohangId).addValueEventListener(new ValueEventListener() {
             @Override
@@ -299,6 +320,23 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
             }
         });
     }
+    String dieukhoanapp;
+    private void loaddieukhoan(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("DieuKhoan");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                dieukhoanapp = ""+snapshot.child("DieuKhoanApp").getValue();
+                tvnoidungdieukhoan.setText(dieukhoanapp);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
     private void addHopDong() {
         progressDialog.setMessage("Đang thực hiện đăng kí hợp đồng");
         progressDialog.show();
@@ -306,15 +344,19 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
 
         String tongtienthu = tvsotienuoctinh.getText().toString().trim();
         String dientichthue = txtchondientichthue.getText().toString().trim();
+        if(Integer.parseInt(dientichthue) > (Integer.parseInt(dientichkho) - Integer.parseInt(dientichdathue))){
+            Toast.makeText(this, "Diện tích bạn muốn thuê vượt quá diện tích kho còn lại...", Toast.LENGTH_SHORT).show();
+            return;
+        }
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("khohangId", ""+timestamp);
-        hashMap.put("tenthu", ""+ tenThue);
+        hashMap.put("tenthue", ""+ tenThue);
         hashMap.put("tenkho", ""+tenkho);
         hashMap.put("sodienthoai", ""+soDT);
         hashMap.put("tongtien", ""+tongtienthu);
         hashMap.put("dientichthue", ""+dientichthue);
-
-        hashMap.put("hinhanhkho", "");//hinhanh
+        hashMap.put("thoigianthue", ""+thoigianthue);
+        hashMap.put("thongbaothue", hisUid+"true");
         hashMap.put("timstamp", ""+timestamp);//
         hashMap.put("uid", ""+firebaseAuth.getUid());//
         hashMap.put("hisUid", ""+hisUid);//

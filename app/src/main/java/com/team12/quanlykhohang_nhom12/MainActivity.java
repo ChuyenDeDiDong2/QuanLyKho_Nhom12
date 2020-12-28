@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.team12.quanlykhohang_nhom12.Activity.DangNhapActivity;
-import com.team12.quanlykhohang_nhom12.Activity.DanhGia1Activity;
 
 public class MainActivity extends AppCompatActivity implements Animation.AnimationListener {
     private static int SPLASH_TIME = 5000;

@@ -168,6 +168,7 @@ public class ThemKhoActivity extends AppCompatActivity {
             hashMap.put("tenkho", ""+tenkho);
             hashMap.put("diachikhohang", ""+diachikhohang);
             hashMap.put("dientichkho", ""+dientichkho);
+            hashMap.put("dientichdathue", "0");
             hashMap.put("dienthoaikho", ""+dienthoaikho);
             hashMap.put("chieucao", ""+chieucao);
             hashMap.put("giachothue", ""+giachothue);
@@ -221,6 +222,7 @@ public class ThemKhoActivity extends AppCompatActivity {
                                 hashMap.put("tenkho", ""+tenkho);
                                 hashMap.put("diachikhohang", ""+diachikhohang);
                                 hashMap.put("dientichkho", ""+dientichkho);
+                                hashMap.put("dientichdathue", "0");
                                 hashMap.put("dienthoaikho", ""+dienthoaikho);
                                 hashMap.put("chieucao", ""+chieucao);
                                 hashMap.put("giachothue", ""+giachothue);

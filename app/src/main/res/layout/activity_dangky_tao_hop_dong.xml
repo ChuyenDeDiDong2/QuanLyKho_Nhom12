@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,322 +13,361 @@
         android:orientation="vertical">
 
         <include layout="@layout/toolbar" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/TextAppearance.AppCompat.Headline"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Đăng ký thuê kho"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Ngày đăng ký: "
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/ngaydangkyhopdong"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="10dp"
-                    android:text=" 20/12/2020"
-                    android:textColor="@color/black" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Họ tên: "
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/tvtenuser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:text="Họ tên "
-                    android:textColor="@color/black" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Số điện thoại: "
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/tvsodienthoaiuser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:text="Số điện thoại "
-                    android:textColor="@color/black" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Tên kho"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/tvtenkhodk"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:text="Tên kho "
-                    android:textColor="@color/black" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Diện tích kho: "
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/tvdientichkho"
-                    android:layout_toLeftOf="@+id/m200"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="0"
-                    android:textColor="@color/black" />
-                <TextView
-                    android:id="@+id/m200"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="bold"
-                    android:text=" m²"
-                    android:textColor="@color/black" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Diện tích đã thuê"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/tvdientichdathue"
-                    android:layout_toLeftOf="@+id/m20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="0"
-                    android:textColor="@color/black" />
-                <TextView
-                    android:id="@+id/m20"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="bold"
-                    android:text=" m²"
-                    android:textColor="@color/black" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Chọn diện tích muốn thuê"
-                    android:textColor="@color/black" />
-
-                <EditText
-                    android:id="@+id/txtchondientichthue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="number"
-                    android:layout_toLeftOf="@+id/m2"
-                    android:layout_marginTop="5dp"
-                    android:text="1"
-                    android:textStyle="bold"
-                    android:textColor="@color/black" />
-                <TextView
-                    android:id="@+id/m2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:textStyle="bold"
-                    android:text=" m²"
-                    android:textColor="@color/black" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Chọn số tháng thuê: "
-                    android:textColor="@color/black" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/spChonthangmuonthue"
-                    android:src="@drawable/ic_baseline_soxuong_blue" />
-
-                <TextView
-                    android:id="@+id/spChonthangmuonthue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="12"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Chọn số năm thuê: "
-                    android:textColor="@color/black" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/spchonnammuonthue"
-                    android:src="@drawable/ic_baseline_soxuong_blue" />
-
-                <TextView
-                    android:id="@+id/spchonnammuonthue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="0"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="vertical"
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/tvhienthigia"
-                    android:layout_width="wrap_content"
+                    style="@style/TextAppearance.AppCompat.Headline"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Giá thuê kho: "
+                    android:text="Đăng ký thuê kho"
+                    android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tvgiakhothuemotthang"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Ngày đăng ký: "
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/ngaydangkyhopdong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:text=" 20/12/2020"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Họ tên: "
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvtenuser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:text="Họ tên "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Số điện thoại: "
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvsodienthoaiuser"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:text="Số điện thoại "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Tên kho"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvtenkhodk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:text="Tên kho "
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Diện tích kho: "
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvdientichkho"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/m200"
+                        android:text="0"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/m200"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:text=" m²"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Diện tích đã thuê"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvdientichdathue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/m20"
+                        android:text="0"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/m20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:text=" m²"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Chọn diện tích muốn thuê"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/txtchondientichthue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/m2"
+                        android:inputType="number"
+                        android:text="1"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/m2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:text=" m²"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Chọn số tháng thuê: "
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/spChonthangmuonthue"
+                        android:src="@drawable/ic_baseline_soxuong_blue" />
+
+                    <TextView
+                        android:id="@+id/spChonthangmuonthue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="12"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Chọn số năm thuê: "
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/spchonnammuonthue"
+                        android:src="@drawable/ic_baseline_soxuong_blue" />
+
+                    <TextView
+                        android:id="@+id/spchonnammuonthue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:text="900.000 vnd"
-                    android:textColor="@color/black" />
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/tvhienthigia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Giá thuê kho: "
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvgiakhothuemotthang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:text="900.000 vnd"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvhienthigia"
+                        android:layout_marginTop="5dp"
+                        android:text="Số tiền ước tính: "
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvsotienuoctinh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvgiakhothuemotthang"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/vnd"
+                        android:text="900.000"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/vnd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvgiakhothuemotthang"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5dp"
+                        android:text=" vnd"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Đọc điều khoản: "
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <Switch
+                        android:id="@+id/swdocdieukhoan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true" />
+                </RelativeLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tvnoidungdieukhoan"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tvhienthigia"
                     android:layout_marginTop="5dp"
-                    android:text="Số tiền ước tính: "
-                    android:textAllCaps="true"
-                    android:textColor="@color/black"
+                    android:text="cbx"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/btndangkythue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/shape_background_button_login"
+                    android:text="Gửi"
+                    android:textColor="#ffffff"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvsotienuoctinh"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/vnd"
-                    android:layout_below="@+id/tvgiakhothuemotthang"
-                    android:layout_marginTop="5dp"
-                    android:text="900.000"
-                    android:textColor="@color/black" />
-                <TextView
-                    android:id="@+id/vnd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tvgiakhothuemotthang"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
-                    android:text=" vnd"
-                    android:textColor="@color/black" />
-            </RelativeLayout>
-
-            <Button
-                android:id="@+id/btndangkythue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/shape_background_button_login"
-                android:text="Gửi"
-                android:textColor="#ffffff"
-                android:textStyle="bold" />
-        </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
-</ScrollView>
+</RelativeLayout>
