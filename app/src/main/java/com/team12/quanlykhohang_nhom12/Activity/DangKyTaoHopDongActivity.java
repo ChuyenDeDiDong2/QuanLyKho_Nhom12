@@ -151,6 +151,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
     }
     //tinh tong tien
     private int thoigianthue;
+    private int tamp = 0;
     private void tinhtongtien(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
         reference.child(hisUid).child("KhoHang").child(khohangId).addValueEventListener(new ValueEventListener() {
@@ -161,7 +162,6 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
                     String giachothue = ""+snapshot.child("giachothue").getValue();
                     String giamoi = ""+snapshot.child("giamoi").getValue();
 
-                    int tamp = 0;
                     String thangthue = spChonthangmuonthue.getText().toString().trim();
                     String namthue = spchonnammuonthue.getText().toString().trim();
                     thoigianthue = Integer.parseInt(thangthue) + (Integer.parseInt(namthue)*12);
@@ -349,7 +349,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
         progressDialog.show();
         String timestamp = ""+System.currentTimeMillis();
 
-        String tongtienthu = tvsotienuoctinh.getText().toString().trim();
+        //String tongtienthu = tvsotienuoctinh.getText().toString().trim();
         String dientichthue = txtchondientichthue.getText().toString().trim();
         if(Integer.parseInt(dientichthue) > (Integer.parseInt(dientichkho) - Integer.parseInt(dientichdathue))){
             Toast.makeText(this, "Diện tích bạn muốn thuê vượt quá diện tích kho còn lại...", Toast.LENGTH_SHORT).show();
@@ -362,7 +362,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
         hashMap.put("diachi", ""+diachi);
         hashMap.put("email", ""+email);
         hashMap.put("sodienthoai", ""+soDT);
-        hashMap.put("tongtien", ""+tongtienthu);
+        hashMap.put("tongtien", ""+tamp);
         hashMap.put("dientichthue", ""+dientichthue);
         hashMap.put("thoigianthue", ""+thoigianthue);
         hashMap.put("thongbaothue", hisUid+"true");

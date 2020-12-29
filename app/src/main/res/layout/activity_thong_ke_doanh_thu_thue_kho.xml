@@ -31,52 +31,6 @@
                     android:layout_marginTop="25dp"
                     android:orientation="horizontal">
 
-                    <!-- Total -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_below="@+id/llvbottom"
-                        android:orientation="vertical">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_background_statistical">
-
-                            <ImageView
-                                android:layout_width="42dp"
-                                android:layout_height="42dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="5dp"
-                                android:scaleType="centerInside"
-                                android:src="@drawable/ic_calculator_32" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentBottom="true"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginBottom="5dp"
-                                android:text="@string/number"
-                                android:textColor="@color/color_purple"
-                                android:textSize="18sp" />
-
-                            <TextView
-                                android:id="@+id/tv_total_product"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginRight="5dp"
-                                android:text="0"
-                                android:textColor="@color/color_black"
-                                android:textSize="18sp" />
-
-                        </RelativeLayout>
-
-
-                    </LinearLayout>
 
                     <!-- Price -->
                     <LinearLayout
@@ -124,6 +78,53 @@
 
 
                     </LinearLayout>
+
+                    <!-- Total -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/llvbottom"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/shape_background_statistical">
+
+                            <ImageView
+                                android:layout_width="42dp"
+                                android:layout_height="42dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginTop="5dp"
+                                android:scaleType="centerInside"
+                                android:src="@drawable/ic_calculator_32" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:text="@string/dientichdathue"
+                                android:textColor="@color/color_purple"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                android:id="@+id/tv_dientichdathue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginRight="5dp"
+                                android:text="0"
+                                android:textColor="@color/color_black"
+                                android:textSize="18sp" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
                 </RelativeLayout>
 
                 <TextView
@@ -140,11 +141,11 @@
                     android:layout_marginTop="10dp">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv__stationary_manager_list_product"
+                        android:id="@+id/rcdanhsachdanghopdong"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        tools:listitem="@layout/row_item_hanghoa" />
+                        tools:listitem="@layout/row_item_hopdong" />
 
                     <LinearLayout
                         android:id="@+id/lnl_fragment_stationary_manager_notify_emplty"
