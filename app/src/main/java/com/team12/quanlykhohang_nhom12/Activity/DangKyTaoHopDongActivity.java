@@ -50,7 +50,7 @@ public class
 DangKyTaoHopDongActivity extends AppCompatActivity {
     Toolbar toolbar;
     TextView tvtenuser, tvdientichdathue,tvdientichkho, tvsotienuoctinh,spchonnammuonthue, tvsodienthoaiuser, tvtenkhodangky, tvgiakhothuemotthang, ngaydangkyhopdong, spChonthangmuonthue;
-    TextView tvnoidungdieukhoan;
+    TextView tvnoidungdieukhoan, tvemailuser, tvdiachiuser;
     String hisUid;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
@@ -244,6 +244,8 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
         tvdientichkho = findViewById(R.id.tvdientichkho);
         btndangkythue = findViewById(R.id.btndangkythue);
         swdocdieukhoan = findViewById(R.id.swdocdieukhoan);
+        tvdiachiuser = findViewById(R.id.tvdiachiuser);
+        tvemailuser = findViewById(R.id.tvemailuser);
         tvnoidungdieukhoan = findViewById(R.id.tvnoidungdieukhoan);
         hisUid = getIntent().getStringExtra("hisUid");
         khohangId = getIntent().getStringExtra("khohangId");
@@ -259,7 +261,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    private String tenThue, soDT, dientichkho;
+    private String tenThue, soDT, dientichkho, diachi, email;
     private void loadThueinfo(){//moc thoi gian
 
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
@@ -272,8 +274,13 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
                 for (DataSnapshot ds: snapshot.getChildren()){
                     tenThue = ""+snapshot.child("name").getValue();
                     soDT = ""+snapshot.child("phone").getValue();
+                    diachi = ""+snapshot.child("diachi").getValue();
+                    soDT = ""+snapshot.child("phone").getValue();
+                    email = ""+snapshot.child("email").getValue();
 
                     tvtenuser.setText(tenThue);
+                    tvdiachiuser.setText(diachi);
+                    tvemailuser.setText(email);
                     tvsodienthoaiuser.setText(soDT);
 
                     ngaydangkyhopdong.setText(dateTime);
@@ -349,9 +356,11 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
             return;
         }
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("khohangId", ""+timestamp);
+        hashMap.put("khohangId", ""+khohangId);
         hashMap.put("tenthue", ""+ tenThue);
         hashMap.put("tenkho", ""+tenkho);
+        hashMap.put("diachi", ""+diachi);
+        hashMap.put("email", ""+email);
         hashMap.put("sodienthoai", ""+soDT);
         hashMap.put("tongtien", ""+tongtienthu);
         hashMap.put("dientichthue", ""+dientichthue);

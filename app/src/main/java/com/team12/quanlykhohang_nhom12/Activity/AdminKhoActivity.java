@@ -191,6 +191,10 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
             case R.id.mn_danh_sach_kho:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PhongBanFragment()).commit();
                 break;
+            case R.id.mn_danhsachhopdong:
+                Intent intent = new Intent(getApplicationContext(), DanhSachHopDongActivity.class);
+                startActivity(intent);
+                break;
             case R.id.mn_thong_tin_tai_khoan:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TaiKhoanKhoFragment()).commit();
                 break;

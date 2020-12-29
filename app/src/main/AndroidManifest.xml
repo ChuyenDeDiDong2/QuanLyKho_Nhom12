@@ -12,7 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.DanhSachDangKyActivity"></activity>
+        <activity android:name=".Activity.ChiTietHopDongActivity"></activity>
+        <activity android:name=".Activity.DanhSachHopDongActivity" />
+        <activity android:name=".Activity.ThongKeDoanhThuThueKhoActivity" />
+        <activity android:name=".Activity.DanhSachDangKyActivity" />
         <activity android:name=".Activity.DanhGia1Activity" />
         <activity android:name=".Activity.SuaSanPhamActivity" />
         <activity android:name=".Activity.ThemSliderActivity" />

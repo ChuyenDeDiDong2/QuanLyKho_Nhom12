@@ -1,14 +1,16 @@
 package com.team12.quanlykhohang_nhom12.Library;
 
 public class ModelDangKyThue {
-    private String khohangId, tenthue, tenkho,sodienthoai, tongtien, dientichthue, thoigianthue, thongbaothue, timstamp, uid, hisUid;
+    private String khohangId, tenthue,diachi, email, tenkho,sodienthoai, tongtien, dientichthue, thoigianthue, thongbaothue, timstamp, uid, hisUid;
 
     public ModelDangKyThue() {
     }
 
-    public ModelDangKyThue(String khohangId, String tenthue, String tenkho, String sodienthoai, String tongtien, String dientichthue, String thoigianthue, String thongbaothue, String timstamp, String uid, String hisUid) {
+    public ModelDangKyThue(String khohangId, String tenthue, String diachi, String email, String tenkho, String sodienthoai, String tongtien, String dientichthue, String thoigianthue, String thongbaothue, String timstamp, String uid, String hisUid) {
         this.khohangId = khohangId;
         this.tenthue = tenthue;
+        this.diachi = diachi;
+        this.email = email;
         this.tenkho = tenkho;
         this.sodienthoai = sodienthoai;
         this.tongtien = tongtien;
@@ -34,6 +36,22 @@ public class ModelDangKyThue {
 
     public void setTenthue(String tenthue) {
         this.tenthue = tenthue;
+    }
+
+    public String getDiachi() {
+        return diachi;
+    }
+
+    public void setDiachi(String diachi) {
+        this.diachi = diachi;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTenkho() {
