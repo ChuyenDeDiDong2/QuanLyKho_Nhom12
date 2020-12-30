@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".Fragment.ThongKeTungKhoFragment"></activity>
+=======
+        <activity android:name=".Fragment.DanhSachToCaoFragment"></activity>
+>>>>>>> e2c4f9edfdf1afec505833fb801f62f574825e79
         <activity android:name=".Activity.ChiTietHopDongActivity" />
         <activity android:name=".Activity.DanhSachHopDongActivity" />
         <activity android:name=".Activity.ThongKeDoanhThuThueKhoActivity" />
