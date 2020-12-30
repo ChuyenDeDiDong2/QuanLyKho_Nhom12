@@ -120,6 +120,8 @@ public class DanhSachToCaoAdapter extends RecyclerView.Adapter<DanhSachToCaoAdap
         bottomSheetDialog.setContentView(view);
 
         TextView  tvngaythang = view.findViewById(R.id.tvngaythang);
+
+        
         TextView  tvtennguoitocao = view.findViewById(R.id.tvtennguoitocao);
         TextView  tvtenhangbitocao = view.findViewById(R.id.tvtenhangbitocao);
         TextView  tvnoidung = view.findViewById(R.id.tvnoidung);
