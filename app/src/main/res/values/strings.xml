@@ -139,4 +139,6 @@
     <string name="xoasp">Xóa</string>
     <string name="danhsachhopdong">Danh sách hợp đồng</string>
     <string name="dientichdathue">Tổng diện tích đã thuê</string>
+    <string name="nd_tocao">Nhập nội dung</string>
+    <string name="btn_gui">Gửi</string>
 </resources>

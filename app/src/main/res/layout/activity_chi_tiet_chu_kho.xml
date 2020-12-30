@@ -51,22 +51,12 @@
                 android:layout_below="@+id/phonechukho_ct"
                 android:layout_marginStart="3dp"/>
             <TextView
-                android:id="@+id/mocuatv_ct"
+                android:id="@+id/tocao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mở cửa"
-                android:textColor="@color/white"
-                android:padding="5dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="3dp"/>
-            <TextView
-                android:id="@+id/delivereFeetv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delivery Fee"
+                android:text="Tố cáo"
                 android:textColor="@color/white"
                 android:layout_alignParentEnd="true"
-                android:layout_below="@+id/mocuatv_ct"
                 android:layout_marginTop="3dp"
                 android:layout_marginStart="3dp"/>
             <TextView
@@ -84,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:text="Đánh giá"
                 android:textColor="@color/white"
-                android:layout_below="@+id/delivereFeetv"
+                android:layout_below="@+id/tocao"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="3dp"/>
