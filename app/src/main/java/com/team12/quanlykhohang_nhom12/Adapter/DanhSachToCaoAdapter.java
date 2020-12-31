@@ -109,6 +109,29 @@ public class DanhSachToCaoAdapter extends RecyclerView.Adapter<DanhSachToCaoAdap
                         });
             }
         });
+        holder.btnxoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //show delete  confire dialog
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Xóa")
+                        .setMessage("Bạn có chắc muốn xóa tin tố cáo "+ tennguoigui +"?")
+                        .setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //xóa
+                                xoatocao(uid);
+                            }
+                        })
+                        .setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .show();
+            }
+        });
     }
 
 
@@ -154,7 +177,27 @@ public class DanhSachToCaoAdapter extends RecyclerView.Adapter<DanhSachToCaoAdap
         });
         //show diglog
         bottomSheetDialog.show();
+        //chuc nang xóa
 
+    }
+
+    private void xoatocao(String uid) {
+        //xóa
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_ToCao");
+        reference.child(uid).removeValue()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(context, "Xóa tin tố cáo thành công!", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     @Override
@@ -166,10 +209,12 @@ public class DanhSachToCaoAdapter extends RecyclerView.Adapter<DanhSachToCaoAdap
     class HolderChuKho extends RecyclerView.ViewHolder{
         private TextView tvtenguoitocao,tvhangbitocao ;
         private CardView cvchukhodc;
+        private ImageButton btnxoa;
 
         public HolderChuKho(@NonNull View itemView) {
             super(itemView);
 
+             btnxoa = itemView.findViewById(R.id.btnxoatocao);
             cvchukhodc = itemView.findViewById(R.id.cvchukhodc);
             tvtenguoitocao = itemView.findViewById(R.id.tvtenguoitocao);
             tvhangbitocao = itemView.findViewById(R.id.tvhangbitocao);

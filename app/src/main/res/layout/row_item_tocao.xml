@@ -42,17 +42,20 @@
                 android:text="..."
                 android:textColor="@color/black" />
         </LinearLayout>
-        <RelativeLayout
+        <LinearLayout
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <ImageView
-                android:src="@drawable/ic_baseline_soxuong_blue"
+            <ImageButton
+                android:id="@+id/btnxoatocao"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@null"
+                android:src="@drawable/ic_remove_color_24" />
 
-        </RelativeLayout>
+        </LinearLayout>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
