@@ -1,18 +1,19 @@
 package com.team12.quanlykhohang_nhom12.Library;
 
 public class ModelKhoHang {
-    private String khohangId, tenkho, dientichkho,dienthoaikho, diachikhohang;
-    private String diachi, giachothue, tinhtrangkho,ghichukhho,giamgiaAvailable,giamoi, phantramkm, hinhanhkho, timstamp, uid;
+    private String khohangId, tenkho, dientichkho, dienthoaikho, diachikhohang, chieucao;
+    private String diachi, giachothue, tinhtrangkho, ghichukhho, giamgiaAvailable, giamoi, phantramkm, hinhanhkho, timstamp, uid;
 
     public ModelKhoHang() {
     }
 
-    public ModelKhoHang(String khohangId, String tenkho, String dientichkho, String dienthoaikho, String diachikhohang, String diachi, String giachothue, String tinhtrangkho, String ghichukhho, String giamgiaAvailable, String giamoi, String phantramkm, String hinhanhkho, String timstamp, String uid) {
+    public ModelKhoHang(String khohangId, String tenkho, String dientichkho, String dienthoaikho, String diachikhohang, String chieucao, String diachi, String giachothue, String tinhtrangkho, String ghichukhho, String giamgiaAvailable, String giamoi, String phantramkm, String hinhanhkho, String timstamp, String uid) {
         this.khohangId = khohangId;
         this.tenkho = tenkho;
         this.dientichkho = dientichkho;
         this.dienthoaikho = dienthoaikho;
         this.diachikhohang = diachikhohang;
+        this.chieucao = chieucao;
         this.diachi = diachi;
         this.giachothue = giachothue;
         this.tinhtrangkho = tinhtrangkho;
@@ -63,6 +64,14 @@ public class ModelKhoHang {
 
     public void setDiachikhohang(String diachikhohang) {
         this.diachikhohang = diachikhohang;
+    }
+
+    public String getChieucao() {
+        return chieucao;
+    }
+
+    public void setChieucao(String chieucao) {
+        this.chieucao = chieucao;
     }
 
     public String getDiachi() {

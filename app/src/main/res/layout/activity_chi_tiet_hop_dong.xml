@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ChiTietHopDongActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_margin="5dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!--tieu de-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="HỢP ĐỒNG THUÊ KHO XƯỞNG"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvmasohopdong"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Mã hợp đồng: "
+                    android:textColor="@color/black" />
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/ngaythangleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Ngày/tháng/năm:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvngaythangright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/ngaythangleft"
+
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tenkholeft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Tên kho:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvtenkhoright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/tenkholeft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/dientichthueleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Diện tích thuê:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvdientichthueright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/dientichthueleft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/thoigianthueleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Thời gian thuê:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvthoigianthueright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/thoigianthueleft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/sotienthueleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Số tiền:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvsotienthueright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/sotienthueleft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+
+                <!---->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chúng tôi gồm có: "
+                    android:textColor="@color/black" />
+                <!---->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:text="BÊN CHO THUÊ (bên A)"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tendanhnghiepleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Tên doanh nghiệp:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvtendanhnghiepright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/tendanhnghiepleft"
+
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/diachileft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Địa chỉ:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvdiachiright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/diachileft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/dienthoaileft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Điện thoại:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvdienthoairight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/dienthoaileft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/emailleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Email:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvemailright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/emailleft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/giayphepsoleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Giấy phép số:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvgiayphepsoright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/giayphepsoleft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/masothueleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Mã số thuế:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvmasothueright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/masothueleft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/doct"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Do:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvtendoanhnghiep"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/doct"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toEndOf="@+id/tvtendoanhnghiep"
+                        android:text="là chủ sở hữu của kho"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:text="BÊN THUÊ (bên B)"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tennguoithueleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Tên người thuê:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvtennguoithueright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/tennguoithueleft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/diachithueleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Địa chỉ:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvdiachithueright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/diachithueleft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/dienthoaithueleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Điện thoại:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvdienthoaithueright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/dienthoaithueleft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/emailthueleft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:text="Email:"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvemailthueright"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toEndOf="@+id/emailthueleft"
+                        android:text=".............."
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+                <!---->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hai bên thỏa thuận ký hợp đồng với nội dụng sau:"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvnoidungdieukhoanhopdong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="................................."
+                    android:textColor="@color/black" />
+                <!--ky ten-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</RelativeLayout>

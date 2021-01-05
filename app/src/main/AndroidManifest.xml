@@ -13,15 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".Activity.DanhGia1Activity"></activity>
-
-        <activity android:name=".Activity.SuaSanPhamActivity"></activity>
+        <activity android:name=".Fragment.ThongKeTungKhoFragment"></activity>
+        <activity android:name=".Fragment.DanhSachToCaoFragment"></activity>
+        <activity android:name=".Activity.ChiTietHopDongActivity" />
+        <activity android:name=".Activity.DanhSachHopDongActivity" />
+        <activity android:name=".Activity.ThongKeDoanhThuThueKhoActivity" />
+        <activity android:name=".Activity.DanhSachDangKyActivity" />
+        <activity android:name=".Activity.DanhGia1Activity" />
+        <activity android:name=".Activity.SuaSanPhamActivity" />
         <activity android:name=".Activity.ThemSliderActivity" />
         <activity android:name=".Fragment.SliderFragment" />
         <activity android:name=".Fragment.DanhSachHangKhoFragment" />
         <activity android:name=".Fragment.HomeAdminAppFragment" />
         <activity android:name=".Activity.AdminAppActivity" />
-
         <activity android:name=".Activity.QuanLyHangHoaActivity" />
         <activity android:name=".Fragment.MessagerFragment" />
         <activity android:name=".Activity.DangKyTaoHopDongActivity" />

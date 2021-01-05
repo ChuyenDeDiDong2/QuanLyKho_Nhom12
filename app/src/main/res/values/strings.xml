@@ -136,12 +136,11 @@
     <string name="trangchu">Trang chủ</string>
     <string name="tinnhan">Tin nhắn</string>
     <string name="dongmocua">Đóng/Mở cửa</string>
-
+    <string name="xoasp">Xóa</string>
     //Nguyen Gia Huy
     <string name="lblHopDong">Mẫu điều khoản</string>
     <string name="btnLuu">Lưu</string>
     <string name="btnSua">Sửa</string>
-    <string name="xoasp">Xóa sp</string>
     <string name="swonthang">tháng</string>
     <string name="swoffnam">năm</string>
 </resources>

@@ -7,9 +7,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -21,6 +24,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,17 +35,19 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Adapter.KhoUserAdapter;
 import com.team12.quanlykhohang_nhom12.Library.Constants_kho;
+import com.team12.quanlykhohang_nhom12.Library.ModelDangKyThue;
 import com.team12.quanlykhohang_nhom12.Library.ModelKhoHang;
 import com.team12.quanlykhohang_nhom12.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ChiTietChuKhoActivity extends AppCompatActivity {
     private ImageView chuhkhoiv;
-    private TextView tenchukhotv, sodienthoaitv, emailchukhotv, mocuatv, delivereFeetv, diachichukhotv, tvkhohang_filter, tvDanhGia;
+    private TextView tenchukhotv, sodienthoaitv, emailchukhotv, tocao, diachichukhotv, tvkhohang_filter, tvDanhGia;
     private ImageButton btncall, btnmessenger, btnmap, btnFilterKhoHang;
     private RecyclerView recdanhsach_kho;
-    private EditText txttim_kiem_chukho;
+    private EditText txttim_kiem_chukho,edt_dialog_nd_to_cao;
 
     Toolbar toolbar;
     private FirebaseAuth firebaseAuth;
@@ -72,6 +79,9 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
 
        
     }
+
+    String name, myUid;
+
     private void loadMyinfo() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
         reference.orderByChild("uid").equalTo(firebaseAuth.getUid())
@@ -79,11 +89,12 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         for (DataSnapshot ds: snapshot.getChildren()){
-                            String name =""+ds.child("name").getValue();
+                             name =""+ds.child("name").getValue();
                             String email =""+ds.child("email").getValue();
                             String phone =""+ds.child("phone").getValue();
                             String profileImage =""+ds.child("profileImage").getValue();
                             String accountType =""+ds.child("accountType").getValue();
+                            myUid  =""+ds.child("uid").getValue();
 
                         }
                     }
@@ -105,21 +116,14 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
                 email = ""+snapshot.child("email").getValue();
                 phone = ""+snapshot.child("phone").getValue();
                 chukhodiachi = ""+snapshot.child("diachi").getValue();
-                //String deliveryfee= ""+snapshot.child("deliveryfee");
                 String profileImage= ""+snapshot.child("profileImage");
                 String open = ""+snapshot.child("open");
 
                 //setdata
                 tenchukhotv.setText(tentaikhoan);
                 emailchukhotv.setText(email);
-                //delivereFeetv.setText("Delivery: $"+deliveryfee);
                 diachichukhotv.setText(chukhodiachi);
                 sodienthoaitv.setText(phone);
-                if (snapshot.equals("true")){
-                    mocuatv.setText("Open");
-                }else {
-                    mocuatv.setText("Closed");
-                }
                 try {
                     Picasso.get().load(profileImage).placeholder(R.drawable.ic_people_24).into(chuhkhoiv);
                 }
@@ -160,7 +164,6 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
 
 
@@ -241,8 +244,73 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
             }
         });
 
-
+        tocao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogtocao();
+            }
+        });
     }
+
+    //gửi tố cáo
+    String noidung;
+    private void dialogtocao(){
+        AlertDialog.Builder builderadd = new AlertDialog.Builder(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_tocao, null);
+        builderadd.setView(view);
+        Button btn_dialog_gui_to_cao = view.findViewById(R.id.btn_dialog_gui_to_cao);
+
+        EditText edt_dialog_nd_to_cao = view.findViewById(R.id.edt_dialog_nd_to_cao);
+        btn_dialog_gui_to_cao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ProgressDialog progressDialog = new ProgressDialog(ChiTietChuKhoActivity.this);
+                progressDialog.setMessage("Đang thực hiện gửi tố cáo");
+                progressDialog.show();
+                String timestamp = ""+System.currentTimeMillis();
+                noidung= edt_dialog_nd_to_cao.getText().toString().trim();
+                if(TextUtils.isEmpty(noidung)){
+                    Toast.makeText(ChiTietChuKhoActivity.this, "Vui lòng nhập nội dung...", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("noidungtocao", "" + noidung);
+                hashMap.put("tennguoigui", "" + name);
+                hashMap.put("hangkho", "" + tentaikhoan);
+                hashMap.put("timestamp", ""+ timestamp);
+                hashMap.put("hisUid", "" + chukhoId);
+                hashMap.put("myUid", "" + myUid);
+                hashMap.put("uid", ""+ timestamp);
+                hashMap.put("tocaochuadoc", "true");
+
+
+                //add to db
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_ToCao");
+                reference.child(timestamp).setValue(hashMap)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                //
+                                progressDialog.dismiss();
+                                Toast.makeText(ChiTietChuKhoActivity.this, " Gửi thành công...", Toast.LENGTH_SHORT).show();
+                                //clearData();
+                            }
+                        })
+
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                //
+                                progressDialog.dismiss();
+                                Toast.makeText(ChiTietChuKhoActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+            }
+        });
+        builderadd.show();
+    }
+
 
     private void openMap() {
         String diachi  ="https://maps.google.com/maps?saddr="+diachichukhotv+"&daddr";
@@ -261,8 +329,7 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
         tenchukhotv = findViewById(R.id.tenchukho_ct);
         sodienthoaitv = findViewById(R.id.phonechukho_ct);
         emailchukhotv = findViewById(R.id.emailchukho_ct);
-        mocuatv = findViewById(R.id.mocuatv_ct);
-        //delivereFeetv = findViewById(R.id.delivereFeetv);
+        tocao = findViewById(R.id.tocao);
         diachichukhotv = findViewById(R.id.diachichukhotv_ct);
         btncall = findViewById(R.id.goidienbtn);
         btnmessenger = findViewById(R.id.nhantinbtn);
@@ -276,6 +343,7 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Vui lòng đợi");
         progressDialog.setCanceledOnTouchOutside(false);
+
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

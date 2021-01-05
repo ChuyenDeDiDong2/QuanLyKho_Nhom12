@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.squareup.picasso.Picasso;
-import com.team12.quanlykhohang_nhom12.Activity.DangKyChoThueKhoActivity;
 import com.team12.quanlykhohang_nhom12.Activity.NhanTinActivity;
 import com.team12.quanlykhohang_nhom12.Activity.DangKyTaoHopDongActivity;
 import com.team12.quanlykhohang_nhom12.Filter.FilterKhoHangUser;
@@ -184,11 +183,10 @@ public class KhoUserAdapter extends RecyclerView.Adapter<KhoUserAdapter.HolderKh
         btntaohopdong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //view.getContext().startActivity(new Intent(context, DangKyTaoHopDongActivity.class));
                 Intent intent = new Intent(context, DangKyTaoHopDongActivity.class);
-                intent.putExtra("khohangId",id );
-                intent.putExtra("hisUid",uid );
-                view.getContext().startActivity(intent);
+                intent.putExtra("hisUid", uid);
+                intent.putExtra("khohangId", id);
+                context.startActivity(intent);
             }
         });
 

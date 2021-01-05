@@ -42,7 +42,7 @@ import java.util.HashMap;
 public class ThemKhoActivity extends AppCompatActivity {
     Toolbar toolbar;
     private ImageView ivhinhanhkho;
-    private EditText txtten_kho_hang,txtdiachi_kho_hang, txtdien_tich_kho, txtsodt_kho, txtgiacho_thue, txtghi_chu_kho, txtgia_moi_kho, txtgiamphantram_10;
+    private EditText txtten_kho_hang, txtchieucao, txtdiachi_kho_hang, txtdien_tich_kho, txtsodt_kho, txtgiacho_thue, txtghi_chu_kho, txtgia_moi_kho, txtgiamphantram_10;
     private TextView tvtinh_trang_kho;
     private SwitchCompat swgiamgia;
     private Button btnThem_kho_hang;
@@ -98,12 +98,13 @@ public class ThemKhoActivity extends AppCompatActivity {
         });
     }
 
-    private String tenkho,diachikhohang, dientichkho, dienthoaikho, giachothue, tinhtrangkho, ghichu, giamoi, khuyenmaiphantram;
+    private String tenkho,diachikhohang, dientichkho, chieucao, dienthoaikho, giachothue, tinhtrangkho, ghichu, giamoi, khuyenmaiphantram;
     private boolean giamgiaAvailable  =false;
     private void inputData() {
         tenkho = txtten_kho_hang.getText().toString().trim();
         diachikhohang = txtdiachi_kho_hang.getText().toString().trim();
         dientichkho = txtdien_tich_kho.getText().toString().trim();
+        chieucao = txtchieucao.getText().toString().trim();
         dienthoaikho = txtsodt_kho.getText().toString().trim();
         giachothue = txtgiacho_thue.getText().toString().trim();
         tinhtrangkho = tvtinh_trang_kho.getText().toString().trim();
@@ -121,6 +122,10 @@ public class ThemKhoActivity extends AppCompatActivity {
         }
         if(TextUtils.isEmpty(dientichkho)){
             Toast.makeText(this, "Vui lòng nhập diện tích kho...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(chieucao)){
+            Toast.makeText(this, "Vui lòng nhập chiều cao kho...", Toast.LENGTH_SHORT).show();
             return;
         }
         if(TextUtils.isEmpty(dienthoaikho)){
@@ -163,7 +168,9 @@ public class ThemKhoActivity extends AppCompatActivity {
             hashMap.put("tenkho", ""+tenkho);
             hashMap.put("diachikhohang", ""+diachikhohang);
             hashMap.put("dientichkho", ""+dientichkho);
+            hashMap.put("dientichdathue", "0");
             hashMap.put("dienthoaikho", ""+dienthoaikho);
+            hashMap.put("chieucao", ""+chieucao);
             hashMap.put("giachothue", ""+giachothue);
             hashMap.put("tinhtrangkho", ""+tinhtrangkho);
             hashMap.put("ghichukhho", ""+ghichu);
@@ -215,7 +222,9 @@ public class ThemKhoActivity extends AppCompatActivity {
                                 hashMap.put("tenkho", ""+tenkho);
                                 hashMap.put("diachikhohang", ""+diachikhohang);
                                 hashMap.put("dientichkho", ""+dientichkho);
+                                hashMap.put("dientichdathue", "0");
                                 hashMap.put("dienthoaikho", ""+dienthoaikho);
+                                hashMap.put("chieucao", ""+chieucao);
                                 hashMap.put("giachothue", ""+giachothue);
                                 hashMap.put("tinhtrangkho", ""+tinhtrangkho);
                                 hashMap.put("ghichukhho", ""+ghichu);
@@ -266,6 +275,7 @@ public class ThemKhoActivity extends AppCompatActivity {
         txtten_kho_hang.setText("");
         txtdiachi_kho_hang.setText("");
         txtdien_tich_kho.setText("");
+        txtchieucao.setText("");
         txtsodt_kho.setText("");
         txtghi_chu_kho.setText("");
         txtgia_moi_kho.setText("");
@@ -326,6 +336,7 @@ public class ThemKhoActivity extends AppCompatActivity {
         txtten_kho_hang = findViewById(R.id.txtten_kho_khang);
         txtdiachi_kho_hang = findViewById(R.id.txtdiachi_kho_hang);
         txtdien_tich_kho = findViewById(R.id.txtdien_tich);
+        txtchieucao = findViewById(R.id.txtchieucao);
         txtsodt_kho = findViewById(R.id.txtso_dien_thoai_kho);
         txtghi_chu_kho = findViewById(R.id.txtghi_chu);
         txtgia_moi_kho = findViewById(R.id.txtgia_moi);

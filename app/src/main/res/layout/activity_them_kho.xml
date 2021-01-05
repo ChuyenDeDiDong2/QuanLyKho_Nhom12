@@ -119,7 +119,35 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionDone"
-                            android:inputType="text"
+                            android:inputType="number"
+                            android:maxLines="1"
+                            android:drawableLeft="@drawable/ic_people_24"
+                            android:drawablePadding="3dp"
+                            android:background="@drawable/state_background_text_box_white"
+                            android:hint="Nhập diện tích kho"/>
+
+                    </LinearLayout>
+                    <!-- chieu cao -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chiều cao kho"
+                            android:layout_marginBottom="5dp"
+                            android:textColor="@color/color_black"
+                            android:textSize="20sp"/>
+
+                        <EditText
+                            android:id="@+id/txtchieucao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
                             android:maxLines="1"
                             android:drawableLeft="@drawable/ic_people_24"
                             android:drawablePadding="3dp"

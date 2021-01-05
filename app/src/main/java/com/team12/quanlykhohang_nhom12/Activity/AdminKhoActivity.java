@@ -5,6 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,8 +22,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeAdminKhoFragment;
@@ -35,12 +41,16 @@ import com.team12.quanlykhohang_nhom12.R;
 public class AdminKhoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawer;
     private FirebaseAuth firebaseAuth;
+    private ImageButton btndanhsachdangky;
+    private TextView tvsothongbao;
     String mUID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_kho);
 
+        btndanhsachdangky = findViewById(R.id.btndanhsachdangky);
+        tvsothongbao = findViewById(R.id.tvsothongbao);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -66,8 +76,40 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
         checkUser();
         //
         updateToken(FirebaseInstanceId.getInstance().getToken());
+        //danh sach dang ky thue kho
+        btndanhsachdangky.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DanhSachDangKyActivity.class);
+                startActivity(intent);
+            }
+        });
+        DemSoThongBao();
 
     }
+ private int sum = 0;
+    private void DemSoThongBao(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_HopDong");
+        reference.orderByChild("thongbaothue").equalTo(firebaseAuth.getUid()+"true").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    sum = (int) snapshot.getChildrenCount();
+                    tvsothongbao.setText(Integer.toString(sum)+"");
+                }
+                else {
+                    tvsothongbao.setText("0");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener selectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -149,6 +191,10 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
             case R.id.mn_danh_sach_kho:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PhongBanFragment()).commit();
                 break;
+            case R.id.mn_danhsachhopdong:
+                Intent intent = new Intent(getApplicationContext(), DanhSachHopDongActivity.class);
+                startActivity(intent);
+                break;
             case R.id.mn_thong_tin_tai_khoan:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TaiKhoanKhoFragment()).commit();
                 break;
@@ -174,24 +220,25 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
         return true;
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_adminkho, menu);
-
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_seach:
-                Toast.makeText(this, "Search button selected", Toast.LENGTH_SHORT).show();
-                return true;
-
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+   // @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_adminkho, menu);
+//
+//        return super.onCreateOptionsMenu(menu);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_seach:
+//                Intent intent = new Intent(getApplicationContext(), DanhSachDangKyActivity.class);
+//                startActivity(intent);
+//                break;
+//
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
 }

@@ -83,6 +83,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         btnThongKe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ThongKeDoanhThuThueKhoActivity.class);
+                intent.putExtra("khohangId",khohangId);
+                startActivity(intent);
             }
         });
 
