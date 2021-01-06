@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.team12.quanlykhohang_nhom12.Activity.ChiTietHopDongActivity;
 import com.team12.quanlykhohang_nhom12.Library.ModelHopDong;
+import com.team12.quanlykhohang_nhom12.Library.ModelKhoHang;
 import com.team12.quanlykhohang_nhom12.R;
 
 import java.text.NumberFormat;
@@ -31,9 +32,9 @@ import java.util.Map;
 
 public class ThongKeTungKhoAdapter extends RecyclerView.Adapter<ThongKeTungKhoAdapter.HolderChuKho> {
     private Context context;
-    public ArrayList<ModelHopDong> list;
+    public ArrayList<ModelKhoHang> list;
 
-    public ThongKeTungKhoAdapter(Context context, ArrayList<ModelHopDong> list) {
+    public ThongKeTungKhoAdapter(Context context, ArrayList<ModelKhoHang> list) {
         this.context = context;
         this.list = list;
     }
@@ -47,29 +48,27 @@ public class ThongKeTungKhoAdapter extends RecyclerView.Adapter<ThongKeTungKhoAd
     }
 
     @Override
-
+//, , , , , , , , , ;
     public void onBindViewHolder(@NonNull HolderChuKho holder, int position) {
-        ModelHopDong modelHopDong = list.get(position);
-        String uid = modelHopDong.getUid();
-        int tongtien = Integer.parseInt(modelHopDong.getTongtien());
-        String timstamp = modelHopDong.getTimstamp();
-        String thongbaothue = modelHopDong.getThongbaothue();
-        String thoigianthue = modelHopDong.getThoigianthue();
-        String tenthue = modelHopDong.getTenthue();
-        String tenkho = modelHopDong.getTenkho();
-        String tendoanhnghiep = modelHopDong.getTendoanhnghiep();
-        String sodienthoaibenb = modelHopDong.getSodienthoaibenb();
-        String noidungdieukhoan = modelHopDong.getNoidungdieukhoan();
-        String masothue = modelHopDong.getMasothue();
-        String khohangId = modelHopDong.getKhohangId();
-        String hisUid = modelHopDong.getHisUid();
-        String giayphepso = modelHopDong.getGiayphepso();
-        String emailbenb = modelHopDong.getEmailbenb();
-        String emailbena = modelHopDong.getEmailbena();
-        String dientichthue = modelHopDong.getDientichthue();
-        String diachibena = modelHopDong.getDiachibena();
-        String diachibenb = modelHopDong.getDiachibenb();
-        String dienthoaibena = modelHopDong.getDienthoaibena();
+        ModelKhoHang modelKhoHang = list.get(position);
+        String khohangId = modelKhoHang.getKhohangId();
+        String tenkho = modelKhoHang.getTenkho();
+        String dientichkho = modelKhoHang.getDientichkho();
+        String dienthoaikho = modelKhoHang.getDienthoaikho();
+        String diachikhohang = modelKhoHang.getDiachikhohang();
+        String chieucao = modelKhoHang.getChieucao();
+        int tongthunhap = Integer.parseInt(modelKhoHang.getTongthunhap());
+        String diachi = modelKhoHang.getDiachi();
+        String giachothue = modelKhoHang.getGiachothue();
+        String tinhtrangkho = modelKhoHang.getTinhtrangkho();
+        String ghichukhho = modelKhoHang.getGhichukhho();
+        String giamgiaAvailable = modelKhoHang.getGiamgiaAvailable();
+        String giamoi = modelKhoHang.getGiamoi();
+        String phantramkm = modelKhoHang.getPhantramkm();
+        String hinhanhkho = modelKhoHang.getHinhanhkho();
+        String dientichdathue = modelKhoHang.getDientichdathue();
+        String timstamp = modelKhoHang.getTimstamp();
+        String uid = modelKhoHang.getUid();
 
         //setdate
          Locale localeVN = new Locale("vi", "VN");
@@ -77,12 +76,10 @@ public class ThongKeTungKhoAdapter extends RecyclerView.Adapter<ThongKeTungKhoAd
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);
         cal.setTimeInMillis(Long.parseLong(timstamp));
         String dateTime  = DateFormat.format("dd/MM/yyyy", cal).toString();
-//        holder.cvchukhodc.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_list));
-//        holder.tv_ma_hop_dong.setText("Mã hợp đồng: "+timstamp);
-//        holder.tv_ngay_thue.setText("Ngày thuê: "+dateTime);
-//        holder.tv_ngay_het_han.setText("Ngày hết hạn: "+"2020");
-//        holder.tv_tong_tien.setText("Doanh thu: "+vn.format(tongtien)+ "Vnd");
-        holder.totaldientichdathue();
+        holder.tv_ten_kho.setText("Kho: "+tenkho);
+        holder.tv_tong_tien.setText("Tổng tiền: "+ vn.format(tongthunhap) + "Vnd");
+        holder.tv_dien_tich_da_thue.setText("Diện tích đã thuê: "+dientichdathue+"m2");
+        holder.tv_tong_dien_tich.setText("Tổng diện tích kho: "+dientichkho+"m2");
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -118,29 +115,7 @@ public class ThongKeTungKhoAdapter extends RecyclerView.Adapter<ThongKeTungKhoAd
 
 
         }
-        private void totaldientichdathue() {
-            FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_HopDongChinhThuc");
-            reference.orderByChild("hisUid").equalTo(firebaseAuth.getUid())
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            int sum=0;
-                            for (DataSnapshot ds: snapshot.getChildren()){
-                                Map<String, Object> map =  (Map<String, Object>)ds.getValue();
-                                Object dientich = map.get("dientichthue");
-                                int dgValue  = Integer.parseInt(String.valueOf(dientich));
-                                sum += dgValue;
-                                tv_dien_tich_da_thue.setText(sum+" m2   ");
-                            }
-                        }
+        //orderByChild("hisUid").equalTo(firebaseAuth.getUid())
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-
-        }
     }
 }

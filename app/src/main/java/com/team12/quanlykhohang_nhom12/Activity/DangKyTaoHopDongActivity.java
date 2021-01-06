@@ -184,7 +184,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
 
 
     }
-    private String dientichthuethem, dientichdathue;
+    private String dientichthuethem, dientichdathue, tiendathue;
     private void CapNhatDienTichDathue(){
         progressDialog.setMessage("Cập nhật diện tích đã thuê");
         progressDialog.show();
@@ -196,11 +196,14 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
             return;
         }
         int dientichdathuetam =  0;
+        int tongthunhap =  0;
+        tongthunhap = Integer.parseInt(tiendathue) + tamp;
 
         dientichdathuetam = Integer.parseInt(dientichdathue ) + Integer.parseInt(dientichthuethem);
         HashMap<String, Object> hashMap = new HashMap<>();
         //
         hashMap.put("dientichdathue", ""+ dientichdathuetam);
+        hashMap.put("tongthunhap", ""+ tongthunhap);
 
 
         //cap nhat db
@@ -305,6 +308,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
 
                     tenkho = ""+snapshot.child("tenkho").getValue();
                     dientichdathue = ""+snapshot.child("dientichdathue").getValue();
+                    tiendathue = ""+snapshot.child("tongthunhap").getValue();
                     dientichkho = ""+snapshot.child("dientichkho").getValue();
                     String giachothue = ""+snapshot.child("giachothue").getValue();
                     String giamoi = ""+snapshot.child("giamoi").getValue();

@@ -1,19 +1,20 @@
 package com.team12.quanlykhohang_nhom12.Library;
 
 public class ModelKhoHang {
-    private String khohangId, tenkho, dientichkho, dienthoaikho, diachikhohang, chieucao;
+    private String khohangId, tenkho, dientichkho, dienthoaikho, diachikhohang, chieucao, tongthunhap, dientichdathue;
     private String diachi, giachothue, tinhtrangkho, ghichukhho, giamgiaAvailable, giamoi, phantramkm, hinhanhkho, timstamp, uid;
 
     public ModelKhoHang() {
     }
 
-    public ModelKhoHang(String khohangId, String tenkho, String dientichkho, String dienthoaikho, String diachikhohang, String chieucao, String diachi, String giachothue, String tinhtrangkho, String ghichukhho, String giamgiaAvailable, String giamoi, String phantramkm, String hinhanhkho, String timstamp, String uid) {
+    public ModelKhoHang(String khohangId, String tenkho, String dientichkho, String dienthoaikho, String diachikhohang, String chieucao, String tongthunhap, String diachi, String giachothue, String tinhtrangkho, String ghichukhho, String giamgiaAvailable, String giamoi, String phantramkm, String hinhanhkho, String timstamp, String uid) {
         this.khohangId = khohangId;
         this.tenkho = tenkho;
         this.dientichkho = dientichkho;
         this.dienthoaikho = dienthoaikho;
         this.diachikhohang = diachikhohang;
         this.chieucao = chieucao;
+        this.tongthunhap = tongthunhap;
         this.diachi = diachi;
         this.giachothue = giachothue;
         this.tinhtrangkho = tinhtrangkho;
@@ -23,6 +24,7 @@ public class ModelKhoHang {
         this.phantramkm = phantramkm;
         this.hinhanhkho = hinhanhkho;
         this.timstamp = timstamp;
+        this.dientichdathue = dientichdathue;
         this.uid = uid;
     }
 
@@ -32,6 +34,13 @@ public class ModelKhoHang {
 
     public void setKhohangId(String khohangId) {
         this.khohangId = khohangId;
+    }
+    public String getDientichdathue() {
+        return dientichdathue;
+    }
+
+    public void setDientichdathue(String dientichdathue) {
+        this.dientichdathue = dientichdathue;
     }
 
     public String getTenkho() {
@@ -72,6 +81,14 @@ public class ModelKhoHang {
 
     public void setChieucao(String chieucao) {
         this.chieucao = chieucao;
+    }
+
+    public String getTongthunhap() {
+        return tongthunhap;
+    }
+
+    public void setTongthunhap(String tongthunhap) {
+        this.tongthunhap = tongthunhap;
     }
 
     public String getDiachi() {
@@ -154,4 +171,3 @@ public class ModelKhoHang {
         this.uid = uid;
     }
 }
-
