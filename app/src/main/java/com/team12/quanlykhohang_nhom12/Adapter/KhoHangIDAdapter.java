@@ -29,6 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Activity.HomeActivity;
 import com.team12.quanlykhohang_nhom12.Activity.SuaKhoHangActivity;
+import com.team12.quanlykhohang_nhom12.Activity.ThongKeDoanhThuThueKhoActivity;
 import com.team12.quanlykhohang_nhom12.Filter.FilterKhoHang;
 import com.team12.quanlykhohang_nhom12.Library.ModelKhoHang;
 import com.team12.quanlykhohang_nhom12.R;
@@ -180,7 +181,7 @@ public class KhoHangIDAdapter extends RecyclerView.Adapter<KhoHangIDAdapter.Hord
         btnquan_ly_hang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, HomeActivity.class);
+                Intent intent = new Intent(context, ThongKeDoanhThuThueKhoActivity.class);
                 intent.putExtra("khohangId", id);
                 context.startActivity(intent);
             }

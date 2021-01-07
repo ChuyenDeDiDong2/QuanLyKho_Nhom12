@@ -176,10 +176,12 @@ public class ThemKhoActivity extends AppCompatActivity {
             hashMap.put("ghichukhho", ""+ghichu);
             hashMap.put("giamgiaAvailable", ""+giamgiaAvailable);
             hashMap.put("giamoi", ""+giamoi);
+            hashMap.put("tongthunhap", "0");
             hashMap.put("phantramkm", ""+khuyenmaiphantram);
             hashMap.put("hinhanhkho", "");//hinhanh
             hashMap.put("timstamp", ""+timestamp);//
             hashMap.put("uid", ""+firebaseAuth.getUid());//
+
             //add to db
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
             reference.child(firebaseAuth.getUid()).child("KhoHang").child(timestamp).setValue(hashMap)
@@ -230,6 +232,7 @@ public class ThemKhoActivity extends AppCompatActivity {
                                 hashMap.put("ghichukhho", ""+ghichu);
                                 hashMap.put("giamgiaAvailable", ""+giamgiaAvailable);
                                 hashMap.put("giamoi", ""+giamoi);
+                                hashMap.put("tongthunhap", "0");
                                 hashMap.put("phantramkm", ""+khuyenmaiphantram);
                                 hashMap.put("hinhanhkho", ""+downloadImageUri);//hinhanh
                                 hashMap.put("timstamp", ""+timestamp);//
