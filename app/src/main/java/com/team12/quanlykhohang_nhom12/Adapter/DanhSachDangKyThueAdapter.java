@@ -1,7 +1,9 @@
 package com.team12.quanlykhohang_nhom12.Adapter;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,34 +76,51 @@ public class DanhSachDangKyThueAdapter extends RecyclerView.Adapter<DanhSachDang
         holder.btnduyetchothue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                String thongbaothue = firebaseAuth.getUid()+"false";
-                ProgressDialog progressDialog = new ProgressDialog(context);
-                HashMap<String, Object> hashMap = new HashMap<>();
-
-                hashMap.put("thongbaothue", ""+ thongbaothue);
-
-                //cap nhat db
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_HopDong");
-                reference.child(timstamp)
-                        .updateChildren(hashMap)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Duyệt")
+                        .setMessage("Bạn có chắc muốn duyệt?")
+                        .setPositiveButton("Duyệt", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onSuccess(Void aVoid) {
-                                //update
-                                progressDialog.dismiss();
-                                Toast.makeText(context, "Đã phê duyệt!",Toast.LENGTH_SHORT).show();
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                                String thongbaothue = firebaseAuth.getUid() + "false";
+                                ProgressDialog progressDialog = new ProgressDialog(context);
+                                HashMap<String, Object> hashMap = new HashMap<>();
+
+                                hashMap.put("thongbaothue", "" + thongbaothue);
+
+                                //cap nhat db
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_HopDong");
+                                reference.child(timstamp)
+                                        .updateChildren(hashMap)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                //update
+                                                progressDialog.dismiss();
+                                                Toast.makeText(context, "Đã phê duyệt!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                //update failed
+                                                progressDialog.dismiss();
+                                                Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                addHopDong(modelDangKyThue);
+
+
                             }
                         })
-                        .addOnFailureListener(new OnFailureListener() {
+                        .setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onFailure(@NonNull Exception e) {
-                                //update failed
-                                progressDialog.dismiss();
-                                Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
                             }
-                        });
-                addHopDong(modelDangKyThue);
+                        })
+                        .show();
             }
         });
 
@@ -114,23 +133,25 @@ public class DanhSachDangKyThueAdapter extends RecyclerView.Adapter<DanhSachDang
         });
 
     }
+
     //load thong tin chu cho
     String tendoanhnghiep, diachibena, dienthoaibena, emailbena, giayphepso, masothue;
-    private void loadKhoinfo(){
+
+    private void loadKhoinfo() {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
         reference.child(firebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                for (DataSnapshot ds: snapshot.getChildren()){
+                for (DataSnapshot ds : snapshot.getChildren()) {
 
-                    tendoanhnghiep = ""+snapshot.child("tentaikhoan").getValue();
-                    diachibena = ""+snapshot.child("diachi").getValue();
-                    dienthoaibena = ""+snapshot.child("phone").getValue();
-                    emailbena = ""+snapshot.child("email").getValue();
-                    giayphepso = ""+snapshot.child("giayphepso").getValue();
-                    masothue = ""+snapshot.child("masothue").getValue();
+                    tendoanhnghiep = "" + snapshot.child("tentaikhoan").getValue();
+                    diachibena = "" + snapshot.child("diachi").getValue();
+                    dienthoaibena = "" + snapshot.child("phone").getValue();
+                    emailbena = "" + snapshot.child("email").getValue();
+                    giayphepso = "" + snapshot.child("giayphepso").getValue();
+                    masothue = "" + snapshot.child("masothue").getValue();
 
                 }
             }
@@ -141,14 +162,16 @@ public class DanhSachDangKyThueAdapter extends RecyclerView.Adapter<DanhSachDang
             }
         });
     }
+
     //load thong tin dieu khoan
     String noidungdieukhoan;
-    private void loaddieukhoan(){
+
+    private void loaddieukhoan() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("DieuKhoan");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                noidungdieukhoan = ""+snapshot.child("DieuKhoanApp").getValue();
+                noidungdieukhoan = "" + snapshot.child("DieuKhoanApp").getValue();
 
             }
 
@@ -158,6 +181,7 @@ public class DanhSachDangKyThueAdapter extends RecyclerView.Adapter<DanhSachDang
             }
         });
     }
+
     private void addHopDong(ModelDangKyThue modelDangKyThue) {
         String dientichthue = modelDangKyThue.getDientichthue();
         String hisUid = modelDangKyThue.getHisUid();
@@ -175,31 +199,31 @@ public class DanhSachDangKyThueAdapter extends RecyclerView.Adapter<DanhSachDang
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Đang thực hiện tạo hợp đồng");
         progressDialog.show();
-        String timestamp = ""+System.currentTimeMillis();
+        String timestamp = "" + System.currentTimeMillis();
 
         HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("khohangId", ""+khohangId);
-        hashMap.put("tenthue", ""+ tenthue);
-        hashMap.put("tenkho", ""+tenkho);
-        hashMap.put("diachibenb", ""+diachi);
-        hashMap.put("emailbenb", ""+email);
-        hashMap.put("sodienthoaibenb", ""+sodienthoai);
-        hashMap.put("tongtien", ""+tongtien);
-        hashMap.put("dientichthue", ""+dientichthue);
-        hashMap.put("thoigianthue", ""+thoigianthue);
-        hashMap.put("thongbaothue", hisUid+"true");
-        hashMap.put("timstamp", ""+timestamp);//
-        hashMap.put("uid", ""+ uid);//
-        hashMap.put("hisUid", ""+hisUid);//
+        hashMap.put("khohangId", "" + khohangId);
+        hashMap.put("tenthue", "" + tenthue);
+        hashMap.put("tenkho", "" + tenkho);
+        hashMap.put("diachibenb", "" + diachi);
+        hashMap.put("emailbenb", "" + email);
+        hashMap.put("sodienthoaibenb", "" + sodienthoai);
+        hashMap.put("tongtien", "" + tongtien);
+        hashMap.put("dientichthue", "" + dientichthue);
+        hashMap.put("thoigianthue", "" + thoigianthue);
+        hashMap.put("thongbaothue", hisUid + "true");
+        hashMap.put("timstamp", "" + timestamp);//
+        hashMap.put("uid", "" + uid);//
+        hashMap.put("hisUid", "" + hisUid);//
         //ben a ,, , ,
-        hashMap.put("tendoanhnghiep", ""+tendoanhnghiep);
-        hashMap.put("diachibena", ""+diachibena);
-        hashMap.put("dienthoaibena", ""+dienthoaibena);
-        hashMap.put("emailbena", ""+emailbena);
-        hashMap.put("giayphepso", ""+giayphepso);
-        hashMap.put("masothue", ""+masothue);
+        hashMap.put("tendoanhnghiep", "" + tendoanhnghiep);
+        hashMap.put("diachibena", "" + diachibena);
+        hashMap.put("dienthoaibena", "" + dienthoaibena);
+        hashMap.put("emailbena", "" + emailbena);
+        hashMap.put("giayphepso", "" + giayphepso);
+        hashMap.put("masothue", "" + masothue);
         //noi dung hop dong
-        hashMap.put("noidungdieukhoan", ""+noidungdieukhoan);
+        hashMap.put("noidungdieukhoan", "" + noidungdieukhoan);
         //add to db
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_HopDongChinhThuc");
         reference.child(timestamp).setValue(hashMap)
@@ -218,7 +242,7 @@ public class DanhSachDangKyThueAdapter extends RecyclerView.Adapter<DanhSachDang
                     public void onFailure(@NonNull Exception e) {
                         //
                         progressDialog.dismiss();
-                        Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -231,8 +255,8 @@ public class DanhSachDangKyThueAdapter extends RecyclerView.Adapter<DanhSachDang
     }
 
     //view holder
-    class HolderChuKho extends RecyclerView.ViewHolder{
-        private TextView tvtenkhothue,tvtennguoithue ;
+    class HolderChuKho extends RecyclerView.ViewHolder {
+        private TextView tvtenkhothue, tvtennguoithue;
         private CardView cvchukhodc;
         private ImageButton btnduyetchothue;
 

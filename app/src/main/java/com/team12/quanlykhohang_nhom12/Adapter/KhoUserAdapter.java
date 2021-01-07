@@ -118,6 +118,8 @@ public class KhoUserAdapter extends RecyclerView.Adapter<KhoUserAdapter.HolderKh
         TextView  tvghichu_khoct = view.findViewById(R.id.tvghichu_khoct);
         TextView  tvgiabanct = view.findViewById(R.id.tvgiabanct);
         TextView  tvgiagiamct = view.findViewById(R.id.tvgiagiamct);
+        TextView  tvdientichtrong = view.findViewById(R.id.tvdien_tich_kho_trong_ct);
+        TextView  tvchieucao = view.findViewById(R.id.tvchieu_cao_kho_trong_ct);
 
         String id = modelKhoHang.getKhohangId();
         String uid = modelKhoHang.getUid();
@@ -132,21 +134,26 @@ public class KhoUserAdapter extends RecyclerView.Adapter<KhoUserAdapter.HolderKh
         int giamoi = Integer.parseInt(modelKhoHang.getGiamoi());
         String phantramkm = modelKhoHang.getPhantramkm();
         String hinhanhkho = modelKhoHang.getHinhanhkho();
+        String chieucao = modelKhoHang.getChieucao();
+        String dientichdathue = modelKhoHang.getDientichdathue();
         String timstamp = modelKhoHang.getTimstamp();
 
         //setdata
+        int dientichtrong = Integer.parseInt(dientichkho) - Integer.parseInt(dientichdathue);
 
         Locale localeVN = new Locale("vi", "VN");
         NumberFormat vn = NumberFormat.getInstance(localeVN);
         tvten_kho_hang_Ct.setText(tenkho);
         tvdia_chi_kho_ct.setText(diachikhohang);
-        tvdien_tich_kho_ct.setText(dientichkho);
+        tvdien_tich_kho_ct.setText(dientichkho + "m2");
         tvsodienthoai_kho_ct.setText(dienthoaikho);
         tvgiabanct.setText(vn.format(giachothue)+"VND");
         tvgiagiamct.setText(vn.format(giamoi)+"VND");
         tvdanhmuckho_ct.setText(tinhtrangkho);
         tvghichu_khoct.setText(ghichukhho);
         tvgiamgiapt_ct.setText(phantramkm);
+        tvchieucao.setText(chieucao + " m");
+        tvdientichtrong.setText(dientichtrong+ " m2");
         if(giamgiaAvailable.equals("true")){
             tvgiagiamct.setVisibility(View.VISIBLE);
             tvgiamgiapt_ct.setVisibility(View.VISIBLE);

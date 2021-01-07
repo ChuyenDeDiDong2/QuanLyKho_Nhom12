@@ -3,44 +3,46 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/id0010"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/shape_button_action_blue_press"
+        android:padding="10dp"
+        >
+        <ImageButton
+            android:id="@+id/backbtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@null"
+            android:src="@drawable/ic_close_gray_32"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvtenkho_chitiet"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:text="Thông tin kho"
+            android:textSize="25sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+    <ScrollView
+        android:layout_below="@+id/id0010"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/shape_button_action_blue_press"
-            android:padding="10dp"
-            >
-            <ImageButton
-                android:id="@+id/backbtn"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@null"
-                android:src="@drawable/ic_close_gray_32"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/tvtenkho_chitiet"
-                android:layout_marginTop="5dp"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/white"
-                android:text="Thông tin kho"
-                android:textSize="25sp"
-                android:textStyle="bold"/>
-
-        </RelativeLayout>
 
         <ImageView
             android:id="@+id/khohang_icon_ct"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="320dp"
+            android:layout_height="220dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp"
             android:background="@drawable/shape_button_action_gray_img"
             android:adjustViewBounds="true"
             android:padding="5dp"
@@ -112,6 +114,40 @@
                 android:text="Diện tích kho"/>
             <TextView
                 android:id="@+id/tvdien_tich_kho_ct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:text="10% Off"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/color_blue"
+                android:text="Diện tích kho trống"/>
+            <TextView
+                android:id="@+id/tvdien_tich_kho_trong_ct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:text="10% Off"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/color_blue"
+                android:text="Chiều cao"/>
+            <TextView
+                android:id="@+id/tvchieu_cao_kho_trong_ct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
@@ -219,6 +255,6 @@
         </LinearLayout>
     </RelativeLayout>
 
-</ScrollView>
+    </ScrollView>
 
 </RelativeLayout>

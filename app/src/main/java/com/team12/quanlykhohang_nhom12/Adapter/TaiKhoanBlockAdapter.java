@@ -175,6 +175,12 @@ public class TaiKhoanBlockAdapter extends RecyclerView.Adapter<TaiKhoanBlockAdap
         holder.btnmokhoataikhoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Mở")
+                        .setMessage("Bạn có chắc muốn mở"+tentaikhoan+"?")
+                        .setPositiveButton("Mở", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
                 String block = "false";
                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
                 ProgressDialog progressDialog = new ProgressDialog(context);
@@ -202,6 +208,16 @@ public class TaiKhoanBlockAdapter extends RecyclerView.Adapter<TaiKhoanBlockAdap
                                 Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
+
+                            }
+                        })
+                        .setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        })
+                        .show();
             }
         });
     }

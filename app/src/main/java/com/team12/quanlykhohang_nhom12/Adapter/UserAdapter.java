@@ -75,19 +75,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
         holder.tvten_hk.setText(name);
         holder.tvsodienthoai_hk.setText(phone);
 
-        if (online.equals("true")){
+        if (online.equals("true")) {
             //chu kho online
             holder.ivonline_status.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             //chu kho offline
             holder.ivonline_status.setVisibility(View.GONE);
         }
 
         try {
             Picasso.get().load(profileImage).placeholder(R.drawable.google).into(holder.ivpeople_hk);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             holder.ivpeople_hk.setImageResource(R.drawable.google);
         }
         //nhận vào để xem chi tiết kho
@@ -103,7 +101,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Xóa")
-                        .setMessage("Bạn có chắc muốn xóa"+tentaikhoan+"?")
+                        .setMessage("Bạn có chắc muốn xóa" + name + "?")
                         .setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
@@ -117,7 +115,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
                                 mQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        for (DataSnapshot ds: snapshot.getChildren()){
+                                        for (DataSnapshot ds : snapshot.getChildren()) {
                                             ds.getRef().removeValue();
                                             Toast.makeText(context, "Xóa tài khoản thành công!", Toast.LENGTH_SHORT).show();
                                         }
@@ -125,7 +123,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
 
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
-                                        Toast.makeText(context, ""+error.getMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(context, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
@@ -142,65 +140,98 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
         holder.btnkhoataikhoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String block = "true";
-                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                ProgressDialog progressDialog = new ProgressDialog(context);
-                HashMap<String, Object> hashMap = new HashMap<>();
-
-                hashMap.put("block", ""+ block);
-
-                //cap nhat db
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-                reference.child(uid)
-                        .updateChildren(hashMap)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Khóa")
+                        .setMessage("Bạn có chắc muốn khóa " + name + "?")
+                        .setPositiveButton("khóa", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onSuccess(Void aVoid) {
-                                //update
-                                progressDialog.dismiss();
-                                Toast.makeText(context, "Tài khoản đã bị khóa!",Toast.LENGTH_SHORT).show();
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String block = "true";
+                                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                                ProgressDialog progressDialog = new ProgressDialog(context);
+                                HashMap<String, Object> hashMap = new HashMap<>();
+
+                                hashMap.put("block", "" + block);
+
+                                //cap nhat db
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+                                reference.child(uid)
+                                        .updateChildren(hashMap)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                //update
+                                                progressDialog.dismiss();
+                                                Toast.makeText(context, "Tài khoản đã bị khóa!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                //update failed
+                                                progressDialog.dismiss();
+                                                Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
+
                             }
                         })
-                        .addOnFailureListener(new OnFailureListener() {
+                        .setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onFailure(@NonNull Exception e) {
-                                //update failed
-                                progressDialog.dismiss();
-                                Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
                             }
-                        });
+                        })
+                        .show();
             }
         });
         holder.btnmokhoataikhoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String block = "false";
-                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-                ProgressDialog progressDialog = new ProgressDialog(context);
-                HashMap<String, Object> hashMap = new HashMap<>();
-
-                hashMap.put("block", ""+ block);
-
-                //cap nhat db
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-                reference.child(uid)
-                        .updateChildren(hashMap)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Mở")
+                        .setMessage("Bạn có chắc muốn mở " + name + "?")
+                        .setPositiveButton("Mở", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onSuccess(Void aVoid) {
-                                //update
-                                progressDialog.dismiss();
-                                Toast.makeText(context, "Tài khoản đã được mở!",Toast.LENGTH_SHORT).show();
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                String block = "false";
+                                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                                ProgressDialog progressDialog = new ProgressDialog(context);
+                                HashMap<String, Object> hashMap = new HashMap<>();
+
+                                hashMap.put("block", "" + block);
+
+                                //cap nhat db
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+                                reference.child(uid)
+                                        .updateChildren(hashMap)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                //update
+                                                progressDialog.dismiss();
+                                                Toast.makeText(context, "Tài khoản đã được mở!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                //update failed
+                                                progressDialog.dismiss();
+                                                Toast.makeText(context, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+
                             }
                         })
-                        .addOnFailureListener(new OnFailureListener() {
+                        .setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onFailure(@NonNull Exception e) {
-                                //update failed
-                                progressDialog.dismiss();
-                                Toast.makeText(context, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
                             }
-                        });
+                        })
+                        .show();
             }
         });
     }
@@ -217,11 +248,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
         TextView tvtenhang1 = view.findViewById(R.id.tvtenhang1);
         ImageView khohang_icon_ct = view.findViewById(R.id.khohang_icon_ct);
         TextView tvtenchuhang = view.findViewById(R.id.tvtenchuhang);
-        TextView  tvdiachihang = view.findViewById(R.id.tvdiachihang);
-        TextView  tvsodientthoaihang = view.findViewById(R.id.tvsodientthoaihang);
-        TextView  tvemailhang = view.findViewById(R.id.tvemailhang);
-        TextView  tvsotaikhoanhang = view.findViewById(R.id.tvsotaikhoanhang);
-        TextView  tvsotaikhoanhang1 = view.findViewById(R.id.tvsotaikhoanhang1);
+        TextView tvdiachihang = view.findViewById(R.id.tvdiachihang);
+        TextView tvsodientthoaihang = view.findViewById(R.id.tvsodientthoaihang);
+        TextView tvemailhang = view.findViewById(R.id.tvemailhang);
+        TextView tvsotaikhoanhang = view.findViewById(R.id.tvsotaikhoanhang);
+        TextView tvsotaikhoanhang1 = view.findViewById(R.id.tvsotaikhoanhang1);
 
         String accountType = modelUser.getAccountType();
         String name = modelUser.getName();
@@ -245,7 +276,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
         tvdiachihang.setText(diachi);
         tvsodientthoaihang.setText(phone);
         tvemailhang.setText(email);
-        if (accountType.equals("user")){
+        if (accountType.equals("user")) {
             //chu kho online
             tvsotaikhoanhang.setVisibility(View.GONE);
             tvtenhang0.setVisibility(View.GONE);
@@ -254,8 +285,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
         }
         try {
             Picasso.get().load(profileImage).placeholder(R.drawable.google).into(khohang_icon_ct);
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             khohang_icon_ct.setImageResource(R.drawable.google);
         }
         //show diglog
@@ -277,7 +307,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.HolderUser> {
     }
 
     //view holder
-    class HolderUser extends RecyclerView.ViewHolder{
+    class HolderUser extends RecyclerView.ViewHolder {
         private ImageView ivpeople_hk, ivonline_status;
         private TextView tvten_hk, tvsodienthoai_hk;
         private RatingBar ratingbarchukho;

@@ -152,6 +152,11 @@ public class HomeToRentActivity extends AppCompatActivity implements NavigationV
                 startActivity(dieukhoan);
                 drawertorent.closeDrawers();
                 return true;
+            case R.id.mn_hopdongcuatoi:
+                Intent hopdongcuatoi = new Intent(this, HopDongCuaToiActivity.class);
+                startActivity(hopdongcuatoi);
+                drawertorent.closeDrawers();
+                return true;
 
             case R.id.mn_infor:
                 Intent info = new Intent(this, ThongTinAppActivity.class);

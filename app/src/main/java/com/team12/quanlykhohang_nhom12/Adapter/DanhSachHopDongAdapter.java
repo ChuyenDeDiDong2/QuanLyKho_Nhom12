@@ -49,9 +49,6 @@ public class DanhSachHopDongAdapter extends RecyclerView.Adapter<DanhSachHopDong
     }
 
     @Override
-    // , , , , , , ;
-    //  , , , , , , ;
-    //  , , ,  ,, ;
     public void onBindViewHolder(@NonNull HolderChuKho holder, int position) {
         ModelHopDong modelHopDong = list.get(position);
         String uid = modelHopDong.getUid();
