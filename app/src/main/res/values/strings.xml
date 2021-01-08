@@ -143,4 +143,8 @@
     <string name="btnSua">Sửa</string>
     <string name="swonthang">tháng</string>
     <string name="swoffnam">năm</string>
+    <string name="danhsachhopdong">Danh sách hợp đồng</string>
+    <string name="btn_gui">Gửi</string>
+    <string name="noidungtocao">Nội dung tố cáo</string>
+    <string name="dientichdathue">Diện tích đã thuê</string>
 </resources>

@@ -19,7 +19,7 @@
         <activity android:name=".Activity.DanhSachHopDongActivity" />
         <activity android:name=".Activity.ThongKeDoanhThuThueKhoActivity" />
         <activity android:name=".Activity.DanhSachDangKyActivity" />
-        <activity android:name=".Activity.DanhGia1Activity" />
+        <activity android:name=".Activity.DanhGiaActivity" />
         <activity android:name=".Activity.SuaSanPhamActivity" />
         <activity android:name=".Activity.ThemSliderActivity" />
         <activity android:name=".Fragment.SliderFragment" />

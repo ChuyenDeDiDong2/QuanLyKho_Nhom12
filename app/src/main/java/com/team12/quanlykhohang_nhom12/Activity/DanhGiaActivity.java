@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -27,7 +26,7 @@ import com.team12.quanlykhohang_nhom12.R;
 
 import java.util.HashMap;
 
-public class DanhGia1Activity extends AppCompatActivity {
+public class DanhGiaActivity extends AppCompatActivity {
 
     EditText edtNhanXet;
     ImageButton btnBack;
@@ -141,13 +140,13 @@ public class DanhGia1Activity extends AppCompatActivity {
                 addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(DanhGia1Activity.this, "Đánh giá hoàn thành!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DanhGiaActivity.this, "Đánh giá hoàn thành!", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(DanhGia1Activity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DanhGiaActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

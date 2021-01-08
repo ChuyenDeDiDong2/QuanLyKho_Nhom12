@@ -104,12 +104,4 @@ public class Constants_kho {
             "Hà Nội",
             "TP HCM",
     };
-    public static final String[] options4 ={
-            "3",
-            "6",
-            "9",
-            "12",
-            "24"
-    };
-
 }

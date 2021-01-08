@@ -152,6 +152,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:layout_marginTop="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -407,8 +408,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="cbx"
                     android:textColor="@color/black" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <CheckBox
+                            android:id="@+id/chkboxChinhSach"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tôi đã đọc và đồng ý với chính sách của app"/>
+                    </LinearLayout>
+                </RelativeLayout>
 
                 <Button
                     android:id="@+id/btndangkythue"
@@ -420,6 +440,8 @@
                     android:text="Gửi"
                     android:textColor="#ffffff"
                     android:textStyle="bold" />
+
+
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -52,6 +53,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
     TextView tvtenuser, tvdientichdathue,tvdientichkho, tvsotienuoctinh,spchonnammuonthue, tvsodienthoaiuser, tvtenkhodangky, tvgiakhothuemotthang, ngaydangkyhopdong, spChonthangmuonthue;
     TextView tvnoidungdieukhoan, tvemailuser, tvdiachiuser;
     String hisUid;
+    CheckBox chkboxChinhSach;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private String khohangId;
@@ -252,7 +254,7 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
         tvnoidungdieukhoan = findViewById(R.id.tvnoidungdieukhoan);
         hisUid = getIntent().getStringExtra("hisUid");
         khohangId = getIntent().getStringExtra("khohangId");
-
+        chkboxChinhSach = findViewById(R.id.chkboxChinhSach);
     }
 
     @Override
@@ -396,6 +398,18 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
                 });
 
     }
+
+    CompoundButton.OnCheckedChangeListener m_listener =new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if(buttonView.isChecked())
+            {
+                btndangkythue.setEnabled(true);
+            }
+            else
+                btndangkythue.setEnabled(false);
+        }
+    };
 
 
 }

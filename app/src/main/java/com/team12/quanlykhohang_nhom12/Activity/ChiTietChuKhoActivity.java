@@ -35,7 +35,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 import com.team12.quanlykhohang_nhom12.Adapter.KhoUserAdapter;
 import com.team12.quanlykhohang_nhom12.Library.Constants_kho;
-import com.team12.quanlykhohang_nhom12.Library.ModelDangKyThue;
 import com.team12.quanlykhohang_nhom12.Library.ModelKhoHang;
 import com.team12.quanlykhohang_nhom12.R;
 
@@ -238,7 +237,7 @@ public class ChiTietChuKhoActivity extends AppCompatActivity {
         tvDanhGia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChiTietChuKhoActivity.this, DanhGia1Activity.class);
+                Intent intent = new Intent(ChiTietChuKhoActivity.this, DanhGiaActivity.class);
                 intent.putExtra("hisUid", chukhoId);
                 startActivity(intent);
             }
