@@ -18,11 +18,6 @@
                     android:title="@string/contract" />
 
                 <item
-                    android:id="@+id/mn_statistic"
-                    android:icon="@drawable/ic_statistic_color_32"
-                    android:title="@string/statistic" />
-
-                <item
                     android:id="@+id/mn_hopdongcuatoi"
                     android:icon="@drawable/ic_book_color_32"
                     android:title="Hợp đồng của tôi" />

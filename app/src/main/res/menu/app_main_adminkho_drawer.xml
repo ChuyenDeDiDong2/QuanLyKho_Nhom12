@@ -30,6 +30,10 @@
                     android:id="@+id/mn_statistic"
                     android:icon="@drawable/ic_statistic_color_32"
                     android:title="@string/statistic" />
+                <item
+                    android:id="@+id/mn_cai_dat_hop_dong"
+                    android:icon="@drawable/ic_statistic_color_32"
+                    android:title="Điều khoản hợp đồng" />
 
             </group>
         </menu>

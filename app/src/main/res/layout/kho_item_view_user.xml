@@ -53,16 +53,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tvten_kho_hang"
-                    android:minLines="2"
-                    android:maxLines="2"
                     android:padding="5dp"
                     android:textColor="@color/black"
                     android:text="10% Off"
                     />
+                <TextView
+                    android:id="@+id/tvdiachikhowr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvdien_tich_kho"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:text="10% Off"
+                    />
+
                 <RelativeLayout
                     android:id="@+id/regiaban"
                     android:layout_marginTop="5dp"
-                    android:layout_below="@+id/tvdien_tich_kho"
+                    android:layout_below="@+id/tvdiachikhowr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <TextView

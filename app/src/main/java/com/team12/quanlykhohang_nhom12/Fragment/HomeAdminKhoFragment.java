@@ -2,7 +2,6 @@ package com.team12.quanlykhohang_nhom12.Fragment;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -27,7 +26,7 @@ import com.team12.quanlykhohang_nhom12.Activity.DangNhapActivity;
 import com.team12.quanlykhohang_nhom12.R;
 
 public class HomeAdminKhoFragment extends Fragment {
-    LinearLayout btnthongke, btnPhongBan;
+    LinearLayout btnthongke, btnPhongBan, btndanhsachhopdong;
     private TextView nametv, tvtenhang;
     private ImageView btndangxuat, iv_hang_icon;
     private FirebaseAuth firebaseAuth;
@@ -39,6 +38,7 @@ public class HomeAdminKhoFragment extends Fragment {
 
         btnthongke = root.findViewById(R.id.btnthongke);
         btnPhongBan = root.findViewById(R.id.btnDepartment);
+        btndanhsachhopdong = root.findViewById(R.id.btndanhsachhopdong);
         //
         nametv = root.findViewById(R.id.tvname);
         tvtenhang = root.findViewById(R.id.tvtenhang);
@@ -55,6 +55,15 @@ public class HomeAdminKhoFragment extends Fragment {
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.fragment_container, new ThongKeTungKhoFragment());
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
+        btndanhsachhopdong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction=getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, new DanhSachHopDongFragment());
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

@@ -331,14 +331,14 @@ DangKyTaoHopDongActivity extends AppCompatActivity {
             }
         });
     }
-    String dieukhoanapp;
+    String dieukhoan;
     private void loaddieukhoan(){
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("DieuKhoan");
-        reference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.child(hisUid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                dieukhoanapp = ""+snapshot.child("DieuKhoanApp").getValue();
-                tvnoidungdieukhoan.setText(dieukhoanapp);
+                dieukhoan = ""+snapshot.child("dieukhoan").getValue();
+                tvnoidungdieukhoan.setText(dieukhoan);
 
             }
 

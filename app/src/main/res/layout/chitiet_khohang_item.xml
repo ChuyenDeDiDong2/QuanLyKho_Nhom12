@@ -141,6 +141,40 @@
                 android:textColor="@color/black"
                 android:text="10% Off"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/color_blue"
+                android:text="Diện tích kho trống"/>
+            <TextView
+                android:id="@+id/tvdien_tich_kho_trong_ct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:text="10% Off"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/color_blue"
+                android:text="Chiều cao"/>
+            <TextView
+                android:id="@+id/tvchieu_cao_kho_trong_ct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:text="10% Off"
+                />
 
             <TextView
                 android:layout_width="wrap_content"

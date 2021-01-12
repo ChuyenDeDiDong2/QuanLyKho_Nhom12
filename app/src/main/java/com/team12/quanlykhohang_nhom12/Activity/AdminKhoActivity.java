@@ -3,12 +3,10 @@ package com.team12.quanlykhohang_nhom12.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -29,12 +27,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.team12.quanlykhohang_nhom12.Fragment.CapPhatFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.DanhSachHopDongFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.HomeAdminKhoFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.MessagerFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.PhongBanFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanFragment;
 import com.team12.quanlykhohang_nhom12.Fragment.TaiKhoanKhoFragment;
-import com.team12.quanlykhohang_nhom12.Fragment.VaiTroFragment;
+import com.team12.quanlykhohang_nhom12.Fragment.ThongKeTungKhoFragment;
 import com.team12.quanlykhohang_nhom12.Notifications.Token;
 import com.team12.quanlykhohang_nhom12.R;
 
@@ -192,8 +190,7 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PhongBanFragment()).commit();
                 break;
             case R.id.mn_danhsachhopdong:
-                Intent intent = new Intent(getApplicationContext(), DanhSachHopDongActivity.class);
-                startActivity(intent);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DanhSachHopDongFragment()).commit();
                 break;
             case R.id.mn_thong_tin_tai_khoan:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new TaiKhoanKhoFragment()).commit();
@@ -204,10 +201,14 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
                 startActivity(dieukhoan);
                 return true;
 
-
-            case R.id.mn_allocation:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CapPhatFragment()).commit();
+            case R.id.mn_statistic:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ThongKeTungKhoFragment()).commit();
                 break;
+
+            case R.id.mn_cai_dat_hop_dong:
+                Intent hopdongrieng = new Intent(this, HopDongCuaKhoActivity.class);
+                startActivity(hopdongrieng);
+                return true;
 
             case R.id.mn_infor:
                 Intent info = new Intent(this, ThongTinAppActivity.class);

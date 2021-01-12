@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".Activity.DanhSachHopDongActivity">
+    tools:context=".Fragment.DanhSachHopDongFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcdanhsachdanghopdong"
             android:layout_width="match_parent"

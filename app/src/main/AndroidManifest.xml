@@ -12,11 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.HopDongCuaToiActivity"></activity>
+        <activity android:name=".Activity.HopDongCuaKhoActivity"></activity>
+        <activity android:name=".Activity.HopDongCuaToiActivity" />
         <activity android:name=".Fragment.ThongKeTungKhoFragment" />
         <activity android:name=".Fragment.DanhSachToCaoFragment" />
         <activity android:name=".Activity.ChiTietHopDongActivity" />
-        <activity android:name=".Activity.DanhSachHopDongActivity" />
+        <activity android:name=".Fragment.DanhSachHopDongFragment" />
         <activity android:name=".Activity.ThongKeDoanhThuThueKhoActivity" />
         <activity android:name=".Activity.DanhSachDangKyActivity" />
         <activity android:name=".Activity.DanhGia1Activity" />

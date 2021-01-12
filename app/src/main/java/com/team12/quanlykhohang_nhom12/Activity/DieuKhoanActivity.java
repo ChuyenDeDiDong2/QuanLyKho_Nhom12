@@ -23,7 +23,7 @@ public class DieuKhoanActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Điều khoản và dịch vụ");
+        getSupportActionBar().setTitle("Hợp đồng và điều khoản");
 
     }
 

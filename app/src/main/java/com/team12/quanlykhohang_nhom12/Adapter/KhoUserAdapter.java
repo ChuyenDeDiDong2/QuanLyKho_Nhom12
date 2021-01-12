@@ -67,7 +67,8 @@ public class KhoUserAdapter extends RecyclerView.Adapter<KhoUserAdapter.HolderKh
         String timstamp = modelKhoHang.getTimstamp();
         //set data
         holder.tvten_kho_hang.setText(tenkho);
-        holder.tvdien_tich_kho.setText(dientichkho);
+        holder.tvdiachikhowr.setText(diachikhohang);
+        holder.tvdien_tich_kho.setText(dientichkho+" m2");
         //holder.tvdientich_kho.setText(dientichkho);
 
         Locale localeVN = new Locale("vi", "VN");
@@ -218,7 +219,7 @@ public class KhoUserAdapter extends RecyclerView.Adapter<KhoUserAdapter.HolderKh
     class HolderKhoUser extends RecyclerView.ViewHolder{
         //uid view
         private ImageView imgkho_hang;
-        private TextView tvgiamgiapt, tvten_kho_hang, tvdien_tich_kho, tvgiaban, tvgiagiam;
+        private TextView tvgiamgiapt, tvten_kho_hang, tvdien_tich_kho, tvgiaban, tvgiagiam, tvdiachikhowr;
 
         public HolderKhoUser(@NonNull View itemView) {
             super(itemView);
@@ -226,6 +227,7 @@ public class KhoUserAdapter extends RecyclerView.Adapter<KhoUserAdapter.HolderKh
             imgkho_hang = itemView.findViewById(R.id.imgkho_hang);
             tvgiamgiapt = itemView.findViewById(R.id.tvgiamgiapt);
             tvten_kho_hang = itemView.findViewById(R.id.tvten_kho_hang);
+            tvdiachikhowr = itemView.findViewById(R.id.tvdiachikhowr);
             tvdien_tich_kho = itemView.findViewById(R.id.tvdien_tich_kho);
             tvgiaban = itemView.findViewById(R.id.tvgiaban);
             tvgiagiam = itemView.findViewById(R.id.tvgiagiam);
