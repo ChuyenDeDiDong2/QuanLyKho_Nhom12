@@ -226,11 +226,12 @@ public class DanhSachDangKyThueAdapter extends RecyclerView.Adapter<DanhSachDang
     String noidungdieukhoan;
 
     private void loaddieukhoan() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("DieuKhoan");
-        reference.addValueEventListener(new ValueEventListener() {
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.child(firebaseAuth.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                noidungdieukhoan = "" + snapshot.child("DieuKhoanApp").getValue();
+                noidungdieukhoan = "" + snapshot.child("dieukhoan").getValue();
 
             }
 
