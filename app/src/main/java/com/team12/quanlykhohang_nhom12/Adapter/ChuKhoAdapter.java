@@ -68,34 +68,6 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
         holder.phone_chu_kho_tv.setText(phone);
         holder.ratingbarchukho.setRating(5);
 
-//        holder.ratingbarchukho.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-//            @Override
-//            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-//                FirebaseAuth firebaseAuth =  FirebaseAuth.getInstance();
-//                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-//                reference.child(firebaseAuth.getUid()).child("DanhGia")
-//                        .addValueEventListener(new ValueEventListener() {
-//                            @Override
-//                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                double sum=0;
-//                                for (DataSnapshot ds: snapshot.getChildren()){
-//                                    Map<String, Object> map =  (Map<String, Object>)ds.getValue();
-//                                    Object soluong = map.get("diem");
-//                                    double pValue  = Double.parseDouble(String.valueOf(soluong));
-//                                    sum += pValue;
-//                                    holder.ratingbarchukho.setRating((float) sum);
-//                                }
-//                            }
-//
-//                            @Override
-//                            public void onCancelled(@NonNull DatabaseError error) {
-//
-//                            }
-//                        });
-//            }
-//        });
-        //holder.diachiemail_chu_kho_tv.setText(email);
-
         if (online.equals("true")){
             //chu kho online
             holder.onlineiv.setVisibility(View.VISIBLE);
