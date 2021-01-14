@@ -3,6 +3,7 @@ package com.team12.quanlykhohang_nhom12.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -67,11 +68,14 @@ public class DanhGia1Activity extends AppCompatActivity {
         btnXacNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 inputData();
+                totalgia();
+                DemSoThongBao();
+                tinhtrungbinhsao();
             }
         });
         //totalgia();
-
     }
 
     private void loadKhoInfo() {
@@ -96,21 +100,19 @@ public class DanhGia1Activity extends AppCompatActivity {
         });
     }
 
+    private int sum=4;
     private void totalgia() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-        reference.child(hisUid).child("DanhGia")
+        reference.child(hisUid).child("DanhGia").orderByChild("hisUid").equalTo(hisUid)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                        int sum=0;
                         for (DataSnapshot ds: snapshot.getChildren()){
                             Map<String, Object> map =  (Map<String, Object>)ds.getValue();
                             Object diem = map.get("diem");
                             int dgValue  = Integer.parseInt(String.valueOf(diem));
                             sum += dgValue;
-                            //sum1 = sum1++;
-                            //tamptb = sum/sum1;
                         }
                     }
 
@@ -121,32 +123,56 @@ public class DanhGia1Activity extends AppCompatActivity {
                 });
 
     }
+    private int sum1=1;
+    private void DemSoThongBao(){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.child(hisUid).child("DanhGia").orderByChild("hisUid").equalTo(hisUid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    sum1 = (int) snapshot.getChildrenCount();
+                }
+                else {
+                    sum1 = 0;
+                }
 
+            }
 
-//    private void loadMyReview() {
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
-//        reference.child(hisUid).child("ratings").child(auth.getUid())
-//                .addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        if (snapshot.exists()){
-//                            String uid = ""+snapshot.child("uid").getValue();
-//                            String ratings = ""+snapshot.child("diem").getValue();
-//                            String review = ""+snapshot.child("nhanxet").getValue();
-//                            String timestamp = ""+snapshot.child("timestamp").getValue();
-//
-//                            float myRating = Float.parseFloat(ratings);
-//                            ratingBar.setRating(myRating);
-//                            edtNhanXet.setText(review);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-//    }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+     private void tinhtrungbinhsao(){
+         int diem = sum/sum1;
+         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+         ProgressDialog progressDialog = new ProgressDialog(this);
+         HashMap<String, Object> hashMap = new HashMap<>();
+
+         hashMap.put("diemtb", "" + diem);
+
+         //cap nhat db
+         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+         reference.child(hisUid)
+                 .updateChildren(hashMap)
+                 .addOnSuccessListener(new OnSuccessListener<Void>() {
+                     @Override
+                     public void onSuccess(Void aVoid) {
+                         //update
+                         progressDialog.dismiss();
+                         Toast.makeText(DanhGia1Activity.this, "Tài khoản đã bị khóa!", Toast.LENGTH_SHORT).show();
+                     }
+                 })
+                 .addOnFailureListener(new OnFailureListener() {
+                     @Override
+                     public void onFailure(@NonNull Exception e) {
+                         //update failed
+                         progressDialog.dismiss();
+                         Toast.makeText(DanhGia1Activity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                     }
+                 });
+     }
 
     private void inputData() {
 
@@ -156,6 +182,7 @@ public class DanhGia1Activity extends AppCompatActivity {
 
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("uid", "" + auth.getUid());
+        hashMap.put("his", "" + hisUid);
         hashMap.put("diem", "" + ratings);
         hashMap.put("nhanxet", "" + review);
         hashMap.put("timestamp", "" + timestamp);
