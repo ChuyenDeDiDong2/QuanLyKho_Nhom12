@@ -85,6 +85,7 @@ public class AdminKhoActivity extends AppCompatActivity implements NavigationVie
         DemSoThongBao();
 
     }
+    //Chức năng thông báo cho admin khi có người đăng ký hợp đồng:
  private int sum = 0;
     private void DemSoThongBao(){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_HopDong");

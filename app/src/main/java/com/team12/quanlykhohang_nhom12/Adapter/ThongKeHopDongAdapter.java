@@ -72,7 +72,7 @@ public class ThongKeHopDongAdapter extends RecyclerView.Adapter<ThongKeHopDongAd
         holder.cvchukhodc.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_list));
         holder.tv_ma_hop_dong.setText("Mã hợp đồng: "+timstamp);
         holder.tv_ngay_thue.setText("Ngày thuê: "+dateTime);
-        holder.tv_ngay_het_han.setText("Ngày hết hạn: "+"2020");
+        holder.tv_ngay_het_han.setText("Thời gian hết hạn: "+thoigianthue+" tháng kể từ ngày thuê");
         holder.tv_tong_tien.setText("Doanh thu: "+vn.format(tongtien)+ "Vnd");
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {

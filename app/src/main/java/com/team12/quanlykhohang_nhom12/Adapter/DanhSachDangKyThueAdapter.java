@@ -265,7 +265,7 @@ public class DanhSachDangKyThueAdapter extends RecyclerView.Adapter<DanhSachDang
             }
         });
     }
-
+//Chuc nang show cac hop dong da duoc dang ky:
     private void chitietBottomSheet(ModelDangKyThue modelDangKyThue) {
         //bottom sheet
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
@@ -319,7 +319,7 @@ public class DanhSachDangKyThueAdapter extends RecyclerView.Adapter<DanhSachDang
         });
 
     }
-
+//Chuc nang tao hop dong tu dong:
     private void addHopDong(ModelDangKyThue modelDangKyThue) {
         String dientichthue = modelDangKyThue.getDientichthue();
         String hisUid = modelDangKyThue.getHisUid();
