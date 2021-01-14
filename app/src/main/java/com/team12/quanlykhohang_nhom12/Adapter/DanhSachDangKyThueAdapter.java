@@ -4,14 +4,11 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
-import com.team12.quanlykhohang_nhom12.Activity.DangKyTaoHopDongActivity;
-import com.team12.quanlykhohang_nhom12.Activity.SuaKhoHangActivity;
-import com.team12.quanlykhohang_nhom12.Activity.ThongKeDoanhThuThueKhoActivity;
 import com.team12.quanlykhohang_nhom12.Library.ModelDangKyThue;
-import com.team12.quanlykhohang_nhom12.Library.ModelKhoHang;
 import com.team12.quanlykhohang_nhom12.R;
 
 import java.text.NumberFormat;
@@ -59,7 +51,6 @@ public class DanhSachDangKyThueAdapter extends RecyclerView.Adapter<DanhSachDang
     }
 
     @Override
-    //, , , , , , , , , ,
     public void onBindViewHolder(@NonNull HolderChuKho holder, int position) {
         ModelDangKyThue modelDangKyThue = list.get(position);
         String dientichthue = modelDangKyThue.getDientichthue();
