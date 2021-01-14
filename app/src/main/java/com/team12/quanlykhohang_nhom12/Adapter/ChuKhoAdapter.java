@@ -27,7 +27,9 @@ import com.team12.quanlykhohang_nhom12.Activity.ChiTietChuKhoActivity;
 import com.team12.quanlykhohang_nhom12.Library.ModelChuKho;
 import com.team12.quanlykhohang_nhom12.R;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Map;
 
 public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuKho> {
@@ -60,13 +62,13 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
         String online = modelChuKho.getOnline();
         String cuahangOpen = modelChuKho.getOpen();
         String noibat = modelChuKho.getNoibat();
+        String diemtb = modelChuKho.getDiemtb();
         String profileImage = modelChuKho.getProfileImage();
         //setdate
 
         holder.cvchukhodc.setAnimation(AnimationUtils.loadAnimation(context, R.anim.scale_list));
         holder.ten_chu_kho_tv.setText(tentaikhoan);
         holder.phone_chu_kho_tv.setText(phone);
-        holder.ratingbarchukho.setRating(5);
 
         if (online.equals("true")){
             //chu kho online
@@ -108,7 +110,12 @@ public class ChuKhoAdapter extends RecyclerView.Adapter<ChuKhoAdapter.HolderChuK
 
             }
         });
+
+        holder.ratingbarchukho.setRating(Integer.parseInt(diemtb));
+        //holder.ratingbarchukho.setRating(4);
     }
+
+
 
     @Override
     public int getItemCount() {

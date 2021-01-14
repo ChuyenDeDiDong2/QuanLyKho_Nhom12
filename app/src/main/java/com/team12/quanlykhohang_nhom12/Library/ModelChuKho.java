@@ -1,12 +1,12 @@
 package com.team12.quanlykhohang_nhom12.Library;
 
 public class ModelChuKho {
-    private String uid, name, phone, email, sotaikhoan, tentaikhoan, diachi, tinhthanh, accountType, online,block, open, noibat, profileImage, typingTo;
+    private String uid, name, phone, email, sotaikhoan, tentaikhoan, diachi, tinhthanh, accountType, online,block, open, noibat, profileImage, typingTo, diemtb;
 
     public ModelChuKho() {
     }
 
-    public ModelChuKho(String uid, String name, String phone, String email, String sotaikhoan, String tentaikhoan, String diachi, String tinhthanh, String accountType, String online, String block, String open, String noibat, String profileImage, String typingTo) {
+    public ModelChuKho(String uid, String name, String phone, String email, String sotaikhoan, String tentaikhoan, String diachi, String tinhthanh, String accountType, String online, String block, String open, String noibat, String profileImage, String typingTo, String diemtb) {
         this.uid = uid;
         this.name = name;
         this.phone = phone;
@@ -22,6 +22,7 @@ public class ModelChuKho {
         this.noibat = noibat;
         this.profileImage = profileImage;
         this.typingTo = typingTo;
+        this.diemtb = diemtb;
     }
 
     public String getUid() {
@@ -142,5 +143,13 @@ public class ModelChuKho {
 
     public void setTypingTo(String typingTo) {
         this.typingTo = typingTo;
+    }
+
+    public String getDiemtb() {
+        return diemtb;
+    }
+
+    public void setDiemtb(String diemtb) {
+        this.diemtb = diemtb;
     }
 }

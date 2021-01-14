@@ -188,6 +188,7 @@ public class DangKyChoThueKhoActivity extends AppCompatActivity {
             hashMap.put("block", "false");
             hashMap.put("open", "true");
             hashMap.put("noibat", "true");
+            hashMap.put("diemtb", "0");
             hashMap.put("profileImage", "");
 
             //luu db
@@ -236,6 +237,7 @@ public class DangKyChoThueKhoActivity extends AppCompatActivity {
                                 hashMap.put("block", "false");
                                 hashMap.put("open", "true");
                                 hashMap.put("noibat", "true");
+                                hashMap.put("diemtb", "0");
                                 hashMap.put("profileImage", ""+downloadIamgeUri);//url upload image
 
                                 //luu db

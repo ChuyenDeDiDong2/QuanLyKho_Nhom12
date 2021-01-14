@@ -23,9 +23,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+import com.team12.quanlykhohang_nhom12.Library.ModelChuKho;
 import com.team12.quanlykhohang_nhom12.R;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class DanhGia1Activity extends AppCompatActivity {
 
@@ -68,12 +70,7 @@ public class DanhGia1Activity extends AppCompatActivity {
                 inputData();
             }
         });
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-
-            }
-        });
+        //totalgia();
 
     }
 
@@ -98,6 +95,33 @@ public class DanhGia1Activity extends AppCompatActivity {
             }
         });
     }
+
+    private void totalgia() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");
+        reference.child(hisUid).child("DanhGia")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        int sum=0;
+                        for (DataSnapshot ds: snapshot.getChildren()){
+                            Map<String, Object> map =  (Map<String, Object>)ds.getValue();
+                            Object diem = map.get("diem");
+                            int dgValue  = Integer.parseInt(String.valueOf(diem));
+                            sum += dgValue;
+                            //sum1 = sum1++;
+                            //tamptb = sum/sum1;
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+    }
+
 
 //    private void loadMyReview() {
 //        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tb_Users");

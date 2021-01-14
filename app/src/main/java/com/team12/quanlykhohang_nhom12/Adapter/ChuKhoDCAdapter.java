@@ -53,6 +53,7 @@ public class ChuKhoDCAdapter extends RecyclerView.Adapter<ChuKhoDCAdapter.Holder
         String online = modelChuKho.getOnline();
         String cuahangOpen = modelChuKho.getOpen();
         String noibat = modelChuKho.getNoibat();
+        String diemtb = modelChuKho.getDiemtb();
         String profileImage = modelChuKho.getProfileImage();
         //setdate
 
@@ -61,6 +62,10 @@ public class ChuKhoDCAdapter extends RecyclerView.Adapter<ChuKhoDCAdapter.Holder
         holder.ten_chu_kho_tv.setText("Hãng kho: "+ tentaikhoan);
         holder.phone_chu_kho_tv.setText("Liên hệ: "+ phone);
         holder.tv_email.setText("Liên hệ gmail: "+ email);
+
+        holder.ratingbarchukho.setRating(Integer.parseInt(diemtb));
+        //holder.ratingbarchukho.setRating(4);
+
         if (online.equals("true")){
             //chu kho online
             holder.onlineiv.setVisibility(View.VISIBLE);
